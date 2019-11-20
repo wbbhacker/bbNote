@@ -26,3 +26,7 @@
 5. wget
 
    1. `wget downloadUrl` 下载文件
+
+6. `scp` 命令
+
+   1. 

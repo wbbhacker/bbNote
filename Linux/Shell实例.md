@@ -36,3 +36,18 @@ export PATH=$PATH:$NODE_HOME/bin
 source /etc/profile
 ```
 
+## 查看进程及杀死进程
+
+```shell
+ps aux | grep node
+kill -9 进程号
+
+netstat -an | grep 8080.  查看8080端口是否起来
+```
+
+## 关闭防火墙
+
+```shell
+systemctl stop firewalld
+```
+
