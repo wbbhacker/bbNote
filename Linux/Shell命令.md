@@ -18,4 +18,11 @@
 
 3. `uname -a` 显示电脑以及操作系统的相关信息
 
-4. 
+4. `tar` 命令
+
+   1. 解压命令
+      1. `tar -xf filename.tar.xz`
+
+5. wget
+
+   1. `wget downloadUrl` 下载文件
