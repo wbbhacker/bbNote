@@ -42,12 +42,18 @@ source /etc/profile
 ps aux | grep node
 kill -9 进程号
 
-netstat -an | grep 8080.  查看8080端口是否起来
+netstat -an | grep 8080   查看8080端口是否起来
 ```
 
 ## 关闭防火墙
 
 ```shell
 systemctl stop firewalld
+```
+
+## 修改权限
+
+```shell
+chmod 777 filename
 ```
 

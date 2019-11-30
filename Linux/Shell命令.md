@@ -22,6 +22,8 @@
 
    1. 解压命令
       1. `tar -xf filename.tar.xz`
+      2. `unzip  file.zip` 解压zip 文件
+      3. ` unzip  file.zip  -d  file_new `   解压缩到指定文件夹file_new
 
 5. wget
 
@@ -118,4 +120,8 @@ ls -l /etc | more #分页显示 /etc 目录 中内容的详细信息
 
 echo "Hello World" | cat > hello.txt #将一个字符串输入到一个文件中
 ```
+
+16. `ps` 命令
+17. `awk` 命令
+18. `sed` 
 

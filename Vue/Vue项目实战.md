@@ -42,13 +42,17 @@ app
 
 ​		  |-- components  // 公用组件
 
+ 		 |-- router // 路由
+
  		 |-- store  // 状态管理
 
-​          |-- views 
+​          |-- views  // 页面
 
-​          |-- App.vue
+​                  --index.vue
 
-​          |-- main.js
+​          		-- App.vue
+
+​          |-- main.js  // 项目入口
 
 ​	|-- test
 
@@ -66,5 +70,25 @@ app
       4. 是否错误响应弹层
       5. 是否中断接口请求
       6. 设置重置次数
+      7. 请求参数是否加密
    4. index.js  api 出口
-2.  
+   
+2. **store文件夹** `   export default new Vuex.Store({})`
+
+   1. page.js 各个页面的store
+   2. common.js 页面公用store
+   3. index.js 合并所有子store，汇成总sotre
+
+3. **Views文件夹** (各种vue 组件对象)
+
+   1. page.vue 各个页面vue单文件
+
+   2. 404页面
+   3. login.vue 登录页面
+   4. index.vue  内容页面
+   5. `app.vue` 主页面（主路由）
+
+4. **router 文件夹**
+
+   1. 各模块路由
+   2. index.js 路由汇总 `export default new Router()`
