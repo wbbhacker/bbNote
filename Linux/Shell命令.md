@@ -122,6 +122,26 @@ echo "Hello World" | cat > hello.txt #将一个字符串输入到一个文件中
 ```
 
 16. `ps` 命令
+
 17. `awk` 命令
+
 18. `sed` 
+
+19. `kill -9 pid` 
+
+    杀死进程
+
+20. `open`
+
+```shell
+open . #打开当前文件夹
+```
+
+21. `cp`  
+22. `mv` 
+23. `start`
+24. `lsof`
+25. `$()`
+26. `telent`
+27. `curl`
 
