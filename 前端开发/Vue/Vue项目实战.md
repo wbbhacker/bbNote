@@ -92,3 +92,12 @@ app
 
    1. 各模块路由
    2. index.js 路由汇总 `export default new Router()`
+   
+5. const.js 保存网站所有常量，包括 判断条件变量
+
+   ```javascript
+   const code = '000000'
+   if(res.retCode = code){ do something}
+   ```
+
+   
