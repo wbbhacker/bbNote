@@ -1,6 +1,6 @@
 # Statements and declaration
 
-> wangbin
+> 语句与声明
 
 ## `for ... of` 
 
