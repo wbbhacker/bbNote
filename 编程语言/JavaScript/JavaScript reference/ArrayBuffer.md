@@ -1,4 +1,4 @@
-# ArrayBuffer
+# ArrayBuffer、TypedArray、DataView
 
 1. 什么是ArrayBuffer？
 
