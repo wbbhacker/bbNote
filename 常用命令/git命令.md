@@ -14,6 +14,8 @@
 
 ​       **不删除**工作空间改动代码，撤销commit，并且撤销git add . 操作
 
+> `git revert commitId` 撤销 commit 提交
+
 4. `git log` 
 
     记录所有commit历史
@@ -50,4 +52,4 @@
 
     解决git密码保存不了 fatal: unable to get credential storage lock: File exists
 
-13. 
+    
