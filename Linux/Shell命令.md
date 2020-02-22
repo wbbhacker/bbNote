@@ -123,15 +123,22 @@ echo "Hello World" | cat > hello.txt #将一个字符串输入到一个文件中
 
 16. `ps` 命令
 
-17. `awk` 命令
+```shell
+ps aux | grep "nginx" #查看进程 并 筛选 nginx 进程
 
-18. `sed` 
+```
 
-19. `kill -9 pid` 
+
+
+16. `awk` 命令
+
+17. `sed` 
+
+18. `kill -9 pid` 
 
     杀死进程
 
-20. `open`
+19. `open`
 
 ```shell
 open . #打开当前文件夹
@@ -142,6 +149,19 @@ open . #打开当前文件夹
 23. `start`
 24. `lsof`
 25. `$()`
-26. `telent`
-27. `curl`
+26. `telnet`
+
+```shell
+telnet 101.200.195.41 8080 # 查看远程端口是否开放
+```
+
+21. `curl`
+
+22. `netstat -tnlp`  
+
+    查看端口号
+
+23. `iptables -L -n` 
+
+    查看防火墙对外开放了那些
 
