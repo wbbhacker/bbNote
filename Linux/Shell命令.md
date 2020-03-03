@@ -32,7 +32,7 @@
 6. `scp` 命令
 
 ```
-scp /path/filename username@servername:/path ;
+ scp /path/filename username@servername:/path ;
 ```
 
 
