@@ -22,8 +22,8 @@
 
    1. 解压命令
       1. `tar -xf filename.tar.xz`
-      2. `unzip  file.zip` 解压zip 文件
-      3. ` unzip  file.zip  -d  file_new `   解压缩到指定文件夹file_new
+      2. `tar -zcvf 压缩文件名 .tar.gz 被压缩文件名` 压缩
+      3. `tar -zxvf 压缩文件名.tar.gz` 解压
 
 5. wget
 
@@ -31,7 +31,13 @@
 
 6. `scp` 命令
 
-7. `grep` 查找文件中的关键字
+```
+scp /path/filename username@servername:/path ;
+```
+
+
+
+1. `grep` 查找文件中的关键字
 
 ```shell
 grep [选项] "string" file
@@ -157,11 +163,20 @@ telnet 101.200.195.41 8080 # 查看远程端口是否开放
 
 21. `curl`
 
-22. `netstat -tnlp`  
+22. `netstat -tnlp`    `netstat -anp tcp | grep 80`
 
     查看端口号
 
 23. `iptables -L -n` 
 
     查看防火墙对外开放了那些
+    
+24. zip
+
+```shell
+zip -r mysql.zip mysql #将mysql文件夹压缩成mysql.zip
+unzip mysql.zip
+```
+
+
 
