@@ -43,6 +43,7 @@
        3. Sublime Text Keymap and Settings Importer
    12. magnet
    13. SecureCRT （终端仿真 SSH）
+   14. Homebrew 
 
 
 

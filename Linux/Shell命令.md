@@ -178,5 +178,5 @@ zip -r mysql.zip mysql #将mysql文件夹压缩成mysql.zip
 unzip mysql.zip
 ```
 
-
+25. 修改bash 配置 ` vim ~/.bash_profile`   `vim ~/.zshrc`
 
