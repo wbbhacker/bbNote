@@ -179,4 +179,5 @@ unzip mysql.zip
 ```
 
 25. 修改bash 配置 ` vim ~/.bash_profile`   `vim ~/.zshrc`
+26. `ll` 查看文件夹列表  `stat filename` 查看文件具体信息
 

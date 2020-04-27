@@ -55,5 +55,19 @@ systemctl stop firewalld
 
 ```shell
 chmod 777 filename
+sudo chmod -R 777 filename
+```
+
+## 文件夹类型
+
+d 开头是文件夹  - 开头是文件 
+
+```shell
+drwxr-xr-x 2 root     root     4096 Mar 11 15:44 conf.d
+-rw-r--r-- 1 appadmin appadmin 1077 Apr 25  2019 fastcgi.conf
+-rw-r--r-- 1 appadmin appadmin 1077 Apr 25  2019 fastcgi.conf.default
+-rw-r--r-- 1 appadmin appadmin 1007 Apr 25  2019 fastcgi_params
+-rw-r--r-- 1 appadmin appadmin 1007 Apr 25  2019 fastcgi_params.default
+-rw-r--r-- 1 appadmin appadmin 2837 Apr 25  2019 koi-utf
 ```
 
