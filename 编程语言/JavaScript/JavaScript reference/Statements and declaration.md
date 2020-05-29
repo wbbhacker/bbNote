@@ -34,3 +34,12 @@ for (const property in object) {
 // "c: 3"
 ```
 
+### ?.
+
+```
+let nestedProp = obj.first && obj.first.second;
+// 两个相等
+let nestedProp = obj.first?.second;
+
+```
+
