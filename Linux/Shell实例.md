@@ -43,6 +43,7 @@ ps aux | grep node
 kill -9 进程号
 
 netstat -an | grep 8080   查看8080端口是否起来
+sudo lsof -i :8080 查看8080 端口
 ```
 
 ## 关闭防火墙

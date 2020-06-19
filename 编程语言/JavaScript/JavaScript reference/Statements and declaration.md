@@ -19,7 +19,9 @@ for (const element of array1) {
 
 ```
 
-# `for ... in`
+## `for ... in`
+
+会遍历原型上的对象
 
 ```javascript
 const object = {a: 1, b: 2, c: 3};

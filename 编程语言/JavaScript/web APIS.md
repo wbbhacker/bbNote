@@ -32,3 +32,8 @@ searchParams.toString(); // "q=URLUtils.searchParams"
 
 ```
 
+# Performance
+
+
+
+## MutationObserver
