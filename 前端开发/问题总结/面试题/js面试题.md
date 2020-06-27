@@ -20,3 +20,11 @@ new Promise(function(resolve) {
 console.log('IIII')
 ```
 
+```javascript
+var tmp = 123;
+if(true){
+  console.log(tmp)
+  let tmp
+}
+```
+

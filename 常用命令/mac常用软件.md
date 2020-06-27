@@ -45,5 +45,14 @@
    13. SecureCRT （终端仿真 SSH）
    14. Homebrew 
 
+#### 关闭进程
+
+```
+sudo mdutil -a -i on/off  //打开/关闭Spotlight进程
+sudo launchctl unload -w /System/Library/LaunchAgents/com.apple.Spotlight.plist //关闭Spotlight进程
+```
+
+
+
 
 
