@@ -161,15 +161,17 @@ telnet 101.200.195.41 8080 # 查看远程端口是否开放
 
 21. `curl`
 
-22. `netstat -tnlp`    `netstat -anp tcp | grep 80`
+22. `man` 查看命令信息
+
+23. `netstat -tnlp`    `netstat -anp tcp | grep 80`
 
     查看端口号
 
-23. `iptables -L -n` 
+24. `iptables -L -n` 
 
     查看防火墙对外开放了那些
-    
-24. zip
+
+25. zip
 
 ```shell
 zip -r mysql.zip mysql #将mysql文件夹压缩成mysql.zip
