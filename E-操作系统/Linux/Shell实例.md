@@ -72,3 +72,8 @@ drwxr-xr-x 2 root     root     4096 Mar 11 15:44 conf.d
 -rw-r--r-- 1 appadmin appadmin 2837 Apr 25  2019 koi-utf
 ```
 
+```bash
+ps -ef | grep php-fpm
+```
+
+ss -lnt 查看端口
