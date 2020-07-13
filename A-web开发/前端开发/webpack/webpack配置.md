@@ -11,8 +11,6 @@
    path:path.join(__dirname,'output')
    ```
 
-   
-
 3. mode 模式
 
 4. module
@@ -29,3 +27,4 @@
    ```
 
    
+
