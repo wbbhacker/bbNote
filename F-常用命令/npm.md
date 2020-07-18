@@ -57,6 +57,33 @@
 
 ​	 `ololog` 
 
+#### npx
+
+1. npx 想要解决的主要问题，就是调用项目内部安装的模块
+
+npm 调用内部模块方法
+
+```shell
+# 项目的根目录下执行
+$ node-modules/.bin/mocha --version
+```
+
+npx 调用内部模块方法
+
+```shell
+npx mocha --version
+```
+
+2. 避免全局安装
+
+   `create-react-app`这个模块是全局安装，npx 可以运行它，而且不进行全局安装。
+
+   `npx create-react-app my-react-app`
+
+   
+
+
+
 
 
 

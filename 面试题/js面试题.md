@@ -28,3 +28,41 @@ if(true){
 }
 ```
 
+```javascript
+ function a(xx) {
+   this.x = xx
+   return this
+ }
+
+var x = a(5)
+var y = a(6)
+console.log(x.x)
+console.log(y.x)
+```
+
+```javascript
+ var length = 10;
+ function fn(){
+ 	console.log(this.length)
+ }
+ var obj = {
+ 	length:5,
+ 	method:function(fn){
+ 		fn();
+ 		arguments[0]()
+ 		}
+ 	}
+ obj.method(fn)
+```
+
+```javascript
+function fn() {
+	console.log(this.length)
+	console.log(arguments[0] && arguments[0]())
+}
+
+var a = { length: 10, fn }
+
+a.fn(fn, 2, 4)
+```
+
