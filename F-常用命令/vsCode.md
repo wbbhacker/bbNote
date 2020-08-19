@@ -9,9 +9,12 @@
 2. vsCode 插件
 
    1. Bookmarks
-2. path Intellisense
    
+2. path Intellisense
+  
 3. Gitlens 查看git提交历史记录
 
-    
+5. `shift+command+p`   command Palette
+
+     
 

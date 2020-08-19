@@ -14,5 +14,23 @@
 
    阴影不会占用盒子模型的，所以可能会遮挡下面的元素，用z-index解决
 
-5. 
+5. touch-action:
+
+   CSS属性 touch-action 用于指定某个给定的区域是否允许用户操作，以及如何响应用户操作（比如浏览器自带的划动、缩放等）
+
+   - auto 
+
+   -  none 
+
+     当触控事件发生在元素上时，不进行任何操作
+
+   - pan-x 、pan-y
+
+   - manipulation
+
+   - pan-left、pan-right、pan-up、pan-down
+
+   
+
+   、
 

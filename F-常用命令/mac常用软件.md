@@ -32,18 +32,19 @@
    3. postman
    4. Wireshark
    5. Axure
-   6. Alfred 
-   7. Typora
-   8. SourceTree
-   9. Charles
-   10. MarginNote
-   11. VScode、Sublime Text、Vim
+   6. Beyond Compare
+   7. Alfred 
+   8. Typora
+   9. SourceTree
+   10. Charles
+   11. MarginNote
+   12. VScode、Sublime Text、Vim
        1. Fold
        2. Bookmarks
        3. Sublime Text Keymap and Settings Importer
-   12. magnet
-   13. SecureCRT （终端仿真 SSH）
-   14. Homebrew 
+   13. magnet
+   14. SecureCRT （终端仿真 SSH）
+   15. Homebrew 
 
 #### 关闭进程
 

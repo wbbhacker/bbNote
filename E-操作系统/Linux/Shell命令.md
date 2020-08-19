@@ -1,6 +1,6 @@
 #shell命令
 
-> 王斌 2019.11.19
+> https://www.linuxcool.com/ linxu 命令大全
 
 1. ##### **别名设置**
 
