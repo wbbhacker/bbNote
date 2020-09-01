@@ -47,7 +47,7 @@
       >
       >   返回的是 **used value**
 
-![image-20200609145000257](../../../image/image-20200609145000257.png)
+![image-20200609145000257](../../../../image/image-20200609145000257.png)
 
 3. 所有css 属性都适用的四个关键字`initial` `inherit` `unset` `revert`
 
