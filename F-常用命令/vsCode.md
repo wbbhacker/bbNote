@@ -16,5 +16,9 @@
 
 5. `shift+command+p`   command Palette
 
-     
+6. 常用插件
+
+   1. babel-javascript 高亮显示文件 如：最新es语法、flow、ts等
+   2. bookmarks 书签
+   3. sublime text keymap and setting importer 设置sub text 快捷键
 

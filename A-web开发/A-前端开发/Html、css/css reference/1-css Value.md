@@ -1,96 +1,143 @@
-## **Value Processing**
+#### 你知道DOM 元素最终的css属性值是怎么计算来的吗？
 
-1. value 计算流程
+工作中经常疑惑DOM元素最终CSS属性值的由来，今天做个全面的整理。分为两部分
 
-   The final value of a CSS property for a given element or box is the result of a multi-step calculation:
+- css 属性值的分类
+- 最终css属性值的计算过程
 
-   1. First, all the [declared values](https://drafts.csswg.org/css-cascade-4/#declared-value) applied to an element are collected, for each property on each element. There may be zero or many declared values applied to the element.
-   2. Cascading yields the [cascaded value](https://drafts.csswg.org/css-cascade-4/#cascaded-value). There is at most one cascaded value per property per element.
-   3. Defaulting yields the [specified value](https://drafts.csswg.org/css-cascade-4/#specified-value). Every element has exactly one specified value per property.
-   4. Resolving value dependencies yields the [computed value](https://drafts.csswg.org/css-cascade-4/#computed-value). Every element has exactly one computed value per property.
-   5. Formatting the document yields the [used value](https://drafts.csswg.org/css-cascade-4/#used-value). An element only has a used value for a given property if that property applies to the element.
-   6. Finally, the used value is transformed to the [actual value](https://drafts.csswg.org/css-cascade-4/#actual-value) based on constraints of the display environment. As with the [used value](https://drafts.csswg.org/css-cascade-4/#used-value), there may or may not be an actual value for a given property on an element.
+#### 一、css属性值的分类
 
-2. 各值含义
+按照最终值的计算流程大体分别四个阶段：
 
-   1. Declared Values  声明值
+- 未声明值阶段（初始值、继承值）
+- 声明值阶段（声明值、级联值、指定值）
+- 布局计算阶段（布局前：计算值，布局后：使用值）
+- 浏览器最终显示阶段 （实际值）
 
-   2. Cascaded Values  级联值
+详细可分为8种：初始值、继承值、声明值、级联值、指定值、计算值、使用值、实际值。
 
-   3. Specified Values 规定值
+下面详细介绍:
 
-      样式表设定的值
+##### 1.默认值 initial value
 
-      规定值赋值规则：
+css属性的初始值都是默认定义的值。如`overflow` 初始值为：’visible‘。
 
-      1. 如果样式表指定了css属性值，则规定值为样式表指定值
-      2. 如果样式表未指定值，且此属性为**继承属性**且不是Dom tree 的根元素，则规定值继承自他的父元素
-      3. 如果1、2都不符合，则规定值 为 **initial value**
+css所有属性都可以通过'initial' ，显示指定属性的值为初始值。
 
-   4. Computed Values 计算值
+##### 2.继承值 inherited value
 
-      The computed value is the result of resolving the [specified value](https://drafts.csswg.org/css-cascade-4/#specified-value) as defined in the “Computed Value” line of the property definition table, generally absolutizing it in preparation for [inheritance](https://drafts.csswg.org/css-cascade-4/#inheritance).
+css属性可分为’可继承属性‘ 和 ’不可继承属性‘。
 
-   5. Used Values 使用值
+可继承属性的继承值为它父元素对应属性的**计算值( computed value)**。对于没有父元素的根元素，其可继承属性的继承值为它的**初始值(initial value)**。
 
-   6. Actual Values 实际值
+如 color属性 为可继承属性，元素em 可继承其父元素p的color属性，显示为 green 色；
 
-      
+```css
+p{color:green};
+```
 
-      >1. 初始值 Initial value
-      >
-      >2. 解析值 Resolved value
-      >
-      >   通过`getComputedStyle()` 获取的css属性值
-      >
-      >   对于大多数属性，返回**computed value**，但是少数旧属性（包括width、height）,
-      >
-      >   返回的是 **used value**
+```html
+<p>This paragraph has <em>emphasized text</em> in it.</p>
+```
 
-![image-20200609145000257](../../../../image/image-20200609145000257.png)
 
-3. 所有css 属性都适用的四个关键字`initial` `inherit` `unset` `revert`
 
-   1. initial 初始值
+> 非可继承属性的无继承值，如css 属性border属性为非可继承属性，不可继承其父元素的border属性
 
-      If the [cascaded value](https://drafts.csswg.org/css-cascade/#cascaded-value) of a property is the [initial](https://drafts.csswg.org/css-cascade/#valdef-all-initial) keyword, the property’s [specified value](https://drafts.csswg.org/css-cascade/#specified-value) is its [initial value](https://drafts.csswg.org/css-cascade/#initial-value).
+在css属性未声明阶段属性值为：
 
-   2. Inherit 继承
+<img src="../../../../image/image-20200910173917139.png" alt="image-20200910173917139" style="zoom:80%;" />
 
-      If the [cascaded value](https://drafts.csswg.org/css-cascade/#cascaded-value) of a property is the [inherit](https://drafts.csswg.org/css-cascade/#valdef-all-inherit) keyword, the property’s [specified](https://drafts.csswg.org/css-cascade/#specified-value) and [computed values](https://drafts.csswg.org/css-cascade/#computed-value) are the [inherited value](https://drafts.csswg.org/css-cascade/#inherited-value).
+css所有属性都可以通过’inherit‘ ，显示指定属性的值可继承。
 
-   3. unset 未设置
+##### 3.声明值 Declared Values
 
-      If the [cascaded value](https://drafts.csswg.org/css-cascade/#cascaded-value) of a property is the [unset](https://drafts.csswg.org/css-cascade/#valdef-all-unset) keyword, then if it is an inherited property, this is treated as [inherit](https://drafts.csswg.org/css-cascade/#valdef-all-inherit), and if it is not, this is treated as [initial](https://drafts.csswg.org/css-cascade/#valdef-all-initial). This keyword effectively erases all [declared values](https://drafts.csswg.org/css-cascade/#declared-value) occurring earlier in the [cascade](https://drafts.csswg.org/css-cascade/#cascade), correctly inheriting or not as appropriate for the property (or all longhands of a [shorthand](https://drafts.csswg.org/css-cascade/#shorthand-property)).
+应用于元素的每个属性声明都是该元素对应属性的**声明值(declared values)**。如下：
 
-   4. revert 还原
+该例子中p元素对应的width属性的声明值有三个分别为：
 
-      表示样式表中定义的元素属性的默认值。若用户定义样式表中显式设置，则按此设置；否则，按照浏览器定义样式表中的样式设置；否则，等价于unset
+- .name 中声明的 width 的属性值 100px
 
-      > ## all
-      >
-      > 表示重设除unicode-bidi和direction之外的所有CSS属性的属性值，取值只能是initial、inherit、unset和revert
-      > 兼容性: IE不支持，safari9-不支持，ios9.2-不支持，android4.4-不支持
-      >
-      > ```html
-      > <style>
-      > .test{
-      >     border: 1px solid black;
-      >     padding: 20px;
-      >     color: red;
-      > }
-      > .in{
-      > /*  all: initial; //都取默认值 border:none;padding:0;color:black;
-      >     all: inherit; // 都取父元素继承值 border:1px solid black;padding:20px;color:red;
-      >     all: unset; // .in的所有属性都相当于不设置值，默认可继承的继承，不可继承的保持默认值		  border:none;padding:0;color:red;
-      >     all: revert; // 等价于unset
-      > */
-      > }
-      > </style>
-      > <div class="test">
-      >     <div class="in">测试文字</div>            
-      > </div>
-      > ```
+- .box p 中声明的width 的属性值 200px
+- .box p.name 中声明的width 的属性值 300px
 
- 
+```css
+p{
+  border:1px solid #000;
+}
+.name {
+  width:100px;
+}
+.box p{
+  width:200px;
+}
+.box p.name{
+  width:300px;
+}
+```
+
+```html
+<div class="box">
+  <p class="name">柚子先生王彬彬</p>
+</div>
+```
+
+##### 4.级联值 Cascaded Values
+
+在声明值中 ，通过级联优先级筛选出 优先级最高的声明值作为 **级联值 (cascaded value)**。
+
+上面声明值例子中，p元素通过级联优先级排序 三个声明值，最终选定级联优先级最高的 300px 为级联值。
+
+##### 5.指定值 Specified Values
+
+每个元素的每个属性都会有一个指定值，一般用 级联值 作为 **指定值(specified value)**。
+
+在没有级联值的情况下：指定值为 初始值  或 默认值，你可以为属性显示设置'initial'/'inherit' 来指定属性的指定值为初始值/继承值。
+
+##### 6.计算值 Computed Values
+
+将 **指定值** 从相对值解析成绝对值 之后的结果 作为 **计算值(computed values)**。计算值 将作为子元素属性的继承值来用。
+
+- 指定值的单位为：em、ex、vh、vm 需乘以合适的数值， 转换成绝对值 
+- 关键词如 'smaller' ,'bolder'‘,需替换成它们定义的值
+- 某些属性的百分比值 需乘以合适的系数
+- 相对路径 需转换成 绝对路径
+
+例如：一个元素的属性的指定值为：`font-size:16px; padding-top:2em`,则padding-top的计算值为 32px （fontSize 的 2倍）
+
+通常来讲，计算值会在文档布局或其它要求性能较高的操作（如网络请求、获取其祖先元素的属性值以求自身属性值操作）之前 ，对指定值 进行 解析。注：说明某些属性的指定值还没有完全 解析
+
+##### 7.使用值 Used Value
+
+**使用值(used value) **是将计算值完成所有剩余计算，使其可以在文档布局中使用的绝对值。如果一个元素没有该属性，则改元素没有该属性的 使用值。
+
+例如： 声明值`width:'auto'` 在它祖先元素未完成布局之前（即它祖先元素为获得实际值之前），不会解析成一个长度值，因为’auto‘是相对于它的祖先元素来解析，它祖先元素没解析出来，它肯定也解析不出来。所以它的计算值(computed value) 为 'auto'，使用值为一个绝对值比如：’100px‘。
+
+##### 8.实际值 Actual Value
+
+一般使用值 会被用做 实际值(Actual Value)，但是限于浏览器的对某些属性值的限制，实际值还会跟使用值不同。
+
+比如：谷歌浏览器 元素属性的 font-size 最小值只能为12px，用户声明font-size:1px; 完全计算结果 使用值为 1px，但是最后实际在谷歌浏览器显示的实际值为：12px。
+
+综合上所述，例子：
+
+![image-20200910233746708](../../../../image/image-20200910233746708.png)
+
+#### 二、最终css属性值的计算过程
+
+1. 首先针对每个元素上的每个属性，收集其声明值
+2. 根据级联优先级，对收集来声明值进行排序，得出优先级最高的声明值，作为级联值
+3. 一般用级联值作为指定值，如果没有级联值，则用初始值或继承值作为指定值
+4. 在布局之前或有高性能操作之前，根据级联值 计算出 绝对值 作为 计算值
+5. 布局之后 再把 计算值 进一步解析为 使用值
+6. 最后根据客户端环境限制，将使用值 转化为 实际值
+
+css属性值的分类及计算过程大体就是这样子，如果感兴趣可以看参考链接的英文文档。
+
+有疑惑欢迎留言。
+
+*参考链接:*
+
+[1]:https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+[2]:https://drafts.csswg.org/css-cascade-4/#value-stages
 

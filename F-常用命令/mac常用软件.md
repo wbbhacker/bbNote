@@ -5,14 +5,13 @@
 ## 常用命令
 
 1. `Command+Shift+.`  显示/隐藏 隐藏文件/文件夹
-
 2. `Command+H` 隐藏当前应用程序窗口
-
 3. `Command+Option+H` 隐藏其它应用程序窗口
-
 4. `Command+I` 显示文件简介
-
-   
+5. 截图
+   - command+shift+3 全屏截图
+   - command+shift+4 局部截图
+   - shift+command+4 ，在按空格  窗口截图 
 
 ## 常用软件
 
