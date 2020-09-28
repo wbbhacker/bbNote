@@ -1,18 +1,16 @@
 # HTTP cookie
 
-### 定义
+#### 一、定义
 
-An **HTTP cookie** (also called **web cookie**, **Internet cookie**, **browser cookie**, or simply **cookie**) is **a small piece of data** sent from a website and stored on the user's computer by the user's web browser while the user is browsing.
+HTTP Cookie是服务器发送到用户浏览器并保存在本地的一小块数据。
 
-### 结构
+#### 二、结构
 
 1. Name
 2. Value
-3. Zero or more attributes (name/value pairs). 
+3. 0或多个属性（name/value  键值对形式）
 
-> Attributes store information such as the cookie's expiration, domain, and flags (such as `Secure` and `HttpOnly`)
-
-### 属性
+#### 三、属性
 
 1. ##### **expires**  
 
@@ -75,7 +73,7 @@ An **HTTP cookie** (also called **web cookie**, **Internet cookie**, **browser c
 
 6. **SameSite**
 
-   In 2016 Google Chrome version 51 introduced a new kind of cookie, the *same-site cookie*, which can only be sent in requests *originating* from the same origin as the target domain.
+   2016年，谷歌浏览器第51版引入了一种新的Cookie，即“same site”，该Cookie只能在源于与目标域相同来源的请求中发送。
 
    ```
    Set-Cookie: name=Nicholas; SameSite=Strict | Lax
@@ -85,7 +83,7 @@ An **HTTP cookie** (also called **web cookie**, **Internet cookie**, **browser c
 
    
 
-### 用法
+#### 四、用法
 
 1. **服务器端创建cookie**
 
@@ -122,7 +120,7 @@ An **HTTP cookie** (also called **web cookie**, **Internet cookie**, **browser c
    >
    > 一旦 cookie 通过 JavaScript 设置后便不能提取它的选项，所以你将不能知道 `domain`，`path`，`expires` 日期或 `secure` 标记。
 
-### cookie的维护与生命周期
+#### 五、cookie的维护与生命周期
 
 1. cookie 中可以指定**任意数量的选项**，并且这些选项可以是**任意顺序**
 
@@ -167,7 +165,7 @@ An **HTTP cookie** (also called **web cookie**, **Internet cookie**, **browser c
    > 2. 这意味着在同一个会话中，一个会话 cookie 可以变成一个持久化 cookie（一个可以在多个会话中存在的），反之则不可。
    > 3. 为了要将一个持久化 cookie 变为一个会话 cookie，你必须删除这个持久化 cookie，这只要设置它的失效日期为过去某个时间之后再创建一个同名的会话 cookie 就可以实现。
 
-### cookie自动删除、限制条件
+#### 六、cookie自动删除、限制条件
 
 1. **cookie 自动删除**
 
@@ -183,15 +181,13 @@ An **HTTP cookie** (also called **web cookie**, **Internet cookie**, **browser c
 
    2. 发向服务器的所有 cookie 的最大数量（空间）仍旧维持原始规范中所指出的：4KB
 
-### cookie编码
+#### 七、cookie编码
 
 原始规范中明确指出只有三个字符必须进行编码：**分号、逗号和空格**，规范中还提到可以进行 URL 编码，但并不是必须，在 RFC 中没有提及任何编码。
 
 > 然而，几乎所有的实现都对 cookie 的值进行了一系列的 URL 编码。对于 `name=value` 格式，通常会对 `name` 和 `value` 分别进行编码，而不对等号 `=` 进行编码操作。
 
-
-
-### 术语
+#### 八、cookie 种类
 
 1. **session cookie**
 
@@ -231,8 +227,21 @@ An **HTTP cookie** (also called **web cookie**, **Internet cookie**, **browser c
 
    > 这是通过将cookie的内容存储在多个位置（例如Flash Local共享对象，HTML5 Web存储以及其他客户端甚至服务器端位置）来实现的。 当检测到缺少cookie时，将使用存储在这些位置的数据重新创建cookie。
 
-### 参考
+#### 九、应用场景
 
-> https://en.wikipedia.org/wiki/HTTP_cookie
->
-> https://www.kancloud.cn/kancloud/http-cookies-explained/48333
+1. 会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）
+2. 个性化设置（如用户自定义设置、主题等）
+3. 浏览器行为跟踪（如跟踪分析用户行为等）
+
+#### 十、缺点
+
+1. cookie 可能获取不到；如：cookie被禁用、cookie被用户删除、不同浏览器的cookie 无法共享
+2. cookie 安全性不高，如果cookie 没有设置httpOnly 属性，则很容易被人盗取
+3. cookie 存储空间有限，只有4KB，并且不同浏览器对每个域名下cookie有数量限制
+
+#### 十一、***参考***
+
+[1] https://en.wikipedia.org/wiki/HTTP_cookie
+
+[2] https://www.kancloud.cn/kancloud/http-cookies-explained/48333
+
