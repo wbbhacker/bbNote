@@ -6,7 +6,7 @@ Vue的编译功能主要是将template字符串模板编译生成render函数，
 
 具体流程图如下：
 
-![image-20200928013649095](../../image/image-20200928013649095.png)
+![image-20200928013649095](../../../image/image-20200928013649095.png)
 
 #### 二、`createCompilerCreator` 函数
 

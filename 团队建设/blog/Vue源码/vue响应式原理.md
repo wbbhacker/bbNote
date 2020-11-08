@@ -12,7 +12,7 @@ Watcher 分三种：Computed Watcher、用户Watcher（侦听器）、渲染Watc
 
 流程图如下：
 
-![image-20200924153932834](../../image/image-20200924153932834.png)
+![image-20200924153932834](../../../image/image-20200924153932834.png)
 
 #### 二、Observer 类
 
