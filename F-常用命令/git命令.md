@@ -1,6 +1,4 @@
-# git命令
-
-> wangbin
+### git命令
 
 1. `git reset --hard commitId ` 
 
@@ -50,30 +48,23 @@
 
 12. ` git config credential.helper wincred`
 
-    解决git密码保存不了 fatal: unable to get credential storage lock: File exists
+    解决git密码保存不了 fatal: unable to get credential storage lock: File exist
 
     
-    
-    
-    
-    
-    
-    
-    
-    git 提交功能备注
-    
-    feat: 新功能 （feature）
-    fix: 修补 bug
-    docs: 文档（document）
-    style: 格式/样式（不影响代码运行的变动）
-    refactor: 重构（既不是新增功能，也不是修改bug的代码改动）
-    test: 增加测试
-    chore: 构建过程或辅助工具的变动
-    perf: 提高性能的代码更改
-    build: 影响构建系统或外部依赖项的更改（示例范围： gulp, npm）
-    ci: 对CI配置文件和脚本的更改（示例范围：Travis，Circle，BrowserStack）
-    revert: 恢复到以前的提交
-    
-    https://github.com/liuchengxu/git-commit-emoji-cn
-    
-    
+
+### git 提交功能备注
+
+feat: 新功能 （feature）
+fix: 修补 bug
+docs: 文档（document）
+style: 格式/样式（不影响代码运行的变动）
+refactor: 重构（既不是新增功能，也不是修改bug的代码改动）
+test: 增加测试
+chore: 构建过程或辅助工具的变动
+perf: 提高性能的代码更改
+build: 影响构建系统或外部依赖项的更改（示例范围： gulp, npm）
+ci: 对CI配置文件和脚本的更改（示例范围：Travis，Circle，BrowserStack）
+revert: 恢复到以前的提交
+
+https://github.com/liuchengxu/git-commit-emoji-cn
+

@@ -1,8 +1,8 @@
 # ssh 命令
 
-1. ssh 登录
+#### 1.ssh 登录
 
-   `ssh username@ipadress`
+`ssh username@ipadress`
 
-2. ssh 创建秘钥
+#### 2.ssh 创建秘钥
 
