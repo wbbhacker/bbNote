@@ -1,6 +1,6 @@
 ### Shell实例
 
-#### 安装node
+#### 1.安装node
 
 1. 建立node文件夹 
 
@@ -34,7 +34,7 @@ export PATH=$PATH:$NODE_HOME/bin
 source /etc/profile
 ```
 
-#### 查看进程及杀死进程
+#### 2.查看进程及杀死进程
 
 ```shell
 ps aux | grep node
@@ -44,20 +44,20 @@ netstat -an | grep 8080   查看8080端口是否起来
 sudo lsof -i :8080 查看8080 端口
 ```
 
-#### 关闭防火墙
+#### 3.关闭防火墙
 
 ```shell
 systemctl stop firewalld
 ```
 
-#### 修改权限
+#### 4.修改权限
 
 ```shell
 chmod 777 filename
 sudo chmod -R 777 filename
 ```
 
-#### 文件夹类型
+#### 5.文件夹类型
 
 d 开头是文件夹  - 开头是文件 
 
@@ -75,3 +75,16 @@ ps -ef | grep php-fpm
 ```
 
 ss -lnt 查看端口
+
+#### 6.查看npm 安装路径
+
+```bash
+which npm // locate a program file in the user's path SEE man which
+// OUTPUT SAMPLE
+/usr/local/bin/npm
+la /usr/local/bin/npm // la: aliased to ls -lAh SEE which la THEN man ls
+lrwxr-xr-x  1 t04435  admin    46B 18 Sep 10:37 /usr/local/bin/npm -> /usr/local/lib/node_modules/npm/bin/npm-cli.js
+```
+
+
+

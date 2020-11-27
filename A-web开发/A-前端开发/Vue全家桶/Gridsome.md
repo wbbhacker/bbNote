@@ -180,3 +180,9 @@ User demo 2404016117@qq.com admin
 
 创建好内容保存之后，publish 才可以查询到
 
+#### 3.获取Strapi 中的数据
+
+1. Strapi 安装 GraphGL 插件
+
+
+

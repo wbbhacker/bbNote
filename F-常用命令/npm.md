@@ -1,6 +1,6 @@
 ## npm
 
-#### npm 知识
+### 一、npm 知识
 
 ##### 全局安装路径
 
@@ -16,25 +16,25 @@
 
 ​	`>=` `^` `*`
 
-#### 常用命令
+### 二、常用命令
 
-##### npm install
+##### 1.npm install
 
 ​	Nom install moduleName 安装 moduleName 模块. -g 为全局安装
 
-##### npm list  
+##### 2.npm list
 
 ​	列出已安装模块
 
-##### npm show 
+##### 3.npm show
 
 ​	npm show moduleName 显示 moduleName 模块详情
 
-##### npm config
+##### 4.npm config
 
 ​	npm show  ls 查看安装路径
 
-##### npm link
+##### 5.npm link
 
 1. 功能
 
@@ -45,17 +45,15 @@
    1. 首先，进入我们的`npm-link-module`项目，执行npm link
    2. 然后，进入`npm-link-example`项目，执行 npm link npm-link-module
 
-#### npm 常用模块
+##### 6.npm config set
 
-##### 	js AST 互相转化
+`npm config set cache C:\Devel\nodejs\npm-cache --global `
 
-​     `esmangle` 与 `escodegen`     
+设置npm 缓存
 
- 	`Babel parser` 和 `generator`
+##### 7.npm cache
 
-#####    Terminals 输入对象
 
-​	 `ololog` 
 
 ## npx
 
