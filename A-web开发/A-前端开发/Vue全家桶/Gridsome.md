@@ -178,11 +178,209 @@ demo：
 Super user 2404016117@qq.com Wbb121628170
 User demo 2404016117@qq.com admin
 
+121628170@qq.com Wbb121628170
+
+
+
 创建好内容保存之后，publish 才可以查询到
+
+字段要从“角色与权限”菜单中去配置访问权限
 
 #### 3.获取Strapi 中的数据
 
 1. Strapi 安装 GraphGL 插件
+2. gridsome项目中安装 `@gridsome/source-strapi` 插件
+3. 配置
+
+```javascript
+module.exports = {
+  siteName: 'Gridsome',
+  plugins: 
+    {
+      use: '@gridsome/source-strapi',
+      options: {
+        apiURL: 'http://localhost:1337',
+        queryLimit: 1000, // Defaults to 100
+        contentTypes: ['post'],
+        // singleTypes: ['impressum'],
+        // Possibility to login with a Strapi user,
+        // when content types are not publicly available (optional).
+        loginData: {
+          identifier: '',
+          password: ''
+        }
+      }
+    }
+  ]
+}
+```
+
+> 删除content Type 从编辑处 点击删除
+>
+> <img src="../../../../local/bbNote/image/image-20201130161221506.png" alt="image-20201130161221506" style="zoom:50%;" />
 
 
 
+#### 4.获取分页数据
+
+```javascript
+query ($page: Int) {
+  posts: allBlogPost(perPage: 10, page: $page) @paginate { // posts 为别名
+    pageInfo {
+      totalPages
+      currentPage
+    }
+    edges {
+      node {
+        id
+        title
+        path
+      }
+    }
+  }
+}
+
+```
+
+>  分页访问地址为：http://192.168.170.183:8080/ 第一页 http://192.168.170.183:8080/2 第二页
+
+分页插件用gridsome 的[Pager](https://gridsome.org/docs/pagination/)
+
+#### 5.创建文章和tag模板
+
+gridsome.config.js 配置模板信息
+
+```javascript
+module.exports = {
+  siteName: 'Gridsome',
+  plugins: [
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'content/blog/**/*.md',
+        typeName: 'BlogPost',
+      }, 
+    },
+    {
+      use: '@gridsome/source-strapi',
+      options: {
+        apiURL: 'http://localhost:1337',
+        queryLimit: 1000, // Defaults to 100
+        contentTypes: ['post','tag'],  // 查询那些数据，就要在这里声明下
+        // typeName: 'Strapi', // 默认为Strapi
+        // singleTypes: ['impressum'],
+        // Possibility to login with a Strapi user,
+        // when content types are not publicly available (optional).
+        loginData: {
+          identifier: '',
+          password: ''
+        }
+      }
+    }
+  ],
+  templates:{
+    StrapiPost:[  // 规则为 typeName+contentTypes
+      {
+        path:'/post/:id',
+        component:'./src/templates/Post.vue'
+      }
+    ],
+    StrapiTag:[  // 规则为 typeName+contentTypes
+      {
+        path:'/tag/:id',
+        component:'./src/templates/Tag.vue'
+      }
+    ]
+  }
+}
+```
+
+#### 6.处理markdwon格式的文章内容
+
+>  strapi content 是支持markdown的，且有预览功能
+
+```html
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto" v-html="mdToHtml($page.post.content)">
+
+            </div>
+        </div>
+    </div>
+</article>
+```
+
+
+
+```javascript
+<script>
+import MarkdownIt from 'markdown-it'
+const    md = new MarkdownIt()
+
+export default {
+  name: 'PostPage',
+  methods:{
+    mdToHtml(markdown){
+      return md.render(markdown)
+    }
+  }
+}
+</script>
+```
+
+#### 7.基本设置
+
+single type 是单个数据（即只有一个数据）， content type 是数据集合
+
+` singleTypes: ['impressum']`  拿单个数据节点
+
+```javascript
+module.exports = {
+  siteName: 'Gridsome',
+  plugins: [
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'content/blog/**/*.md',
+        typeName: 'BlogPost',
+      }, 
+    },
+    {
+      use: '@gridsome/source-strapi',
+      options: {
+        apiURL: 'http://localhost:1337',
+        queryLimit: 1000, // Defaults to 100
+        contentTypes: ['post','tag'], 
+        // typeName: 'Strapi', // 默认为Strapi
+        singleTypes: ['general'],
+        // Possibility to login with a Strapi user,
+        // when content types are not publicly available (optional).
+        loginData: {
+          identifier: '',
+          password: ''
+        }
+      }
+    }
+  ],
+  templates:{
+    StrapiPost:[  // 规则为 typeName+contentTypes
+      {
+        path:'/post/:id',
+        component:'./src/templates/Post.vue'
+      }
+    ],
+    StrapiTag:[  // 规则为 typeName+contentTypes
+      {
+        path:'/tag/:id',
+        component:'./src/templates/Tag.vue'
+      }
+    ]
+  }
+  
+}
+```
+
+请求的接口可以在权限设置那边查看或者去官网查看
+
+![image-20201130204321685](../../../../local/bbNote/image/image-20201130204321685.png)
