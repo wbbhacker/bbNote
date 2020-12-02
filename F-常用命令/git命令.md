@@ -40,7 +40,11 @@
 
 10. `git config --global user.name "yourname"`  `git config --global user.email "youremail"` 
 
-     配置用户名跟邮箱
+     配置全局用户名跟邮箱
+
+    局部配置（命令行需要进入对应的代码工作目录）
+
+    `git config user.name "name"`  `git config user.email "email"`
 
 11. `git config --list`
 

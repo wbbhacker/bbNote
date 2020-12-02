@@ -9,3 +9,9 @@ vue2采用的是defineProperty去定义get，set，而vue3改用了proxy。也�
 #### 3.请你说一下vue的设计架构
 
  vue2采用的是典型的混入式架构，类似于express和jquery，各部分分模块开发，再通过一个mixin去混入到最终暴露到全局的类上。
+
+#### 4.写React / Vue 项目时为什么要在列表组件中写key，其作用是什么？
+
+#### 5.聊聊Redux 和Vuex 的设计思想
+
+#### 6.聊聊Vue 的双向数据绑定，Model 如何改变View，View 又是如何改变Model 的
