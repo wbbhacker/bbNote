@@ -1,3 +1,5 @@
+
+
 ### mysql基础
 
 #### 1.`mysql -V`  查看mysql 版本号
