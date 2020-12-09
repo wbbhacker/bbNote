@@ -31,6 +31,12 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你想�
    `> cd "C:\Program Files\MySQL\MySQL Server 8.0\bin"`
 
    ` > mysqld --init-file=D:\\mysql-init.txt`
+   
+   > 如果你是使用的安装包安装的msyql你需要制定配置文件
+   >
+   > `mysqld  --defaults-file="C:\\ProgramData\\MySQL\\MySQL Server 8.0\\my.ini" --init-file=D:\\mysql-init.txt`
+   
+4. 启动mysql 服务即可
 
 
 
