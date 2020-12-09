@@ -12,6 +12,6 @@
 
 > 通过订阅发布模式，我们可以为对象的每个属性都创建一个发布者，当有其他订阅者依赖于这个属性的时候，则将订阅者加入到发布者的队列中。利用Object.defineProperty的数据劫持，在属性的setter调用的时候，该属性的发布者通知所有订阅者更新内容。
 
-![ ](/Users/binbinwang/workspace/bbNote/image/vue1.png)
+![ ](../../../../image/vue1.png)
 
 ˙
