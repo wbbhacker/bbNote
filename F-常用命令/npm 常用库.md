@@ -26,7 +26,7 @@
 
 2. pm2
 
-   后台启动node
+   后台启动node，进程守护
 
 3. rimraf
 

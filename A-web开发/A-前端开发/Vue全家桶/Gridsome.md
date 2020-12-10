@@ -384,3 +384,117 @@ module.exports = {
 请求的接口可以在权限设置那边查看或者去官网查看
 
 ![image-20201130204321685](../../../../local/bbNote/image/image-20201130204321685.png)
+
+### 四、Strapi 部署
+
+#### 1.修改配置
+
+strapi 项目中的 config/database.js 修改使用数据库的类型
+
+```javascript
+module.exports = ({ env }) => ({
+  defaultConnection: 'default',
+  connections: {
+    default: {
+      connector: 'bookshelf',
+      settings: {
+        client: 'mysql',
+        host: env('DATABASE_HOST', 'localhost'),
+        port: env.int('DATABASE_PORT', 3306),
+        database: env('DATABASE_NAME', 'strapi'),
+        username: env('DATABASE_USERNAME', 'strapi'),
+        password: env('DATABASE_PASSWORD', 'strapi'),
+      },
+      options: {},
+    },
+  },
+});
+```
+
+#### 2.安装mysql 包
+
+```json
+"dependencies": {
+    "@gridsome/source-strapi": "^0.2.0",
+    "knex": "<0.20.0",
+    "sqlite3": "^5.0.0",
+    "mysql": 版本号,
+    "strapi": "3.3.3",
+    "strapi-admin": "3.3.3",
+    "strapi-connector-bookshelf": "3.3.3",
+    "strapi-plugin-content-manager": "3.3.3",
+    "strapi-plugin-content-type-builder": "3.3.3",
+    "strapi-plugin-email": "3.3.3",
+    "strapi-plugin-graphql": "^3.3.3",
+    "strapi-plugin-upload": "3.3.3",
+    "strapi-plugin-users-permissions": "3.3.3",
+    "strapi-utils": "3.3.3"
+  },
+```
+
+#### 3.上传服务器
+
+上传服务器，安装依赖包并构建。
+
+用`pm2`启动 
+
+`pm2 start npm -- run start --name blog-backend`
+
+浏览器访问：`ip:1337/admin`  strapi 后台管理地址
+
+`ip:1337` strapi 主页
+
+#### 4.配置gridsome 开发、生产环境变量,
+
+链接远端strapi 服务
+
+https://gridsome.org/docs/environment-variables/
+
+创建`.env.development` 和 `.env.production` 文件，来区分开发、生产环境
+
+```ini
+GRIDSOME_API_URL=https://api.example.com
+DB_USER=root
+DB_PASS=s1mpl3
+```
+
+```javascript
+// gridsome.config.js
+module.exports = {
+  plugins: [
+    {
+      use: '@gridsome/source-plugin',
+      options: {
+        username: process.env.DB_USER,
+        password: process.env.DB_PASS
+      }
+    }
+  ]
+}
+
+```
+
+### 五、用vercel部署gridsome
+
+vercel 部署gridsome，gridsome、strapi更新是都会触发vercel自动部署。
+
+1. vercel 中创建钩子
+
+   Settings-> Git integration -> Deploy Hooks 
+
+   创建Hooks 并复制
+
+![image-20201210111630783](../../../image/image-20201210111630783.png)
+
+2. strapi 中配置webhooks
+
+   设置-> webhooks 创建webhooks
+
+![image-20201210111813936](../../../image/image-20201210111813936.png)
+
+
+
+这样当strapi 中的数据发生变化，触发vercel中的hooks，重新构建部署gridsome
+
+
+

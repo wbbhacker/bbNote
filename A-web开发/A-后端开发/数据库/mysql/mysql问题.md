@@ -38,6 +38,10 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你想�
    
 4. 启动mysql 服务即可
 
+#### 3.远程登录mysql 需要授权用户远程登录权限
+
+mysql8.0 不能授权给自己，授权自己会出错。要新创建一个用户授权给自己。
+
 
 
 
