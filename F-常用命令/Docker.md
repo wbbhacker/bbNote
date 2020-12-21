@@ -55,19 +55,19 @@
 #### 5.docker ps 查看所有正在运行的容器
 
   	docker ps -a 查看所有容器
-
+  	
   	docker log -f  imageName 查看容器输出日志
-
+  	
   	 **-f:** 让 **docker logs** 像使用 **tail -f** 一样来输出容器内部的标准输出
 
 #### 6.docker run -it cents /bin/bash 创建运行交互式的容器
 
    	-I 交互式操作  -t 终端  centos 镜像名字 ./bin/bash 镜像运行以后执行的命令打开终端
-
+   	
    	exit  退出终端
-
+   	
    	docker run -d --name  nginx-server -p 8080:80 nginx 启动容器（后台模式）
-
+   	
    	docker exec -it <container ID>  /bin/bash  进入在后台运行的容器
 
 #### 7.docker stats 查看运行中容器的状态
@@ -77,9 +77,9 @@
 #### 9.docker start 启动一个已停止的容器
 
   	docker stop  <容器 ID> 停止一个容器
-
+  	
   	docker restart <容器 ID>  重启真正在运行的容器
-
+  	
   	docker rm -f imageName 强制删除正在运行的容器
-
+  	
   	docker container prune 清理所以终止的容器

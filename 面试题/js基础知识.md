@@ -150,3 +150,11 @@ ECMAScript 6 新增的“弱集合”（WeakSet）是一种新的集合类型，
 
 #### 7.全局作用域中，用const 和let 声明的变量不在window 上，那到底在哪里？如何去获取？
 
+#### 8.js的数据类型及判断方法
+
+`undefined`、`null` 、`string`、`number`、`boolean` 、`object`、`symbol`
+
+
+
+
+
