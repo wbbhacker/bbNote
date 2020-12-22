@@ -148,9 +148,11 @@ telnet 101.200.195.41 8080 # 查看远程端口是否开放
 
    `curl -v  https://ddlh-gzh.yunfuw.cn?ddlh=1`
 
-2. 查看响应头部
+2. 查看响应头部、响应行、响应数据
 
    `curl -i  https://ddlh-gzh.yunfuw.cn?ddlh=1`
+   
+   只查看响应行、响应头部，用-I
 
 #### 18.`man` 查看命令信息
 
