@@ -154,7 +154,9 @@ ECMAScript 6 新增的“弱集合”（WeakSet）是一种新的集合类型，
 
 `undefined`、`null` 、`string`、`number`、`boolean` 、`object`、`symbol`
 
+#### 9.async/await 如何通过同步的方式实现异步
 
+async起什么作用---输出的是一个Promise对象。
 
 
 
