@@ -293,9 +293,9 @@ foo = 'Fol' // 外面写没事
 
 `undefined`、`null` 、`string`、`number`、`boolean` 、`object`、`symbol`
 
-<<<<<<< HEAD
+
 #### 9.async/await 如何通过同步的方式实现异步
-=======
+
 `typeof`、`Object.toString()`、`instanceof`
 
 >>>>>>> 1e91778b720f3c1e0cdc3a919323cd509d3e122a
