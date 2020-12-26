@@ -279,13 +279,39 @@ foo = 'Fol' // 外面写没事
 
 #### 3.setTimeout、Promise、Async/Await 的区别
 
-
-
 #### 4.Async/Await 如何通过同步的方式实现异步
 
 #### 5.JS 异步解决方案的发展历程以及优缺点。
 
+1. 回调函数（callback）
+
+   优点：解决了同步的问题（只要有一个任务耗时很长，后面的任务都必须排队 等着，会拖延整个程序的执行。）
+
+    缺点：回调地狱，不能用 try catch 捕获错误，不能 return
+
+2. Promsie
+
+   优点：解决了回调地狱的问题 
+
+   缺点：无法取消 Promise ，错误需要通过回调函数来捕获
+
+3. Generator
+
+   特点：可以控制函数的执行，可以配合 co 函数库使用 
+
+4. Async/await
+
+   优点：代码清晰，不用像 Promise 写一大堆 then 链，处理了回调地狱的问题 
+
+   缺点：await 将异步代码改造成同步代码，如果多个异步操作没有依赖性而使 
+
+   用 await 会导致性能上的降低。
+
+
+
 #### 6.Promise 构造函数是同步执行还是异步执行，那么then 方法呢？
+
+pomise构造函数是同步执行的，then方法是异步执行的
 
 #### 7.全局作用域中，用const 和let 声明的变量不在window 上，那到底在哪里？如何去获取？
 
@@ -293,12 +319,8 @@ foo = 'Fol' // 外面写没事
 
 `undefined`、`null` 、`string`、`number`、`boolean` 、`object`、`symbol`
 
-
 #### 9.async/await 如何通过同步的方式实现异步
-
 `typeof`、`Object.toString()`、`instanceof`
-
->>>>>>> 1e91778b720f3c1e0cdc3a919323cd509d3e122a
 
 async起什么作用---输出的是一个Promise对象。
 
