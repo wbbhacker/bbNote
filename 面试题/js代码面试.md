@@ -1,6 +1,7 @@
-### 1.async promise
+#### 1.async promise
 
 ```javascript
+// 第一题
 async function async1(){
   console.log('AAAA')
   async2()
@@ -20,9 +21,28 @@ new Promise(function(resolve) {
     console.log('HHHH')
 })
 console.log('IIII')
+
+
+
+
+// 第二题
+setTimeout(_ => console.log(1))
+
+new Promise(resolve => {
+  resolve()
+  console.log(2)
+}).then(_ => {
+  console.log(3)
+})
+
+console.log(4)
+
+
 ```
 
-### 2. 
+
+
+#### 2. 
 
 ```javascript
 function a(xx) {
@@ -36,7 +56,7 @@ console.log(x.x)
 console.log(y.x)
 ```
 
-### 3.
+#### 3.
 
 ```javascript
 var length = 10;
@@ -53,7 +73,7 @@ var length = 10;
  obj.method(fn)
 ```
 
-### 4.
+#### 4.
 
 ```javascript
 function fn() {
@@ -82,3 +102,45 @@ output：[1, NaN, NaN]
 
 请把两个数组['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2'] 和['A', 'B', 'C', 'D']，合并
 为['A1', 'A2', 'A', 'B1', 'B2', 'B', 'C1', 'C2', 'C', 'D1', 'D2', 'D']。
+
+#### 9.删除左右两端的空格
+
+```js
+// 删除左右两端的空格
+let str = '   fffasfasfa   ';
+
+function trim(str){
+    if(typeof str !== 'string') return
+    // let reg = /^(\s*)(\w+)(\s*)$/
+    let reg = new RegExp('^(\\s*)(\\w+)(\\s*)$')
+    return RegExp.$2
+}
+
+function trim(str){
+    if(typeof str !== 'string') return
+    return str.replace(/^(\s*)(\w+)(\s*)$/,function(match,$1,$2){
+        return $2
+    })
+}
+
+
+```
+
+#### 10. // 请使用两种方法把a转换成b
+
+```js
+
+let a = 'hello_world_web_site'
+let b = 'helloWorldWebSite'
+
+ a = a.replace(/_(\w{1})/g,function(match,$1,offset,input){
+     console.log(match)
+     console.log($1)
+     console.log(offset)
+     console.log(input)
+     return $1.toUpperCase()
+ })
+console.log(a)
+console.log(a === b)
+```
+
