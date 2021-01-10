@@ -18,7 +18,7 @@ define( 'DB_HOST', '127.0.0.1' );  //这里不要用localhost 会报错
 define( 'DB_CHARSET', 'utf8' );
 ```
 
-2.wordpress 插件
+#### 2.wordpress 插件
 
 - Yoast SEO
 

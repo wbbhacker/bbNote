@@ -19,7 +19,7 @@
 
 #### 4.基于Nodejs的全栈时代
 
-![fe](/Users/binbinwang/workspace/bbNote/image/fe.jpg)
+![fe](../../../bbNote/image/fe.jpg)
 
 1. 基于浏览器的UI layer处理浏览器层面的展示逻辑，通过CSS控制样式,js添加交互功能，HTML 的生成也可以放在这层。
 
@@ -27,7 +27,7 @@
 
 > 淘宝前后端分离架构
 >
-> ![fe1](/Users/binbinwang/workspace/bbNote/image/fe1.jpg)
+> ![fe1](../../../bbNote/image/fe1.jpg)
 >
 > 1. 最上端是服务端，提供各种接口。
 > 2. 服务端下面是Node应用。
