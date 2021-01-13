@@ -63,7 +63,7 @@ export const createCompiler = createCompilerCreator(function baseCompile (
 
 `createCompiler`函数处理 baseOptions 配置选项 及  调用baseCompile 函数，返回compile函数和通过`createCompileToFunctionFn` 函数把rende 及 staticRenderFns 字符串代码转化成函数的对象。
 
-![image-20200928145650413](../../image/image-20200928145650413.png)
+![image-20200928145650413](../../../image/image-20200928145650413.png)
 
 ##### 五、`createCompileToFunctionFn` 函数
 
