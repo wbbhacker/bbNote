@@ -75,3 +75,9 @@ overflow-x:scroll;
 
 #### 13.will-change
 
+will-change 属于允许你提前通知浏览器你可能会对某个元素做什么类型的操作，以便于浏览器在需要的时候采取适当的优化方案。
+
+> 不要使用will-change声明对太多属性或元素的更改
+
+
+
