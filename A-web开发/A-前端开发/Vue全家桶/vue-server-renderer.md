@@ -104,7 +104,7 @@ export default {
  context.rendered = () => {
     // Renderer 会把context.state 数据对象内联到页面模板中
     // 最终发送给客户端的页面中包含一段监本：window._INITIAL_STATE_ = context.state
-    // 客户端就要吧页面中的winodw.__INITIAL_STATE_ 拿出来填充到客户端 store 容器中
+    // 客户端就要把页面中的winodw.__INITIAL_STATE_ 拿出来填充到客户端 store 容器中
     context.state = store.state
 }
 ```
