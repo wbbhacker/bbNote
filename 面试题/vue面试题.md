@@ -55,3 +55,7 @@ https://www.cnblogs.com/xuefang-yang/p/13048510.html
 
 - 无法进行极致优化： 虽然虚拟 DOM + 合理的优化，足以应对绝大部分应用的性能需求，但在一些性能要求极高的应用中虚拟 DOM 无法进行针对性的极致优化。
   首次渲染大量DOM时，由于多了一层虚拟DOM的计算，会比innerHTML插入慢。
+
+#### 8.$nextTick() 作用及实现原理
+
+9.用vue的render 函数渲染组件？

@@ -148,4 +148,27 @@ console.log(a === b)
 
 https://zhuanlan.zhihu.com/p/33843378
 
-12.
+12.  add(1,2,3)、add(1,2)(3)、add(1)(2)(3) 运算结果相同都为6
+
+```javascript
+let add = function(a,b,c){
+  return a+b+c
+}
+function curry(fn) {
+  return function curriedFn(...args){
+    if(args.length < fn.length){
+      return function () {
+        return curriedFn(...args.concat(Array.from(arguments)))
+      }
+    }else{
+      return fn.call(this,...args)
+    }
+  }
+}
+let addCurry = curry(add)
+console.log(addCurry(1,2,3))
+console.log(addCurry(1)(2)(3))
+console.log(addCurry(1,2)(3))
+
+```
+

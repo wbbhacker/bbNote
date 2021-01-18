@@ -1,10 +1,10 @@
-###Redux
+### Redux
 
 #### 深入浅出Redux原理
 
 ##### **1.Redux 数据流向**
 
-![](/Users/binbinwang/workspace/bbNote/image/redux1.jpg)
+![](../../../image/redux1.jpg)
 
 ##### 2.**Redux应用原则**
 
