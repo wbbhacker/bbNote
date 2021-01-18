@@ -136,7 +136,63 @@ para.textContent = 'My computed font-size is ' +
 
 https://www.cnblogs.com/heroljy/p/9412704.html
 
-10.
+#### 10.p 的颜色？ 如果`class="classA classB"` 与`class="classB classA"` 相等吗？
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .classA{
+            color:blue
+        }
+        .classB{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <p class="classA classB">ssssss</p>
+</body>
+</html>
+```
+
+#### 11.margin 塌陷
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width:100px;
+            height: 100px;
+            margin:10px;
+            background-color: #f0f;
+        }
+        .box2{
+            width:100px;
+            height:100px;
+            margin:20px;
+            background-color: #0ff;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>
+```
+
+12.
 
 
 
