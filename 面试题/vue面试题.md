@@ -58,4 +58,166 @@ https://www.cnblogs.com/xuefang-yang/p/13048510.html
 
 #### 8.$nextTick() 作用及实现原理
 
-9.用vue的render 函数渲染组件？
+```javascript
+//next-tick.js
+/* @flow */
+/* globals MutationObserver */
+
+import { noop } from 'shared/util'
+import { handleError } from './error'
+import { isIE, isIOS, isNative } from './env'
+
+export let isUsingMicroTask = false
+
+const callbacks = []
+let pending = false
+
+function flushCallbacks () {
+  pending = false
+  const copies = callbacks.slice(0)
+  callbacks.length = 0
+  for (let i = 0; i < copies.length; i++) {
+    copies[i]()
+  }
+}
+
+// Here we have async deferring wrappers using microtasks.
+// In 2.5 we used (macro) tasks (in combination with microtasks).
+// However, it has subtle problems when state is changed right before repaint
+// (e.g. #6813, out-in transitions).
+// Also, using (macro) tasks in event handler would cause some weird behaviors
+// that cannot be circumvented (e.g. #7109, #7153, #7546, #7834, #8109).
+// So we now use microtasks everywhere, again.
+// A major drawback of this tradeoff is that there are some scenarios
+// where microtasks have too high a priority and fire in between supposedly
+// sequential events (e.g. #4521, #6690, which have workarounds)
+// or even between bubbling of the same event (#6566).
+let timerFunc
+
+// The nextTick behavior leverages the microtask queue, which can be accessed
+// via either native Promise.then or MutationObserver.
+// MutationObserver has wider support, however it is seriously bugged in
+// UIWebView in iOS >= 9.3.3 when triggered in touch event handlers. It
+// completely stops working after triggering a few times... so, if native
+// Promise is available, we will use it:
+/* istanbul ignore next, $flow-disable-line */
+if (typeof Promise !== 'undefined' && isNative(Promise)) {
+  const p = Promise.resolve()
+  timerFunc = () => {
+    p.then(flushCallbacks)
+    // In problematic UIWebViews, Promise.then doesn't completely break, but
+    // it can get stuck in a weird state where callbacks are pushed into the
+    // microtask queue but the queue isn't being flushed, until the browser
+    // needs to do some other work, e.g. handle a timer. Therefore we can
+    // "force" the microtask queue to be flushed by adding an empty timer.
+    if (isIOS) setTimeout(noop)
+  }
+  isUsingMicroTask = true
+} else if (!isIE && typeof MutationObserver !== 'undefined' && (
+  isNative(MutationObserver) ||
+  // PhantomJS and iOS 7.x
+  MutationObserver.toString() === '[object MutationObserverConstructor]'
+)) {
+  // Use MutationObserver where native Promise is not available,
+  // e.g. PhantomJS, iOS7, Android 4.4
+  // (#6466 MutationObserver is unreliable in IE11)
+  let counter = 1
+  const observer = new MutationObserver(flushCallbacks)
+  const textNode = document.createTextNode(String(counter))
+  observer.observe(textNode, {
+    characterData: true
+  })
+  timerFunc = () => {
+    counter = (counter + 1) % 2
+    textNode.data = String(counter)
+  }
+  isUsingMicroTask = true
+} else if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
+  // Fallback to setImmediate.
+  // Technically it leverages the (macro) task queue,
+  // but it is still a better choice than setTimeout.
+  timerFunc = () => {
+    setImmediate(flushCallbacks)
+  }
+} else {
+  // Fallback to setTimeout.
+  timerFunc = () => {
+    setTimeout(flushCallbacks, 0)
+  }
+}
+
+export function nextTick (cb?: Function, ctx?: Object) {
+  let _resolve
+  callbacks.push(() => {
+    if (cb) {
+      try {
+        cb.call(ctx)
+      } catch (e) {
+        handleError(e, ctx, 'nextTick')
+      }
+    } else if (_resolve) {
+      _resolve(ctx)
+    }
+  })
+  if (!pending) {
+    pending = true
+    timerFunc()
+  }
+  // $flow-disable-line
+  if (!cb && typeof Promise !== 'undefined') {
+    return new Promise(resolve => {
+      _resolve = resolve
+    })
+  }
+}
+
+```
+
+
+
+#### 9.用vue的render 函数渲染三个嵌套组件？
+
+```javascript
+render: function (createElement) {
+  return createElement('h1', this.blogTitle)
+}
+```
+
+```javascript
+// @returns {VNode}
+createElement(
+  // {String | Object | Function}
+  // 一个 HTML 标签名、组件选项对象，或者
+  // resolve 了上述任何一种的一个 async 函数。必填项。
+  'div',
+
+  // {Object}
+  // 一个与模板中 attribute 对应的数据对象。可选。
+  {
+    // (详情见下一节)
+  },
+
+  // {String | Array}
+  // 子级虚拟节点 (VNodes)，由 `createElement()` 构建而成，
+  // 也可以使用字符串来生成“文本虚拟节点”。可选。
+  [
+    '先写一些文字',
+    createElement('h1', '一则头条'),
+    createElement(MyComponent, {
+      props: {
+        someProp: 'foobar'
+      }
+    })
+  ]
+)
+```
+
+#### 10.给vue 的属性赋值一个对象，这个对象是否是响应的？ 给vue 新增属性是否是响应的？
+
+1. 给属性赋值对象是响应的
+
+2. 给vue 新增属性不是响应的
+
+   > Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：
+
+3. 

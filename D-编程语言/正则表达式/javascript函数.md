@@ -56,3 +56,12 @@ array[1];
 
 ```
 
+#### 3.replace
+
+```javascript
+str.replace(RegExp, function(match,$1..., offset, string){} )
+```
+
+
+
+![image-20210118165753471](../../image/image-20210118165753471.png)

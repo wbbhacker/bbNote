@@ -172,3 +172,6 @@ console.log(addCurry(1,2)(3))
 
 ```
 
+#### 12.js 原型链
+
+https://juejin.cn/post/6844903936365690894

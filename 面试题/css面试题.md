@@ -1,5 +1,3 @@
-#### 1.css 性能优化
-
 #### 2.flex 属性布局
 
 #### 3.css中行内元素和行内块元素空白间隙的问题
@@ -64,6 +62,24 @@
 
 
 #### 4.单行省略 跟 多行省略怎么写？
+
+```css
+/*单行省略*/
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap
+
+
+/*多行省略*/
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+
+```
+
+
 
 #### 5.web开发中动画效果的实现方法
 
@@ -136,11 +152,62 @@ para.textContent = 'My computed font-size is ' +
 
 https://www.cnblogs.com/heroljy/p/9412704.html
 
-10.
+#### 10.垂直居中
 
+https://juejin.cn/post/6844903839187877895
 
+1. line-height
 
+2. tranform
 
+3. flexbox `align-items或align-content`
+
+   ```
+   .use-flexbox{
+       display:flex;
+       align-items:center;
+       justify-content:center;
+       width:200px;
+       height:150px;
+       border:1px solid #000;
+   }
+   .use-flexbox div{
+       width:100px;
+       height:50px;
+       background:#099;
+   }
+   
+   作者：果冻tfzwgd
+   链接：https://juejin.cn/post/6844903839187877895
+   来源：掘金
+   著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   ```
+
+   
+
+4. 绝对定位: `position:absolute`
+
+   ```
+   .use-absolute{
+       position: relative;
+       width:200px;
+       height:150px;
+       border:1px solid #000;
+   }
+   .use-absolute div{
+       position: absolute;
+       width:100px;
+       height:50px;
+       top:0;
+       right:0;
+       bottom:0;
+       left:0;
+       margin:auto;
+       background:#f60;
+   }
+   ```
+
+5. calc动态计算
 
 
 
