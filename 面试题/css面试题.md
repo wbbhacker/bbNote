@@ -152,6 +152,7 @@ para.textContent = 'My computed font-size is ' +
 
 https://www.cnblogs.com/heroljy/p/9412704.html
 
+
 #### 10.垂直居中
 
 https://juejin.cn/post/6844903839187877895
@@ -177,14 +178,10 @@ https://juejin.cn/post/6844903839187877895
        background:#099;
    }
    
-   作者：果冻tfzwgd
-   链接：https://juejin.cn/post/6844903839187877895
-   来源：掘金
-   著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    ```
-
    
-
+   
+   
 4. 绝对定位: `position:absolute`
 
    ```
@@ -208,6 +205,64 @@ https://juejin.cn/post/6844903839187877895
    ```
 
 5. calc动态计算
+=======
+#### 10.p 的颜色？ 如果`class="classA classB"` 与`class="classB classA"` 相等吗？
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .classA{
+            color:blue
+        }
+        .classB{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <p class="classA classB">ssssss</p>
+</body>
+</html>
+```
+
+#### 11.margin 塌陷
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width:100px;
+            height: 100px;
+            margin:10px;
+            background-color: #f0f;
+        }
+        .box2{
+            width:100px;
+            height:100px;
+            margin:20px;
+            background-color: #0ff;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>
+```
+
+12.
 
 
 

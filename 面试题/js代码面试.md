@@ -148,6 +148,143 @@ console.log(a === b)
 
 https://zhuanlan.zhihu.com/p/33843378
 
+
+#### 12.原型链
+
+```javascript
+Function.prototype.a = function(){
+   console.log('a')
+ }
+Object.prototype.b = function(){
+  console.log('b')
+}
+
+function Foo(){}
+
+let A = new Foo()
+
+
+A.a()
+A.b()
+
+```
+
+#### 13.作用域
+
+```javascript
+//第一道
+var conut = 10
+
+function a(){
+	return conut + 10
+}
+function b(){
+	var conut = 20
+	return a()
+}
+console.log(b());  // 20
+
+// 第二道
+this.conut = 10
+
+function a(){
+	return this.conut + 10
+}
+function b(){
+	this.conut = 20
+return a()
+}
+console.log(b()); // 30
+```
+
+#### 14.实现一个请求池，要求同时只能有最多 4 个请求在处理，多余的请求需要排队
+
+```javascript
+function request(url){
+
+}
+request(url1).then()
+request(url2).then()
+request(url3).then()
+
+
+//模拟代码
+function request(url){
+
+    if(request.nums === undefined){
+        request.nums = 0
+        request.q = []
+    }else{
+        request.nums +=1
+    }
+    
+    console.log(request.nums)
+
+    if(request.nums === 4){
+        return Promise.all(request.q).then(function(){
+            request.nums = 1
+            return new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    resolve(url)
+                },url)
+            })
+        })
+    }else{
+        let p = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                resolve(url)
+            },url)
+        })
+        request.q.push(p)
+        return p
+    }
+}
+
+
+request(1000).then(res=> console.log(res));
+request(2000).then(res=> console.log(res));
+request(3000).then(res=> console.log(res));
+request(4000).then(res=> console.log(res));
+request(500).then(res=> console.log(res));
+```
+
+#### 15.实现一个防抖函数
+
+```
+
+```
+
+#### 16.实现有序数组的排序 [1, 3, 5] [2, 4, 6] -> [1, 2, 3, 4, 5, 6]， 不能用concat sort方法
+
+#### 17.new 操作的内部执行过程
+
+```javascript
+
+function Foo() {
+
+    this.a = 1;
+
+    return {
+        a: 4,
+        b: 5,
+    };
+}
+
+
+
+Foo.prototype.a = 6;
+Foo.prototype.b = 7;
+Foo.prototype.c = 8;
+
+
+var o = new Foo();
+
+
+console.log(o.a);
+console.log(o.b);
+console.log(o.c);
+```
+
 12.  add(1,2,3)、add(1,2)(3)、add(1)(2)(3) 运算结果相同都为6
 
 ```javascript
@@ -172,6 +309,8 @@ console.log(addCurry(1,2)(3))
 
 ```
 
+
 #### 12.js 原型链
 
 https://juejin.cn/post/6844903936365690894
+=======
