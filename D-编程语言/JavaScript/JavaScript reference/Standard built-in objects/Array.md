@@ -19,3 +19,5 @@ let flattened = [[0, 1], [2, 3], [4, 5]].reduce(
 
 #### 2.Array.from()
 
+
+

@@ -1,5 +1,3 @@
-#### 1.css 性能优化
-
 #### 2.flex 属性布局
 
 #### 3.css中行内元素和行内块元素空白间隙的问题
@@ -65,6 +63,24 @@
 
 #### 4.单行省略 跟 多行省略怎么写？
 
+```css
+/*单行省略*/
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap
+
+
+/*多行省略*/
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+
+```
+
+
+
 #### 5.web开发中动画效果的实现方法
 
 1. animation+keyframes
@@ -72,6 +88,10 @@
 3. canvas
 4. setTimeout()、setInterval()
 5. requestAnimationFrame
+6. svg
+7. webgl
+8. GIF
+9. 
 
 ```css
 const element = document.getElementById('some-element-you-want-to-animate');
@@ -128,15 +148,74 @@ para.textContent = 'My computed font-size is ' +
 </script>
 ```
 
-#### 7.margin-top 百分比是相对于父元素的width来参考的
+#### 7.margin-top 百分比是相对于
 
-#### 8.背景图像百分之百显示:background-size:100% 100%;
+父元素的width来参考的
+
+#### 8.背景图像百分之百显示
+
+`background-size:100% 100%`
 
 #### 9.css 性能优化
 
 https://www.cnblogs.com/heroljy/p/9412704.html
 
-#### 10.p 的颜色？ 如果`class="classA classB"` 与`class="classB classA"` 相等吗？
+
+#### 10.垂直居中
+
+https://juejin.cn/post/6844903839187877895
+
+1. line-height
+
+2. tranform
+
+3. flexbox `align-items或align-content`
+
+   ```
+   .use-flexbox{
+       display:flex;
+       align-items:center;
+       justify-content:center;
+       width:200px;
+       height:150px;
+       border:1px solid #000;
+   }
+   .use-flexbox div{
+       width:100px;
+       height:50px;
+       background:#099;
+   }
+   
+   ```
+   
+   
+   
+4. 绝对定位: `position:absolute`
+
+   ```
+   .use-absolute{
+       position: relative;
+       width:200px;
+       height:150px;
+       border:1px solid #000;
+   }
+   .use-absolute div{
+       position: absolute;
+       width:100px;
+       height:50px;
+       top:0;
+       right:0;
+       bottom:0;
+       left:0;
+       margin:auto;
+       background:#f60;
+   }
+   ```
+
+5. calc动态计算
+#### 10.p 的颜色？
+
+ 如果`class="classA classB"` 与`class="classB classA"` 相等吗？
 
 ```html
 <!DOCTYPE html>
@@ -192,15 +271,28 @@ https://www.cnblogs.com/heroljy/p/9412704.html
 </html>
 ```
 
-12.
+#### 12.1rem、1em、1vh、1px各自代表的含义？
 
+> rem
 
+rem是全部的长度都相对于根元素<html>元素。通常做法是给html元素设置一个字体大小，然后其他元素的长度单位就为rem。
 
+> em
 
+- 子元素字体大小的em是相对于父元素字体大小
+- 元素的width/height/padding/margin用em的话是相对于该元素的font-size
 
+> vw/vh
 
+全称是 Viewport Width 和 Viewport Height，视窗的宽度和高度，相当于 屏幕宽度和高度的 1%，不过，处理宽度的时候%单位更合适，处理高度的 话 vh 单位更好。
 
+> px
 
+px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。
+
+一般电脑的分辨率有{1920*1024}等不同的分辨率
+
+1920*1024 前者是屏幕宽度总共有1920个像素,后者则是高度为1024个像素
 
 
 

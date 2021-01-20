@@ -24,11 +24,12 @@ console.log(found);
 // The 'input' property is the original string that was parsed.
 
 const str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-const regexp = /[A-E]/gi;
+const regexp = /[A-E]/gi;       // g 标识符号 则返回结果数组
 const matches_array = str.match(regexp);
 
 console.log(matches_array);
 // ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']
+
 
 const paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
 
@@ -38,7 +39,7 @@ console.log(found.groups); // {animal: "fox"}
 
 ```
 
-#### 2.matchAll()
+#### 2.matchAll()  返回一个迭代的对象
 
 ```javascript
 let regexp = /t(e)(st(\d?))/g;
@@ -56,3 +57,12 @@ array[1];
 
 ```
 
+#### 3.replace
+
+```javascript
+str.replace(RegExp, function(match,$1..., offset, string){} )
+```
+
+
+
+![image-20210118165753471](../../image/image-20210118165753471.png)
