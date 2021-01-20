@@ -456,3 +456,14 @@ function cloneLoop(x) {
   console.log(obj2);
 ```
 
+#### 11.元素的nodeName 与 tagName 哪个兼容性强
+
+nodeName  兼容性强
+
+但如果是你同样需要支持IE 5.5的话，那tagName却是更好的选择。
+
+#### 12.阻止事件默认事件和冒泡
+
+e.preventDefault
+
+e.stopPropagation
