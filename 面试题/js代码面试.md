@@ -340,4 +340,3 @@ console.log(addCurry(1,2)(3))
 
 ```
 
->>>>>>> 2a94cfbc5a69b5673ceafb3a3ffceae5216624a8
