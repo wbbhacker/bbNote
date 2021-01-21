@@ -778,3 +778,328 @@ new new fn().prop();
 ```
 
 > new 关键字 比  .执行的优先级高
+
+#### 32.
+
+```javascript
+var s1 = new String('hello');
+var s2 = new String('hello');
+
+console.log(s1 === s2)
+console.log(s1 == s2)
+console.log(s2)
+console.log(s2.toString())
+
+// 对象通过指针指向的内存地址来做比较。
+
+var s3 = 'hello';
+var s4 = 'hello';
+
+
+var a = 'sssss';
+var b = a;
+console.log(s3 === s4)
+console.log(s3)
+console.log(s4)
+
+console.log([1,2] == [1,2])
+
+var s5 = String('hello');
+var s6 = String('hello');
+
+console.log(this)
+console.log(typeof s1)
+```
+
+#### 33.
+
+```javascript
+ console.log(undefined == null);
+      console.log(undefined === null);
+      console.log(undefined == NaN);
+      console.log(undefined === NaN);
+      console.log( null == NaN );
+      console.log( null === NaN );
+      console.log( undefined == 0)
+      console.log( undefined === 0)
+      console.log( null == 0 )
+      console.log(++undefined)
+      console.log( null === 0 )
+
+      console.log(Number(null))
+
+      console.log(var undefined);
+
+      console.log( [] == false );
+      console.log( [] == ![] );
+
+      console.log(2+true)
+
+
+      console.log(!!(0 == false))
+      console.log(!!( 0 == undefined ))
+      console.log(undefined == null )
+      console.log(isNaN("1312") == NaN )
+      console.log(typeof 1 == true ? 1 : 0)
+      console.log(typeof [] == "array")
+      console.log([] instanceof Array )
+
+
+      console.log(2&3) // 2
+      console.log(2|3) //3
+      console.log(~true)    //true boolean   -2
+
+
+      console.log(NaN == NaN)
+      console.log(undefined === undefined)
+      console.log(null === null)
+
+      console.log( typeof(NaN) )
+      console.log( typeof(undefined) )
+      console.log( typeof(null) )
+      console.log( typeof([]) )
+```
+
+#### 34.
+
+```javascript
+ var foo = {},
+ F = function () {}
+
+Object.prototype.a = 'value a'
+Function.prototype.b = 'value b'
+
+console.log(foo.a)  
+console.log(foo.b)
+console.log(F.a)
+console.log(F.b)
+console.log(Object.prototype.__proto__)
+
+console.log(typeof Function)
+console.log(Function.__proto__)
+
+console.log(foo.__proto__.__proto__)
+console.log(F.__proto__.__proto__.__proto__)
+```
+
+> // foo.a的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 找到value a
+>
+> // foo.b的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 没有 ---> foo.__proto__.__proto__ (Object.prototype.__proto__): 没有
+>
+> // F.a的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 没有 ---> F.__proto__.__proto__(Object.prototype): 找到value a
+>
+> // F.b的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 找到value b
+
+#### 35.
+
+```javascript
+    var b = new a();
+
+    console.log(b.__proto__.__proto__)
+
+    console.log(a.__proto__.__proto__.__proto__)
+
+    console.log(Object.__proto__)
+
+    console.log(Object.prototype)
+
+    console.log(Object.prototype == Object.__proto__)
+
+    console.log({}.__proto__ === Object.prototype )
+
+
+// 关于instanceof的结果不要仅从字面上理解, 它的计算规则是: 如果右侧构造函数的prototype属性能在左侧的对象的原型链中找到, 那么就返回true, 否则就返回false
+
+// Object intanceof Function: Object.__proto__ === Function.prototype, 因为结果为true
+console.log(Object instanceof Function)
+// Function instanceof Object: Function.__proto__.__proto__ === Object.prototype, 因为结果也为true
+```
+
+36.
+
+```javascript
+      function foo() {
+        this.value = 42
+      }
+
+      foo.prototype = {
+        method: function () {
+          return false
+        },
+      }
+
+      function bar() {
+        var value = 1
+        return {
+          method: function () {
+            return value
+          },
+        }
+      }
+
+      foo.prototype = new bar()
+
+      // console.log(foo.prototype.constructor)
+      // console.log(foo.prototype instanceof bar)
+
+      var test = new foo()
+
+      console.log(test instanceof foo)
+
+      console.log(test.__proto__)
+      console.log(test instanceof bar)
+
+      console.log(test.method())
+```
+
+#### 36.
+
+```javascript
+      function SuperType() {
+        this.colors = ['red', 'blue']
+      }
+      function SubType() {
+        this.name = 's'
+        SuperType.call(this)
+      }
+      var instance1 = new SubType()
+
+      console.log(instance1.__proto__ === SubType.prototype) //原型链是对象
+      console.log(SubType.__proto__ === Function.prototype)
+      console.log(instance1.__proto__.__proto__.__proto__) //
+```
+
+#### 37.
+
+```javascript
+      var a = {}
+      var b = function () {}
+      var c = 'hello'
+      console.log(a.prototype === Object.prototype)
+      console.log(b.prototype === Function.prototype)
+      console.log(c.prototype === String.prototype)
+      console.log(typeof Object)
+
+      var Person = function () {}
+      Person.prototype.type = 'Person'
+      Person.prototype.maxAge = 100
+
+      var p = new Person()
+      p.name = 'rainy'
+
+      console.log(Person.prototype.constructor === Person) //=> true
+      console.log(p.__proto__ === Person.prototype) //=> true
+      console.log(p.prototype) //=> undefined
+
+
+
+
+
+```
+
+#### 38.
+
+```javascript
+  var color = "red";
+  var o = {
+    color:"blue"
+  }
+
+  function getColor(){
+    console.log(this.color)	
+  }
+
+
+  getColor();     		//call和apply真正强大的地方是能够扩充函数赖以运行的作用域。
+  getColor.call(o);       //在使用call方法时，传递给函数的参数必须逐个列举出来。
+  getColor.apply(o);		//在使用apply方法时，传递给函数的第二个参数是Array实例。
+```
+
+#### 39.
+
+```javascript
+      function b(x, y, a) {
+        arguments[2] = 10 //它的值永远与对应名字参数的值保持同步。
+        console.log(a)
+      }
+      b(1, 2, 3) //  10
+      function c(x, y, a) {
+        a = 10
+        console.log(arguments[2]) //它的值永远与对应名字参数的值保持同步。
+      }
+      c(1, 2, 3)
+```
+
+#### 40.
+
+```javascript
+    n = 1;
+	  function f1(){
+	  	test = 10;
+	  	var n = 999;
+	  	nAdd = function(){ n += 1 }
+	  	function f2(){
+	  		return n;
+	  	}
+	  	return f2;
+	  }
+	  var result = f1()();
+	  console.log(result)
+```
+
+#### 41.
+
+```javascript
+      var n = 888
+      function f1() {
+        var n = 999
+        nAdd = function () {
+          n += 1
+        } // var nAdd=function(){n+=1}
+        function f2() {
+          console.log(n)
+        }
+        return f2
+      }
+      var result = f1()
+      result() // 999
+      nAdd()
+      result() // 1000
+```
+
+#### 42.
+
+```javascript
+      var name = 'The Window'
+
+      var object = {
+        name: 'My Object',
+        getNameFunc: function () {
+          return function () {
+            return this.name
+          }
+        },
+      }
+
+      console.log(object.getNameFunc()())
+```
+
+#### 43.
+
+```javascript
+  var x = 1;
+	var y = 0;
+	var z = 0;
+	function add(n){ 
+		n = n+1;
+		return n;
+	};
+	y = add(x);
+	function add(n){ 
+		n = n+4;
+	};
+	z = add(x);
+	console.log(y);
+	console.log(z);
+```
+

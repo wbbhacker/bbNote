@@ -467,3 +467,101 @@ nodeName  兼容性强
 e.preventDefault
 
 e.stopPropagation
+
+#### 13.数字转化、2、8、10、17
+
+```
+let a = 255
+a.toString(16)  // 'ff'
+```
+
+#### 14.对象并不具有prototype属性，只有函数才有prototype属性。
+
+```javascript
+function Person(){
+	this.sex = "man"
+}
+function animation(){
+ 
+}
+function goods(){
+	this.name = '冰激淋';
+	this.say = function(){
+		console.log('ss')
+	}
+}
+function sun(){
+
+}
+
+console.log(Person.prototype);
+
+Person.prototype = {
+	constructor:Person,
+	// name:"N"
+}
+goods.prototype = {
+	name:"goods",
+	say:function(){
+		console.log('www')
+	}
+}
+animation.prototype.run = {
+	name:"animation"
+}
+
+var friend = new Person();
+var goodss = new goods();
+
+var runs = new animation();
+
+console.log(sun.prototype)
+
+console.log(friend.__proto__)	 //
+console.log(goodss.prototype)    //  这就是有无constructor
+
+
+console.log(Function.__proto__.__proto__ == Person.__proto__.__proto__)
+console.log(Function.__proto__)
+console.log(Function.__proto__.__proto__ )
+console.log(Function.__proto__.__proto__.__proto__ )
+console.log(typeof Person)
+console.log(animation.prototype)
+console.log(friend.prototype)
+
+console.log({}.prototype)
+console.log({}.__proto__.constructor.__proto__.__proto__)
+console.log({}.__proto__.__proto__)
+
+console.log(runs.__proto__)
+
+console.log(goodss instanceof goods)
+console.log(goodss.__proto__ === goods.prototype )
+console.log(goods.prototype)
+
+
+console.log(friend.__proto__ === Person.prototype )
+console.log(friend.__proto__ )
+
+
+console.log(friend instanceof Object )
+console.log(friend instanceof Person )
+
+console.log( friend.constructor == Person )
+console.log( friend.constructor == Object )
+
+function Person(){
+
+}
+Person.prototype = {
+	constructor:Person,
+	name:"N"
+}
+var friend = new Person();
+console.log( friend.constructor == Person )
+console.log( Person.prototype )
+console.log( friend.constructor == Object )
+console.log(friend)
+console.log(document.getElementsByTagName('div'))
+```
+
