@@ -565,3 +565,4 @@ console.log(friend)
 console.log(document.getElementsByTagName('div'))
 ```
 
+#### 15.V8 垃圾回收机制

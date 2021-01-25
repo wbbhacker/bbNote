@@ -83,15 +83,12 @@ display: -webkit-box;
 
 #### 5.web开发中动画效果的实现方法
 
-1. animation+keyframes
-2. transition
-3. canvas
-4. setTimeout()、setInterval()
-5. requestAnimationFrame
+1. animation+keyframes 、transition  
+3. canvas、2D、3D webgl 
+4. setInterval()、requestAnimationFrame
 6. svg
-7. webgl
 8. GIF
-9. 
+9. web API animation //  兼容性不好
 
 ```css
 const element = document.getElementById('some-element-you-want-to-animate');

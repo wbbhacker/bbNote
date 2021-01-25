@@ -62,5 +62,17 @@ animation-timing-function:step-start;
 /*css3动画序列帧需要设置这个属性
 ```
 
+#### 7.css3 动画常用属性
+
+1. `backface-visibility:visible/hidden`  
+
+   是否显示背面的元素
+
+2. `perspective`、 `perspective-origin`
+
+3. `transform-origin`
+
+4. `transform-style:flat/preserve-3d`
+
 
 
