@@ -743,6 +743,7 @@ function a(){
 #### 31.
 
 ```javascript
+// 非严格模式下
 function fn() {
     console.log('s')
     prop = function () {
@@ -778,3 +779,101 @@ new new fn().prop();
 ```
 
 > new 关键字 比  .执行的优先级高
+
+#### 32.
+
+```javascript
+function a(){
+  
+    console.log(this)
+    console.log("我是内部");
+    this.name = function(){
+        console.log("我是内部的方法")
+    }();
+    console.log(this)
+    // return this
+    // return "c"
+    // return {}
+    // 没有return 的情况下返回什么
+  
+}
+
+a.prototype.say = function(){
+
+console.log("我是原型链")
+
+}();
+
+console.log( new a() );
+```
+
+#### 33.
+
+// console.log(add(2,3,4));
+
+// console.log(add(2)(3)(4))
+
+```
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
