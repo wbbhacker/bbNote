@@ -146,6 +146,82 @@ console.log(a === b)
 
 https://zhuanlan.zhihu.com/p/33843378
 
+```javascript
+//1.comcom.js
+// a.js
+console.log('a starting');
+exports.done = false;
+const b = require('./b');
+console.log('in a, b.done =', b.done);
+exports.done = true;
+console.log('a done');
+
+// b.js
+console.log('b starting');
+exports.done = false;
+const a = require('./a');
+console.log('in b, a.done =', a.done);
+exports.done = true;
+console.log('b done');
+
+// node a.js
+// 执行结果：
+// a starting
+// b starting
+// in b, a.done = false
+// b done
+// in a, b.done = true
+// a done
+
+// es6
+// a.js
+console.log('a starting')
+import {foo} from './b';
+console.log('in b, foo:', foo);
+export const bar = 2;
+console.log('a done');
+
+// b.js
+console.log('b starting');
+import {bar} from './a';
+export const foo = 'foo';
+console.log('in a, bar:', bar);
+setTimeout(() => {
+  console.log('in a, setTimeout bar:', bar);
+})
+console.log('b done');
+
+// babel-node a.js
+// 执行结果：
+// b starting
+// in a, bar: undefined
+// b done
+// a starting
+// in b, foo: foo
+// a done
+// in a, setTimeout bar: 2
+```
+
+
+
+#### 11.Tres shaking 原理
+
+Tree-shaking 关注与无用模块的消除，消除那些引用了但没有被使用的模块吗，tree-shaking 的消除原理是依赖于ES6的模块特性。
+
+ES6 module 特点：
+
+- 只能作为模块顶层的语句出现
+
+- import 的模块名只能是字符串变量
+
+- import binding 是immutable 的
+
+  依赖关系是确定的，和运行时的状态无关可以进行可靠的静态分析，然后进行消除
+
+  [控制流](https://baike.baidu.com/item/控制流)分析：生成有向[控制流图](https://baike.baidu.com/item/控制流图)，用节点表示基本代码块，节点间的有向边代表控制流路径，反向边表示可能存在的循环；还可生成[函数调用](https://baike.baidu.com/item/函数调用)关系图，表示函数间的嵌套关系。无效代码分析，根据控制流图可分析孤立的节点部分为无效代码。
+
+> 所谓静态分析就是不执行代码，从字面量上对代码进行分析，ES6之前的模块化，比如我们可以动态require一个模块，只有执行后才知道引用的什么模块，这个就不能通过静态分析去做优化。google 静态分析技术
+
 
 #### 12.原型链
 
@@ -578,6 +654,26 @@ function env(){
 }
 
 env();
+
+
+
+var x = 100;  
+var inc = function(){  
+  var x = 0;
+  return function(){
+    console.log(x++);
+  };
+};
+
+var inc1 = inc();  
+var inc2 = inc();
+
+inc1();  
+inc1();  
+inc2();  
+inc1();  
+inc2();  
+x;       
 ```
 
 > // 一和二对比可知函数在那个作用域下定义，那此函数就在那个作用域下开始往作用域链上找变量;
@@ -783,6 +879,7 @@ new new fn().prop();
 #### 32.
 
 ```javascript
+
 function a(){
   
     console.log(this)
@@ -805,75 +902,451 @@ console.log("我是原型链")
 }();
 
 console.log( new a() );
+
+var s1 = new String('hello');
+var s2 = new String('hello');
+
+console.log(s1 === s2)
+console.log(s1 == s2)
+console.log(s2)
+console.log(s2.toString())
+
+// 对象通过指针指向的内存地址来做比较。
+
+var s3 = 'hello';
+var s4 = 'hello';
+
+
+var a = 'sssss';
+var b = a;
+console.log(s3 === s4)
+console.log(s3)
+console.log(s4)
+
+console.log([1,2] == [1,2])
+
+var s5 = String('hello');
+var s6 = String('hello');
+
+console.log(this)
+console.log(typeof s1)
 ```
 
 #### 33.
 
-// console.log(add(2,3,4));
+```javascript
+ console.log(undefined == null);
+      console.log(undefined === null);
+      console.log(undefined == NaN);
+      console.log(undefined === NaN);
+      console.log( null == NaN );
+      console.log( null === NaN );
+      console.log( undefined == 0)
+      console.log( undefined === 0)
+      console.log( null == 0 )
+      console.log(++undefined)
+      console.log( null === 0 )
 
-// console.log(add(2)(3)(4))
+      console.log(Number(null))
+
+      console.log(var undefined);
+
+      console.log( [] == false );
+      console.log( [] == ![] );
+
+      console.log(2+true)
+
+
+      console.log(!!(0 == false))
+      console.log(!!( 0 == undefined ))
+      console.log(undefined == null )
+      console.log(isNaN("1312") == NaN )
+      console.log(typeof 1 == true ? 1 : 0)
+      console.log(typeof [] == "array")
+      console.log([] instanceof Array )
+
+
+      console.log(2&3) // 2
+      console.log(2|3) //3
+      console.log(~true)    //true boolean   -2
+
+
+      console.log(NaN == NaN)
+      console.log(undefined === undefined)
+      console.log(null === null)
+
+      console.log( typeof(NaN) )
+      console.log( typeof(undefined) )
+      console.log( typeof(null) )
+      console.log( typeof([]) )
+```
+
+#### 34.
+
+```javascript
+ var foo = {},
+ F = function () {}
+
+Object.prototype.a = 'value a'
+Function.prototype.b = 'value b'
+
+console.log(foo.a)  
+console.log(foo.b)
+console.log(F.a)
+console.log(F.b)
+console.log(Object.prototype.__proto__)
+
+console.log(typeof Function)
+console.log(Function.__proto__)
+
+console.log(foo.__proto__.__proto__)
+console.log(F.__proto__.__proto__.__proto__)
+```
+
+> // foo.a的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 找到value a
+>
+> // foo.b的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 没有 ---> foo.__proto__.__proto__ (Object.prototype.__proto__): 没有
+>
+> // F.a的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 没有 ---> F.__proto__.__proto__(Object.prototype): 找到value a
+>
+> // F.b的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 找到value b
+
+#### 35.
+
+```javascript
+    var b = new a();
+
+    console.log(b.__proto__.__proto__)
+
+    console.log(a.__proto__.__proto__.__proto__)
+
+    console.log(Object.__proto__)
+
+    console.log(Object.prototype)
+
+    console.log(Object.prototype == Object.__proto__)
+
+    console.log({}.__proto__ === Object.prototype )
+
+
+// 关于instanceof的结果不要仅从字面上理解, 它的计算规则是: 如果右侧构造函数的prototype属性能在左侧的对象的原型链中找到, 那么就返回true, 否则就返回false
+
+// Object intanceof Function: Object.__proto__ === Function.prototype, 因为结果为true
+console.log(Object instanceof Function)
+// Function instanceof Object: Function.__proto__.__proto__ === Object.prototype, 因为结果也为true
+```
+
+36.
+
+```javascript
+      function foo() {
+        this.value = 42
+      }
+
+      foo.prototype = {
+        method: function () {
+          return false
+        },
+      }
+
+      function bar() {
+        var value = 1
+        return {
+          method: function () {
+            return value
+          },
+        }
+      }
+
+      foo.prototype = new bar()
+
+      // console.log(foo.prototype.constructor)
+      // console.log(foo.prototype instanceof bar)
+
+      var test = new foo()
+
+      console.log(test instanceof foo)
+
+      console.log(test.__proto__)
+      console.log(test instanceof bar)
+
+      console.log(test.method())
+```
+
+#### 36.
+
+```javascript
+      function SuperType() {
+        this.colors = ['red', 'blue']
+      }
+      function SubType() {
+        this.name = 's'
+        SuperType.call(this)
+      }
+      var instance1 = new SubType()
+
+      console.log(instance1.__proto__ === SubType.prototype) //原型链是对象
+      console.log(SubType.__proto__ === Function.prototype)
+      console.log(instance1.__proto__.__proto__.__proto__) //
+```
+
+#### 37.
+
+```javascript
+      var a = {}
+      var b = function () {}
+      var c = 'hello'
+      console.log(a.prototype === Object.prototype)
+      console.log(b.prototype === Function.prototype)
+      console.log(c.prototype === String.prototype)
+      console.log(typeof Object)
+
+      var Person = function () {}
+      Person.prototype.type = 'Person'
+      Person.prototype.maxAge = 100
+
+      var p = new Person()
+      p.name = 'rainy'
+
+      console.log(Person.prototype.constructor === Person) //=> true
+      console.log(p.__proto__ === Person.prototype) //=> true
+      console.log(p.prototype) //=> undefined
+>>>>>>> 25a4e27730ec406f275d2a83c2a9d138cb6f2657
+
+
+
+
+
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+```
+
+#### 38.
+
+```javascript
+  var color = "red";
+  var o = {
+    color:"blue"
+  }
+
+  function getColor(){
+    console.log(this.color)	
+  }
+
+
+  getColor();     		//call和apply真正强大的地方是能够扩充函数赖以运行的作用域。
+  getColor.call(o);       //在使用call方法时，传递给函数的参数必须逐个列举出来。
+  getColor.apply(o);		//在使用apply方法时，传递给函数的第二个参数是Array实例。
+```
+
+#### 39.
+
+```javascript
+      function b(x, y, a) {
+        arguments[2] = 10 //它的值永远与对应名字参数的值保持同步。
+        console.log(a)
+      }
+      b(1, 2, 3) //  10
+      function c(x, y, a) {
+        a = 10
+        console.log(arguments[2]) //它的值永远与对应名字参数的值保持同步。
+      }
+      c(1, 2, 3)
+```
+
+#### 40.
+
+```javascript
+    n = 1;
+	  function f1(){
+	  	test = 10;
+	  	var n = 999;
+	  	nAdd = function(){ n += 1 }
+	  	function f2(){
+	  		return n;
+	  	}
+	  	return f2;
+	  }
+	  var result = f1()();
+	  console.log(result)
+```
+
+#### 41.
+
+```javascript
+      var n = 888
+      function f1() {
+        var n = 999
+        nAdd = function () {
+          n += 1
+        } // var nAdd=function(){n+=1}
+        function f2() {
+          console.log(n)
+        }
+        return f2
+      }
+      var result = f1()
+      result() // 999
+      nAdd()
+      result() // 1000
+```
+
+#### 42.
+
+```javascript
+      var name = 'The Window'
+
+      var object = {
+        name: 'My Object',
+        getNameFunc: function () {
+          return function () {
+            return this.name
+          }
+        },
+      }
+
+      console.log(object.getNameFunc()())
+```
+
+#### 43.
+
+```javascript
+  var x = 1;
+	var y = 0;
+	var z = 0;
+	function add(n){ 
+		n = n+1;
+		return n;
+	};
+	y = add(x);
+	function add(n){ 
+		n = n+4;
+	};
+	z = add(x);
+	console.log(y);
+	console.log(z);
+```
+
+#### 44.
+
+```javascript
+      var Obj = function (msg) {
+        this.msg = msg
+
+        this.shout = function () {
+          console.log(this.msg)
+        }
+
+        this.waitAndShout = function () {
+          var aaa = function (ss) {
+            var b = ss
+            return function () {
+              console.log(b)
+            }
+          }
+
+          setTimeout(aaa(this.msg), 2000)
+        }
+      }
+      var aa = new Obj('abc')
+      aa.waitAndShout()
+```
+
+#### 45.
+
+```javascript
+  	  var t=true;                 //js 是单线程语言
+      setTimeout(function(){
+        console.log(123);
+          t=false;
+      },1000);
+
+      while(t)
+      { }
+      console.log('end');
+```
+
+#### 46.
+
+```javascript
+  var name = "global";  
+    var oo = {  
+      name: "oo",
+      getNameFunc: function(){
+        return function(){
+          return this.name;
+        };
+      }
+    }
+    var ooo = {  
+      name: "ooo",
+      getName: oo.getNameFunc() // 此时闭包函数的this被绑定到新的Object
+    };
+
+    console.log(ooo.getName())
 
 ```
 
+#### 47.
+
+```javascript
+        Foo.a = function () {
+          console.log(4, this)
+        }
+
+        this.a = function () {
+          console.log(3, this)
+        }
+
+        a = function () {
+          console.log(1, this)
+        }
+        return this
+      }
+
+      Foo.a = function () {
+        console.log(10)
+      }
+      Foo.prototype.a = function () {
+        console.log(13)
+      }
+      var a = function () {
+        console.log(11)
+      }
+      function a() {
+        console.log(12)
+      }
+
+      Foo()
+      Foo.a()
+      a()
+      Foo().a()
+      new Foo().a()
+      new Foo.a()
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+>>>>>>> 25a4e27730ec406f275d2a83c2a9d138cb6f2657
 
