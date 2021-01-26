@@ -1111,38 +1111,7 @@ console.log(Object instanceof Function)
       console.log(Person.prototype.constructor === Person) //=> true
       console.log(p.__proto__ === Person.prototype) //=> true
       console.log(p.prototype) //=> undefined
->>>>>>> 25a4e27730ec406f275d2a83c2a9d138cb6f2657
 
-
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 ```
 
 #### 38.
@@ -1348,5 +1317,3 @@ console.log(Object instanceof Function)
       new Foo().a()
       new Foo.a()
 ```
->>>>>>> 25a4e27730ec406f275d2a83c2a9d138cb6f2657
-
