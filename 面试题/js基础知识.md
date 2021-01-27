@@ -47,7 +47,7 @@ m.foreach()
    3. **查找速度** object更好一些
    4. **删除性能** map 性能好些
 
-##### **weakMa弱引用**
+##### **weakMap弱引用**
 
 弱映射**weakMap**中的键只能是Object 或者继承自Object 的类型
 
@@ -566,3 +566,13 @@ console.log(document.getElementsByTagName('div'))
 ```
 
 #### 15.V8 垃圾回收机制
+
+
+
+#### 16.**为什么操作DOM会很慢**
+
+虽然DOM是由JavaScript实现的，但是在浏览器中都是把DOM和JavaScript分开来实现的，比如IE中，JavaScript的实现名为JScript，放在jscript.dll文件中，而DOM则放在另一个叫做mshtml.dll的库中。在Safari中，DOM和渲染是使用Webkit中的WebCore实现，而JavaScript是由独立的JavaScriptCore引擎实现，同样在Chrome中，同样是使用WebCore来实现渲染，而JavaScript引擎则是他们自己研发的V8引擎。
+
+由于DOM和JavaScript是被分开独立实现的，因此，每一次在通过js操作DOM的时候，就需要先去连接js和DOM，我们可以这样理解：把DOM和JavaScript比作两个岛，他们之间通过一个收费的桥连接着，每一次访问DOM的时候，就需要经过这座桥，并且给“过路费”，访问的次数越多，路费就会越高，并且访问到DOM后，操作具体的DOM还需要给“操作费”，由于浏览器访问DOM的操作很多，因此，“路费”和“操作费”自然会增加，这就是为什么操作DOM会很慢的原因
+
+17.
