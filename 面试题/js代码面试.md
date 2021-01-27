@@ -839,6 +839,7 @@ function a(){
 #### 31.
 
 ```javascript
+// 非严格模式下
 function fn() {
     console.log('s')
     prop = function () {
@@ -878,6 +879,30 @@ new new fn().prop();
 #### 32.
 
 ```javascript
+
+function a(){
+  
+    console.log(this)
+    console.log("我是内部");
+    this.name = function(){
+        console.log("我是内部的方法")
+    }();
+    console.log(this)
+    // return this
+    // return "c"
+    // return {}
+    // 没有return 的情况下返回什么
+  
+}
+
+a.prototype.say = function(){
+
+console.log("我是原型链")
+
+}();
+
+console.log( new a() );
+
 var s1 = new String('hello');
 var s2 = new String('hello');
 
@@ -1087,10 +1112,6 @@ console.log(Object instanceof Function)
       console.log(p.__proto__ === Person.prototype) //=> true
       console.log(p.prototype) //=> undefined
 
-
-
-
-
 ```
 
 #### 38.
@@ -1296,4 +1317,3 @@ console.log(Object instanceof Function)
       new Foo().a()
       new Foo.a()
 ```
-
