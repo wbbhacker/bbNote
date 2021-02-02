@@ -96,6 +96,10 @@ output：[1, NaN, NaN]
 
 #### 7.有以下3 个判断数组的方法，请分别介绍它们之间的区别和优劣
 
+1. `Object.prototype.toString.call()`
+2. `instanceof`
+3. `Array.isArray()`
+
 #### 8.两个数组合并成一个数组
 
 请把两个数组['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2'] 和['A', 'B', 'C', 'D']，合并
@@ -1317,3 +1321,52 @@ console.log(Object instanceof Function)
       new Foo().a()
       new Foo.a()
 ```
+
+#### 48.
+
+```javascript
+var b = 10
+;(function b() {
+  b = 20
+  console.log(b)
+})()
+
+```
+
+#### 49.下面代码中a在什么情况下会打印1？
+
+```
+var a = ?
+if(a ==1 && a==2 && a ==3){
+	console.log(1)
+}
+
+// 答案
+var a = {
+	i:1,
+	valueOf(){
+		return a.i++
+	}
+}
+
+var a = [1,2,3]
+a.toString = a.shift
+
+```
+
+#### 50.
+
+```javascript
+var obj = {
+	'2':3,
+	'3':4,
+	'length':2,
+	'splice':Array.prototype.splice,
+	'push':Array.prototype.push
+}
+obj.push(1)
+obj.push(2)
+console.log(obj)
+```
+
+#### 51.
