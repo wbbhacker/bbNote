@@ -86,19 +86,17 @@ a.fn(fn, 2, 4)
 
 #### 5.`[1,2,3].map(parseInt)` 
 
-output：[1, NaN, NaN]
-
 #### 6.如何实现一个new
-
-```
-
-```
 
 #### 7.有以下3 个判断数组的方法，请分别介绍它们之间的区别和优劣
 
 1. `Object.prototype.toString.call()`
+
 2. `instanceof`
+
 3. `Array.isArray()`
+
+   >  实现 instanceof
 
 #### 8.两个数组合并成一个数组
 
@@ -324,12 +322,6 @@ request(2000).then(res=> console.log(res));
 request(3000).then(res=> console.log(res));
 request(4000).then(res=> console.log(res));
 request(500).then(res=> console.log(res));
-```
-
-#### 15.实现一个防抖函数
-
-```
-
 ```
 
 #### 16.实现有序数组的排序 [1, 3, 5] [2, 4, 6] -> [1, 2, 3, 4, 5, 6]， 不能用concat sort方法
@@ -1369,4 +1361,5 @@ obj.push(2)
 console.log(obj)
 ```
 
-#### 51.
+
+
