@@ -86,15 +86,17 @@ a.fn(fn, 2, 4)
 
 #### 5.`[1,2,3].map(parseInt)` 
 
-output：[1, NaN, NaN]
-
 #### 6.如何实现一个new
 
-```
-
-```
-
 #### 7.有以下3 个判断数组的方法，请分别介绍它们之间的区别和优劣
+
+1. `Object.prototype.toString.call()`
+
+2. `instanceof`
+
+3. `Array.isArray()`
+
+   >  实现 instanceof
 
 #### 8.两个数组合并成一个数组
 
@@ -320,12 +322,6 @@ request(2000).then(res=> console.log(res));
 request(3000).then(res=> console.log(res));
 request(4000).then(res=> console.log(res));
 request(500).then(res=> console.log(res));
-```
-
-#### 15.实现一个防抖函数
-
-```
-
 ```
 
 #### 16.实现有序数组的排序 [1, 3, 5] [2, 4, 6] -> [1, 2, 3, 4, 5, 6]， 不能用concat sort方法
@@ -1394,4 +1390,48 @@ Function.prototype.bind2 = function (context) {
 > 2. 传入的参数
 > 3. 一个绑定函数也能使用new操作符创建对象：这种行为就像把原函数当成构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数。
 > 4. 函数的原型继承
+```javascript
+var b = 10
+;(function b() {
+  b = 20
+  console.log(b)
+})()
+
+```
+
+#### 49.下面代码中a在什么情况下会打印1？
+
+```
+var a = ?
+if(a ==1 && a==2 && a ==3){
+	console.log(1)
+}
+
+// 答案
+var a = {
+	i:1,
+	valueOf(){
+		return a.i++
+	}
+}
+
+var a = [1,2,3]
+a.toString = a.shift
+
+```
+
+#### 50.
+
+```javascript
+var obj = {
+	'2':3,
+	'3':4,
+	'length':2,
+	'splice':Array.prototype.splice,
+	'push':Array.prototype.push
+}
+obj.push(1)
+obj.push(2)
+console.log(obj)
+```
 
