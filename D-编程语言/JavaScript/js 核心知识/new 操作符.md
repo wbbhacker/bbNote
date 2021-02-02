@@ -66,7 +66,7 @@ console.log(b.__proto__ === person.prototype)  // false
 function $new (fn){
   let obj = new Object(),
       // 获取fn 的 入参
-      args = Array.prototype.slice.call(arguments,null).slice(1),  
+      args = Array.prototype.slice.call(arguments,1) 
       result
   obj.__proto__ = fn.prototype
   result = fn.apply(obj,args)

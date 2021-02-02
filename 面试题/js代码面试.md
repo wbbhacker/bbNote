@@ -1317,3 +1317,81 @@ console.log(Object instanceof Function)
       new Foo().a()
       new Foo.a()
 ```
+
+#### 48.
+
+```
+let a = function(){}
+typeof a
+typeof {}
+typeof []
+```
+
+#### 49.Function.prototype.bind 的实现
+
+```javascript
+//  Yes, it does work with `new (funcA.bind(thisArg, args))`
+if (!Function.prototype.bind) (function(){
+  var ArrayPrototypeSlice = Array.prototype.slice;
+  Function.prototype.bind = function(otherThis) {
+    if (typeof this !== 'function') {
+      // closest thing possible to the ECMAScript 5
+      // internal IsCallable function
+      throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+    }
+
+    var baseArgs= ArrayPrototypeSlice.call(arguments, 1),
+        baseArgsLength = baseArgs.length,
+        fToBind = this,
+        fNOP    = function() {},
+        fBound  = function() {
+          baseArgs.length = baseArgsLength; // reset to default base arguments
+          baseArgs.push.apply(baseArgs, arguments);
+          return fToBind.apply(
+                 fNOP.prototype.isPrototypeOf(this) ? this : otherThis, baseArgs
+          );
+        };
+
+    if (this.prototype) {
+      // Function.prototype doesn't have a prototype property
+      fNOP.prototype = this.prototype;   
+    }
+    fBound.prototype = new fNOP();
+    
+    // 用fNOP 是因为 原型的constructor指向函数本身，不能指向两个函数所以要用new fNOP()
+
+    return fBound;
+  };
+})();
+```
+
+```javascript
+Function.prototype.bind2 = function (context) {
+
+    if (typeof this !== "function") {
+      throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+
+    var fNOP = function () {};
+
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+    }
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+    return fBound;
+}
+```
+
+> bind 函数特点：
+>
+> 1. 返回一个函数
+> 2. 传入的参数
+> 3. 一个绑定函数也能使用new操作符创建对象：这种行为就像把原函数当成构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数。
+> 4. 函数的原型继承
+
