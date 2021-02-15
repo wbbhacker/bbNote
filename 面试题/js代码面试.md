@@ -1435,3 +1435,14 @@ obj.push(2)
 console.log(obj)
 ```
 
+#### 51.setTimeout
+
+```javascript
+for(var i=0; i<6; i++){
+    setTimeout(function(){
+        console.log(Date.now())
+        // console.log(i)
+    },1000)
+}
+```
+
