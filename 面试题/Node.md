@@ -1,5 +1,9 @@
 #### 1.说说浏览器和Node 事件循环的区别
 
+https://segmentfault.com/a/1190000017893482
+
+https://www.jianshu.com/p/b221e6e36dcb
+
 #### 2.介绍模块化发展历程
 
 #### 3.介绍下npm模块安装机制，为什么输入`npm  install`就可以自动安装对应的模块？
