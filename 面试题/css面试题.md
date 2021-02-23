@@ -307,6 +307,50 @@ BFC 的主要作用是：
 1. 清楚浮动
 2. 防止同一BFC容器中的相邻元素间的外边距重叠问题
 
+#### 14.css3吸顶效果
+
+position:sticky
+
+```css
+<div class="header">
+
+</div>
+<nav>
+    用于显示粘性定位的头
+</nav>
+<div class="content">
+
+</div>
+<footer>
+    底部
+</footer>
+
+
+.header {
+	width:100%;
+	height:160px;
+	background:#87CEEB;
+}
+nav {
+	width:100%;
+	height:100px;
+	position:sticky;
+	top:0px;
+	background:#F98202;
+}
+.content {
+	width:100%;
+	background:blue;
+	height:1000px;
+}
+footer {
+	background:#87CEEB;
+}
+
+```
+
+
+
 
 
 
