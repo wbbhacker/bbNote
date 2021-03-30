@@ -56,7 +56,7 @@
 
 13. `git checkout . ` 删除所有 修改
 
-14. `git clean f ` 删除所有未跟踪文件  `git clean -fd` 删除所有未跟踪文件和目录
+14. `git clean -f ` 删除所有未跟踪文件  `git clean -fd` 删除所有未跟踪文件和目录
 
      `git clean -nf` 1`git clean -nfd`  强烈建议加上 -n 参数来先看看会删掉哪些文件，防止重要文件被误删
 
