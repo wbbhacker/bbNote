@@ -59,6 +59,10 @@
 14. `git clean -f ` 删除所有未跟踪文件  `git clean -fd` 删除所有未跟踪文件和目录
 
      `git clean -nf` 1`git clean -nfd`  强烈建议加上 -n 参数来先看看会删掉哪些文件，防止重要文件被误删
+    
+15. `git clone -b branchName gitAddress dirName`
+
+     clone 具体分支到指定文件夹
 
 ### git 提交功能备注
 
