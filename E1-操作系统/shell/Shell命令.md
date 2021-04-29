@@ -175,3 +175,5 @@ unzip mysql.zip
 
 #### 23.`ll` 查看文件夹列表  `stat filename` 查看文件具体信息
 
+#### 24.dig 命令查看DNS
+
