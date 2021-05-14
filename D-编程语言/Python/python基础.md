@@ -15,4 +15,10 @@
 3. 退出虚拟环境
 
    `deactivate`
+   
+4. 创建虚拟环境
+
+   `python3 -m venv [venvName]`
+
+   example:`python3 -m venv venv`  `source venv/bin/activate`
 
