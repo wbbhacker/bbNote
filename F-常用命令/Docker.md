@@ -83,3 +83,9 @@
   	docker rm -f imageName 强制删除正在运行的容器
   	
   	docker container prune 清理所以终止的容器
+
+### 三、docker服务
+
+查看docker运行状态的方法:sudo service docker status  
+
+打开/关闭/重启docker服务：sudo service docker start/stop/restart  

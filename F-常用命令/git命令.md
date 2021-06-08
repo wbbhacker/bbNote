@@ -63,6 +63,10 @@
 15. `git clone -b branchName gitAddress dirName`
 
      clone 具体分支到指定文件夹
+    
+16. `git rebase `
+
+     https://juejin.cn/post/6844903600976576519 git合并commit
 
 ### git 提交功能备注
 

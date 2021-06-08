@@ -177,3 +177,7 @@ unzip mysql.zip
 
 #### 24.dig 命令查看DNS
 
+### 25.Systemd
+
+http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
+

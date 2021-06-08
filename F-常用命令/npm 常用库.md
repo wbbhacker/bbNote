@@ -61,6 +61,12 @@
 1. tapable
 
    为插件创建hooks
+   
+2. commander
+
+   The complete solution for [node.js](http://nodejs.org/) command-line interfaces.
+
+   写 cli 命令的库，包括处理 命令参数 等。
 
 
 
