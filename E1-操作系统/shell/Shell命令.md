@@ -25,9 +25,13 @@
    2. `tar -zcvf 压缩文件名 .tar.gz 被压缩文件名` 压缩
    3. `tar -zxvf 压缩文件名.tar.gz` 解压
 
-#### **4.wget**
+#### **4.wget** 
 
 1. `wget downloadUrl` 下载文件
+
+   > 正在连接 download.redis.io|109.74.203.151|:80... 失败：拒绝连接。
+   >
+   > 应该是网站禁止被爬，没关系，在wget命令中添加一个参数 -e robots=off 就可以了
 
 #### **5.`scp` 命令**
 
@@ -153,6 +157,10 @@ telnet 101.200.195.41 8080 # 查看远程端口是否开放
    `curl -i  https://ddlh-gzh.yunfuw.cn?ddlh=1`
    
    只查看响应行、响应头部，用-I
+   
+3. 下载文件
+
+   ` curl -O  http://nginx.org/download/nginx-1.20.1.tar.gz`
 
 #### 18.`man` 查看命令信息
 
@@ -181,3 +189,8 @@ unzip mysql.zip
 
 http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 
+### 26.nohup
+
+**nohup** 英文全称 no hang up（不挂起），用于在系统后台不挂断地运行命令，退出终端不会影响程序的运行。
+
+https://www.runoob.com/linux/linux-comm-nohup.html

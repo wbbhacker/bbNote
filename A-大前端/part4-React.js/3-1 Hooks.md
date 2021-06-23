@@ -104,6 +104,6 @@ useEffect(()=>{
 
 防止Counter组件重新渲染时，resetCount 函数重新生成导致Test组件重新渲染。
 
-8.useRef()
+##### 8.useRef()
 
 ![image-20210508151301260](/Users/binbin.wang/Library/Application Support/typora-user-images/image-20210508151301260.png)

@@ -46,6 +46,14 @@ nginx -s quit #停服，需要进程完成当前工作后再停止
 
    `configure arguments: --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module`
 
+   > 源码包安装与 yum 安装的 nginx 服务操作命令也不同。
+   >
+   >  启动服务
+   >
+   > /usr/local/nginx/sbin/nginx
+   >
+   > 
+
 6. 无法访问nginx
 
    在配置nginx.conf 头部添加`user root;`

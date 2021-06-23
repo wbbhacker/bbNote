@@ -18,3 +18,7 @@
    2. bookmarks 书签
    3. sublime text keymap and setting importer 设置sub text 快捷键
 
+3.保存是文件格式化：
+
+`Format On Save`  勾选即可 
+
