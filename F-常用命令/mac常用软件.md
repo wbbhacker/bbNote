@@ -11,6 +11,7 @@
    - command+shift+3 全屏截图
    - command+shift+4 局部截图
    - shift+command+4 ，在按空格  窗口截图 
+   - shift+command+5 截图+录屏菜单
 
 ### 常用软件
 
