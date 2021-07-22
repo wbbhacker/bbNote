@@ -94,9 +94,75 @@ useEffect(()=>{
 
 ![image-20210508145324263](/Users/binbin.wang/Library/Application Support/typora-user-images/image-20210508145324263.png)
 
+```react
+
+import React, { useState, useMemo } from "react";
+// bool 的改变导致组件重新渲染，但是不会重新计算result，因为count 没发生变化
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [bool, setBool] = useState(true);
+  const result = useMemo(() => {
+    console.log("重新渲染了");
+    return count * 2;
+  }, [count]);
+  return (
+    <div>
+      <span>
+        {count} {result}
+      </span>
+      <span> {bool ? "真" : "假"} </span>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +1
+      </button>
+      <button
+        onClick={() => {
+          console.log("s");
+          setBool(!bool);
+        }}
+      >
+        reset
+      </button>
+    </div>
+  );
+}
+
+```
+
 ##### 6.memo 方法
 
 ![image-20210508145926516](/Users/binbin.wang/Library/Application Support/typora-user-images/image-20210508145926516.png)
+
+```react
+import "./styles.css";
+import React, { useState } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <span> {count} </span>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +1
+      </button>
+      <FooMemo />
+    </div>
+  );
+}
+const FooMemo = React.memo(Foo);
+function Foo() {
+  console.log("Foo 重新渲染");
+  return <div>我是Foo组件</div>;
+}
+
+```
 
 ##### 7.useCallback钩子函数
 

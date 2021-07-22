@@ -317,3 +317,96 @@ console.log('b done');
 ```
 
 ##### 3.动态import()
+
+ES6 模块在编译时就会静态分析，优先于模块内的其他内容执,所以导致了我们无法写出像下面这样的代码：
+
+```javascript
+if(some condition) {
+  import a from './a';
+}else {
+  import b from './b';
+}
+
+// or 
+import a from (str + 'b');
+```
+
+`import()` 允许你在运行时动态地引入 ES6 模块, 与`require.ensure` 用途不同：
+
+1. require.ensure 的出现是 webpack 的产物，它是因为浏览器需要一种异步的机制可以用来异步加载模块，从而减少初始的加载文件的体积，所以如果在服务端的话 require.ensure 就无用武之地了，因为服务端不存在异步加载模块的情况，模块同步进行加载就可以满足使用场景了。 CommonJS 模块可以在运行时确认模块加载。
+
+2. 而` import() `则不同，它主要是为了解决 ES6 模块无法在运行时确定模块的引用关系，所以需要引入` import()`
+
+   用法：
+
+   1. 动态的 import() 提供一个基于 Promise 的 API
+   2. 动态的import() 可以在脚本的任何地方使用
+   3. import() 接受字符串文字，你可以根据你的需要构造说明符
+
+```javascript
+// a.js
+const str = './b';
+const flag = true;
+if(flag) {
+  import('./b').then(({foo}) => {
+    console.log(foo);
+  })
+}
+import(str).then(({foo}) => {
+  console.log(foo);
+})
+
+// b.js
+export const foo = 'foo';
+
+// babel-node a.js
+// 执行结果
+// foo
+// foo
+```
+
+1. 同时加载多个模块的话，可以是 Promise.all 进行并行异步加载。
+
+```javascript
+Promise.all([
+  import('./a.js'),
+  import('./b.js'),
+  import('./c.js'),
+]).then(([a, {default: b}, {c}]) => {
+    console.log('a.js is loaded dynamically');
+    console.log('b.js is loaded dynamically');
+    console.log('c.js is loaded dynamically');
+});
+```
+
+2. Promise.race 方法，它检查哪个 Promise 被首先 resolved 或 reject。我们可以使用import()来检查哪个CDN速度更快
+
+```javascript
+const CDNs = [
+  {
+    name: 'jQuery.com',
+    url: 'https://code.jquery.com/jquery-3.1.1.min.js'
+  },
+  {
+    name: 'googleapis.com',
+    url: 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+  }
+];
+
+console.log(`------`);
+console.log(`jQuery is: ${window.jQuery}`);
+
+Promise.race([
+  import(CDNs[0].url).then(()=>console.log(CDNs[0].name, 'loaded')),
+  import(CDNs[1].url).then(()=>console.log(CDNs[1].name, 'loaded'))
+]).then(()=> {
+  console.log(`jQuery version: ${window.jQuery.fn.jquery}`);
+});
+```
+
+
+
+
+
+
+

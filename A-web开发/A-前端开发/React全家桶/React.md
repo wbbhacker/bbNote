@@ -98,3 +98,15 @@ class LoggingButton extends React.Component {
 
 ```
 
+#### 6.组件概念
+
+##### 1.stateful compnent and stateless component 有状态组件和无状态组件
+
+##### 2.class component and function component 类组件和函数组件
+
+##### 3.regular component and PureComponent 普通组件和纯组件
+
+1. https://stackoverflow.com/questions/41340697/react-component-vs-react-purecomponent/53740921
+
+If you use *React.Component* then the child component is also re-rendered if the parent component re-renders itself but in the React.PureComponent, the child component only re-renders if the props passed to it changes.
+
