@@ -148,6 +148,8 @@ function TextInputWithFocusButton() {
 
 注意：`useRef` 不会监听它的内容变化，修改它的`.current` 属性不会引起组件的重新渲染。如果你想将ref附加或分离到DOM节点上运行一些代码，需要用`callbask ref`
 
+>  useRef 可以绑定到 Dom 节点上，或者类组件上。
+
 #### 4.`callback ref`
 
 React will call the `ref` callback with the DOM element when the component mounts, and call it with `null` when it unmounts. Refs are guaranteed to be up-to-date before `componentDidMount` or `componentDidUpdate` fires.

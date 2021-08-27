@@ -28,7 +28,7 @@
 
    2. forward()
 
-   3. go()
+   3. go()在
 
    4. pushState()、replaceState()
 

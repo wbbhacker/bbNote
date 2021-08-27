@@ -2,7 +2,7 @@
 
 > 语句与声明
 
-## `for ... of` 
+### `for ... of` 
 
 *NO support in ie*
 
@@ -19,7 +19,7 @@ for (const element of array1) {
 
 ```
 
-## `for ... in`
+### `for ... in`
 
 会遍历原型上的对象
 
@@ -45,3 +45,4 @@ let nestedProp = obj.first?.second;
 
 ```
 
+### debugger

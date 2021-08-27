@@ -170,6 +170,71 @@ function Foo() {
 
 防止Counter组件重新渲染时，resetCount 函数重新生成导致Test组件重新渲染。
 
+```react
+import React, { useState, useCallback } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const resetCount = useCallback(() => {
+    setCount(0);
+  }, [setCount]);
+  return (
+    <div>
+      <span> {count} </span>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +1
+      </button>
+      <FooMemo resetCount={resetCount} />
+    </div>
+  );
+}
+const FooMemo = React.memo(Foo);
+function Foo(props) {
+  console.log("Foo 重新渲染");
+  return (
+    <div>
+      <button onClick={props.resetCount}>reset</button>
+      我是Foo组件
+    </div>
+  );
+}
+```
+
 ##### 8.useRef()
 
+1.绑定Dom 后者 类组件，函数组件不行，函数组件要用 `forwardRef()`
+
 ![image-20210508151301260](/Users/binbin.wang/Library/Application Support/typora-user-images/image-20210508151301260.png)
+
+2.保存数据，跨组件周期
+
+```react
+// 用useRef 保存 timerId
+import React, { useState, useEffect } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+  let timerId = null;
+  useEffect(() => {
+    timerId = setInterval(() => {
+      setCount((count) => count + 1);
+    }, 500);
+  }, []);
+  const stopCount = () => {
+    clearInterval(timerId);
+  };
+  return (
+    <div>
+      {count}
+      <button onClick={stopCount}>停止</button>
+    </div>
+  );
+}
+
+export default App;
+```
+

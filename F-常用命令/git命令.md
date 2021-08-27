@@ -34,6 +34,12 @@
 
    删除分支
 
+   > `git push origin --delete [branch_name]` 删除远程分支
+   >
+   > ` git remote show origin` 以查看remote地址，远程分支，还有本地分支与之相对应关系等信息
+   >
+   > `git remote prune origin`  本地删除远程不存在的分支
+
 9. `git config --global alias.st status`
 
    git 命令缩写
