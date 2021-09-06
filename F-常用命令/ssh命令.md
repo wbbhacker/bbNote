@@ -21,7 +21,7 @@
    >
    > win 下，在git bash 中执行正常
 
-3. 为了让两个ssh-key共存，在/.ssh下生成一个config文件,通过config文件指定不同的私钥对应的不同git服务器
+3. 为了让两个ssh-key共存，在/.ssh下生成一个`config`文件,通过config文件指定不同的私钥对应的不同git服务器
 
    ```
    #GitHub(2404016117@qq.com)
@@ -39,5 +39,5 @@
    PreferredAuthentications publickey
    ```
 
-   
+#### 3.mac .ssh 路径
 
