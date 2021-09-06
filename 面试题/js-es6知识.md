@@ -43,13 +43,13 @@ m.foreach()
 
 1. 选择Object 还是Map
    1. **内存占用** Map 比 Object 多存储50%的键/值对
-   2. **插入性能** map性能更佳
-   3. **查找速度** object更好一些
-   4. **删除性能** map 性能好些
+   2. **插入性能** Map性能更佳
+   3. **查找速度** Object更好一些
+   4. **删除性能** Map 性能好些
 
-##### **weakMap弱引用**
+##### [**weakMap弱引用**](https://javascript.info/weakmap-weakset)
 
-弱映射**weakMap**中的键只能是Object 或者继承自Object 的类型
+弱映射**weakMap**中的键**只能**是Object 或者继承自Object 的类型
 
 1. 弱键
 

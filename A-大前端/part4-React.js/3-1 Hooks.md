@@ -94,9 +94,75 @@ useEffect(()=>{
 
 ![image-20210508145324263](/Users/binbin.wang/Library/Application Support/typora-user-images/image-20210508145324263.png)
 
+```react
+
+import React, { useState, useMemo } from "react";
+// bool 的改变导致组件重新渲染，但是不会重新计算result，因为count 没发生变化
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [bool, setBool] = useState(true);
+  const result = useMemo(() => {
+    console.log("重新渲染了");
+    return count * 2;
+  }, [count]);
+  return (
+    <div>
+      <span>
+        {count} {result}
+      </span>
+      <span> {bool ? "真" : "假"} </span>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +1
+      </button>
+      <button
+        onClick={() => {
+          console.log("s");
+          setBool(!bool);
+        }}
+      >
+        reset
+      </button>
+    </div>
+  );
+}
+
+```
+
 ##### 6.memo 方法
 
 ![image-20210508145926516](/Users/binbin.wang/Library/Application Support/typora-user-images/image-20210508145926516.png)
+
+```react
+import "./styles.css";
+import React, { useState } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <span> {count} </span>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +1
+      </button>
+      <FooMemo />
+    </div>
+  );
+}
+const FooMemo = React.memo(Foo);
+function Foo() {
+  console.log("Foo 重新渲染");
+  return <div>我是Foo组件</div>;
+}
+
+```
 
 ##### 7.useCallback钩子函数
 
@@ -104,15 +170,71 @@ useEffect(()=>{
 
 防止Counter组件重新渲染时，resetCount 函数重新生成导致Test组件重新渲染。
 
+```react
+import React, { useState, useCallback } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const resetCount = useCallback(() => {
+    setCount(0);
+  }, [setCount]);
+  return (
+    <div>
+      <span> {count} </span>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +1
+      </button>
+      <FooMemo resetCount={resetCount} />
+    </div>
+  );
+}
+const FooMemo = React.memo(Foo);
+function Foo(props) {
+  console.log("Foo 重新渲染");
+  return (
+    <div>
+      <button onClick={props.resetCount}>reset</button>
+      我是Foo组件
+    </div>
+  );
+}
+```
+
 ##### 8.useRef()
+
+1.绑定Dom 后者 类组件，函数组件不行，函数组件要用 `forwardRef()`
 
 ![image-20210508151301260](/Users/binbin.wang/Library/Application Support/typora-user-images/image-20210508151301260.png)
 
-1.使用useRef钩子函数获取Dom元素
+2.保存数据，跨组件周期
 
-2.使用useRef钩子函数保存数据（跨组件周期）
+```react
+// 用useRef 保存 timerId
+import React, { useState, useEffect } from "react";
 
-即使组件重新渲染，保存的数据仍然还在。保存的数据被更改不会触发组件重新渲染。
+function App() {
+  const [count, setCount] = useState(0);
+  let timerId = null;
+  useEffect(() => {
+    timerId = setInterval(() => {
+      setCount((count) => count + 1);
+    }, 500);
+  }, []);
+  const stopCount = () => {
+    clearInterval(timerId);
+  };
+  return (
+    <div>
+      {count}
+      <button onClick={stopCount}>停止</button>
+    </div>
+  );
+}
 
-useState保存的是状态数据，更改会触发组件更新。useRef不是
+export default App;
+```
 
