@@ -107,3 +107,12 @@ useEffect(()=>{
 ##### 8.useRef()
 
 ![image-20210508151301260](/Users/binbin.wang/Library/Application Support/typora-user-images/image-20210508151301260.png)
+
+1.使用useRef钩子函数获取Dom元素
+
+2.使用useRef钩子函数保存数据（跨组件周期）
+
+即使组件重新渲染，保存的数据仍然还在。保存的数据被更改不会触发组件重新渲染。
+
+useState保存的是状态数据，更改会触发组件更新。useRef不是
+
