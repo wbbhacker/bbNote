@@ -73,6 +73,32 @@
 16. `git rebase `
 
      https://juejin.cn/post/6844903600976576519 git合并commit
+    
+17. `git stash`
+
+     1. `git stash list`  查看stash存储
+
+     2. `git stash save "save message"`  存储
+
+     3. `git stash show`  默认显示第一个存储 
+
+        >  `git stash show stash@{$num}`  显示第几stash
+
+     4. `git stash apply` 应用某个存储，但不会从存储列表中删除
+
+        > `git stash apply stash@{$num}` 应用第几个存储
+
+     5. `git stash pop` 应用并删除  
+
+        > `git stash pop stash@{$num}`
+
+     6. `git stash drop stash@{$num}` 从存储列表中删除存储
+
+     7. `git stash clear `  删除所有缓存的stash
+
+
+
+
 
 ### git 提交功能备注
 
