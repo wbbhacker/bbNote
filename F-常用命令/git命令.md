@@ -96,7 +96,9 @@
 
      7. `git stash clear `  删除所有缓存的stash
 
+18.撤销merge
 
+https://segmentfault.com/q/1010000000140446
 
 
 
