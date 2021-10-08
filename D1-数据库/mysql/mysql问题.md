@@ -42,6 +42,26 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你想�
 
 mysql8.0 不能授权给自己，授权自己会出错。要新创建一个用户授权给自己。
 
+#### 4.开启远程链接
+
+1. 使用SSH链接到服务器，登录到MySQL
+
+   `mysql -u root -p`
+
+2. 写入SQL语句，开启远程访问
+
+   `use mysql;`
+
+   `update use set host ='%' where user = 'root'`
+
+3. 运行下面的语句, 查看设置是否生效
+
+   `select host, user from user where user='root'`
+
+4. 退出MySQL 命令，回到Linux命令模式， 重启MySQL
+
+   `systemctl restart mysqld`
+
 
 
 
