@@ -217,7 +217,7 @@ module.exports = {
 
 > 删除content Type 从编辑处 点击删除
 >
-> <img src="../../../../local/bbNote/image/image-20201130161221506.png" alt="image-20201130161221506" style="zoom:50%;" />
+> <img src="../../../image/image-20201130161221506.png" alt="image-20201130161221506" style="zoom:50%;" />
 
 
 
