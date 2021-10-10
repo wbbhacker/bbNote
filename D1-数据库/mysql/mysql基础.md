@@ -2,31 +2,43 @@
 
 ### mysql基础
 
-#### 1.`mysql -V`  查看mysql 版本号
+#### 1.连接与断开服务器
 
-#### 2.mysql 登录
+`mysql -h addressIP -P port -u username -p 密码 `
 
-```mysql
-Mysql -u root -p 
-password：admin
-```
+>  mysql 默认端口为：3306
 
-#### 3.mysql常用命令
+#### 2.数据库操作
 
-```mysql
-SHOW DATABASES;  // 查看所有数据库
-use 数据库; // 选择要操作的数据库
-SHOW TABLES;  // 查看所有数据表
-SHOW COLUMNS FROM 数据表; // 显示数据表的所有属性
-SELECT 字段列表 FROM 表名; // 查看具体列的值
-grant all privileges on *.*  to  '用户'@'%'  identified by '密码'  with grant option;
-// 
-```
+##### 1.查看当前使用的数据库
 
-#### 4.mysql 8.0
+`SELECT DATABASE();`
 
-#### 5.查看当前使用的数据库
+> 显示当前时间、用户名、数据库版本： `SELECT now(), user(), version();`
 
-`select database();`
+##### 2.使用某个数据库
 
-#### 6.默认端口号为：3306
+`USE 数据库名;`
+
+##### 3.创建数据库
+
+`CREATE DATABASE [IF NOT EXISTS] 数据库名 数据库选项;`
+
+> 数据库选项：`CHARACTER SET charset_name` `COLLATE collation_name`
+
+##### 4.删除数据库
+
+`DROP DATABASE [IF EXISTS] 数据库名;`
+
+##### 5.修改数据库的选项信息
+
+`ALTER DATABASE 库名 选项信息;`
+
+##### 6.查看当前库信息
+
+`SHOW CREATE DATABASE 数据库名;`
+
+##### 7.查看所有数据库；
+
+`SHOW DATABASES [LIKE 'PATTERN'];`
+
