@@ -1,4 +1,4 @@
-###shell命令
+### shell命令
 
 > https://www.linuxcool.com/ linxu 命令大全
 
@@ -185,11 +185,11 @@ unzip mysql.zip
 
 #### 24.dig 命令查看DNS
 
-### 25.Systemd
+#### 25.Systemd
 
 http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 
-### 26.nohup
+#### 26.nohup
 
 **nohup** 英文全称 no hang up（不挂起），用于在系统后台不挂断地运行命令，退出终端不会影响程序的运行。
 
