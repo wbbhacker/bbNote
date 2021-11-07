@@ -14,3 +14,4 @@ https://www.jianshu.com/p/b221e6e36dcb
 4. npm 向registry 查询模块压缩包的网址
 5. 下载压缩包，存放在根目录下的`.npm`目录里
 6. 解压压缩包到当前项目的`node_modules`目录 
+

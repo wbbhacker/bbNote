@@ -41,7 +41,7 @@ app
 ​		  |-- components  // 公用组件
 
  		 |-- router // 路由
-
+ 	
  		 |-- store  // 状态管理
 
 ​          |-- views  // 页面

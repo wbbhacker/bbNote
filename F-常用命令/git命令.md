@@ -1,4 +1,4 @@
-### git命令
+### 1.git命令
 
 1. `git reset --hard commitId ` 
 
@@ -100,9 +100,23 @@
 
 https://segmentfault.com/q/1010000000140446
 
+19.删除分支
+
+`git branch -d branchName`  删除本地分支
+
+`git push  origin --delete branchName` 删除远程分支
+
+20.远程仓库操作
+
+​	`git remote `
 
 
-### git 提交功能备注
+
+
+
+
+
+### 2.git 提交功能备注
 
 feat: 新功能 （feature）
 fix: 修补 bug
