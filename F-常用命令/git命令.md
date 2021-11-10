@@ -132,3 +132,13 @@ revert: 恢复到以前的提交
 
 https://github.com/liuchengxu/git-commit-emoji-cn
 
+### 3.将子文件夹拆分成新仓库
+
+`git filter-repo --path FOLDER-NAME`
+
+https://docs.github.com/cn/get-started/using-git/splitting-a-subfolder-out-into-a-new-repository
+
+### 4.移动文件 [git mv](https://git-scm.com/docs/git-mv)
+
+`git mv <source> <destination>`
+
