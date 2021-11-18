@@ -257,11 +257,8 @@ The `displayName` string is used in debugging messages.
 
    A component should manage its own state, but it should not manage its own props. `props` is essentially "state that is managed by the component owner." That's why props are *immutable*.
 
-   [1]: https://codeburst.io/a-complete-guide-to-props-children-in-react-c315fab74e7c	"sldjs"
+   [1]: https://codeburst.io/a-complete-guide-to-props-children-in-react-c315fab74e7c
 
-   
-
-   
 
 ### 2.state
 

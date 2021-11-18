@@ -1,2 +1,2 @@
-## [PureComponent](https://reactjs.org/docs/react-api.html#reactpurecomponent)
+### [PureComponent](https://reactjs.org/docs/react-api.html#reactpurecomponent)
 
