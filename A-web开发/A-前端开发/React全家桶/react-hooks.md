@@ -22,7 +22,7 @@
 
 #### 3.Hooks 使用
 
-##### 1.useState（）
+##### [1.useState（）](https://reactjs.org/docs/hooks-state.html)
 
 定义：用于为函数组件引入状态
 
@@ -30,11 +30,21 @@
 
 ![image-20210507163203536](../../../image/image-20210507163203536.png)
 
-	参数是函数的情况：
-
-
+1. 参数是函数的情况：
 
 ![image-20210507163430530](../../../image/image-20210507163430530.png)
+
+2.  Using Multiple State Variables  方法可以被调用多次
+
+   ```react
+   function ExampleWithManyStates() {
+     // Declare multiple state variables!
+     const [age, setAge] = useState(42);
+     const [fruit, setFruit] = useState('banana');
+     const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+   ```
+
+   You **don’t have to** use many state variables. State variables can hold objects and arrays just fine, so you can still group related data together. However, unlike `this.setState` in a class, updating a state variable always *replaces* it instead of merging it.
 
 ###### 2.设置状态值方法的使用细节
 
@@ -237,3 +247,131 @@ function App() {
 
 export default App;
 ```
+
+#### 4.自定义hooks 
+
+> 记忆点：自定义hooks是一个函数名以'use'字符串开头的js函数。
+
+##### 1. FriendStatus 组件 与  FriendListItem 组件有相同的逻辑
+
+```javascript
+// FriendStatus 组件
+import React, { useState, useEffect } from 'react';
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+
+
+// FriendListItem 组件
+
+import React, { useState, useEffect } from 'react';
+
+function FriendListItem(props) {
+  const [isOnline, setIsOnline] = useState(null);
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  return (
+    <li style={{ color: isOnline ? 'green' : 'black' }}>
+      {props.friend.name}
+    </li>
+  );
+}
+
+```
+
+##### 2.提取组件相同的逻辑
+
+**A custom Hook is a JavaScript function whose name starts with ”`use`” and that may call other Hooks.**
+
+Traditionally in React, we’ve had two popular ways to share stateful logic between components: [render props](https://reactjs.org/docs/render-props.html) and [higher-order components](https://reactjs.org/docs/higher-order-components.html). We will now look at how Hooks solve many of the same problems without forcing you to add more components to the tree.
+
+When we want to share logic between two JavaScript functions, we extract it to a third function. Both components and Hooks are functions, so this works for them too!
+
+```javascript
+import { useState, useEffect } from 'react';
+
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
+    };
+  });
+
+  return isOnline;
+}
+```
+
+##### 3.使用自定义hooks
+
+```javascript
+function FriendStatus(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+
+function FriendListItem(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  return (
+    <li style={{ color: isOnline ? 'green' : 'black' }}>
+      {props.friend.name}
+    </li>
+  );
+}
+```
+
+##### 4.问题
+
+1. **Do I have to name my custom Hooks starting with “`use`”?** 
+
+   Please do. This convention is very important. Without it, we wouldn’t be able to automatically check for violations of [rules of Hooks](https://reactjs.org/docs/hooks-rules.html) because we couldn’t tell if a certain function contains calls to Hooks inside of it.
+
+2. **Do two components using the same Hook share state?**
+
+    No. Custom Hooks are a mechanism to reuse *stateful logic* (such as setting up a subscription and remembering the current value), but every time you use a custom Hook, all state and effects inside of it are fully isolated.
+
+3. **How does a custom Hook get isolated state?** 
+
+   Each *call* to a Hook gets isolated state. Because we call `useFriendStatus` directly, from React’s point of view our component just calls `useState` and `useEffect`. And as we [learned](https://reactjs.org/docs/hooks-state.html#tip-using-multiple-state-variables) [earlier](https://reactjs.org/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns), we can call `useState` and `useEffect` many times in one component, and they will be completely independent.
+
+##### 5.Tips
+
+1.  [Pass Information Between Hooks](https://reactjs.org/docs/hooks-custom.html#tip-pass-information-between-hooks)
+2. [`useYourImagination()`](https://reactjs.org/docs/hooks-custom.html#useyourimagination)
+
+[1]: https://reactjs.org/docs/hooks-custom.html
+
