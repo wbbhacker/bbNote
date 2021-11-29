@@ -873,6 +873,192 @@ Strictly saying, they’re not (in order to [allow Hook composition](https://ove
 
 ##### 4.Each Render Has Its Own… Everything
 
+```react
+// 点击五次会依次弹出
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(`You clicked ${count} times`);
+    }, 3000);
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+
+// class 组件的话， 弹出结果不一样了就
+componentDidUpdate() {
+    setTimeout(() => {
+      console.log(`You clicked ${this.state.count} times`);
+    }, 3000);
+  }
+
+// 可修改可以跟function 组件一致
+ componentDidUpdate() {
+    const count = this.state.count;
+    setTimeout(() => {
+      console.log(`You clicked ${count} times`);
+    }, 3000);
+  }
+```
+
+**It doesn’t matter whether you read from props or state “early” inside of your component.** 
+
+```react
+// 这两个是等价的
+function Example(props) {
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(props.counter);
+    }, 1000);
+  });
+  // ...
+}
+
+
+function Example(props) {
+  const counter = props.counter;
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(counter);
+    }, 1000);
+  });
+  // ...
+}
+```
+
+```react
+function Example() {
+  const [count, setCount] = useState(0);
+  const latestCount = useRef(count);
+
+  useEffect(() => {
+    // Set the mutable latest value
+    latestCount.current = count;
+    setTimeout(() => {
+      // Read the mutable latest value
+      console.log(`You clicked ${latestCount.current} times`);
+    }, 3000);
+  });
+  // ...
+```
+
+##### 5.Synchronization , Not Lifecycle
+
+**React synchronizes the DOM according to our current props and state.** There is no distinction between a “mount” or an “update” when rendering.
+
+You should think of effects in a similar way. **`useEffect` lets you \*synchronize\* things outside of the React tree according to our props and state.**
+
+Still, of course running all effects on *every* render might not be efficient. (And in some cases, it would lead to infinite loops.)
+
+##### 6.Teaching React to Diff Your Effects
+
+##### 7.Don’t Lie to React About Dependencies 
+
+```react
+function SearchResults() {
+  async function fetchData() {
+    // ...
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []); // Is this okay? Not always -- and there's a better way to write it.
+
+  // ...
+}
+```
+
+“But I only want to run it on mount!”, you’ll say. For now, remember: if you specify deps, ***all\* values from inside your component that are used by the effect \*must\* be there**. Including props, state, functions — anything in your component.
+
+
+
+##### 8.What Happens When Dependencies Lie
+
+**updater form**
+
+```react
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(count + 1);
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return <h1>{count}</h1>;
+}
+
+//方法一
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount(count + 1);
+  }, 1000);
+  return () => clearInterval(id);
+}, [count]);
+
+// 方法二 updater form
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(c => c + 1);
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+
+//handleClick 触发 count 为几 ，怎么修改达到预期？ 
+// https://overreacted.io/react-as-a-ui-runtime/#batching
+	const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+  }
+
+  function handleClick() {
+    increment();
+    increment();
+    increment();
+  }
+
+```
+
+##### 9.Functional Updates and Google Doc
+
+Remember how we talked about synchronization being the mental model for effects? An interesting aspect of synchronization is that you often want to keep the “messages” between the systems untangled from their state. For example, editing a document in Google Docs doesn’t actually send the *whole* page to the server. That would be very inefficient. Instead, it sends a representation of what the user tried to do.
+
+**However, even `setCount(c => c + 1)` isn’t that great.** It looks a bit weird and it’s very limited in what it can do. For example, if we had two state variables whose values depend on each other, or if we needed to calculate the next state based on a prop, it wouldn’t help us. Luckily, `setCount(c => c + 1)` has a more powerful sister pattern. Its name is `useReducer`.
+
+##### 10.Decoupling Updates fror
+
+**When setting a state variable depends on the current value of another state variable, you might want to try replacing them both with `useReducer`.**
+
+ A reducer lets you **decouple expressing the “actions” that happened in your component from how the state updates in response to them**.
+
+##### 11.Why useReducer Is the Cheat Mode of Hooks
+
+**Even in that case, `dispatch` identity is still guaranteed to be stable between re-renders.**
+
+You may be wondering: how can this possibly work? How can the reducer “know” props when called from inside an effect that belongs to another render? The answer is that when you `dispatch`, React just remembers the action — but it will *call* your reducer during the next render. At that point the fresh props will be in scope, and you won’t be inside an effect.
+
+**This is why I like to think of `useReducer` as the “cheat mode” of Hooks. It lets me decouple the update logic from describing what happened. This, in turn, helps me remove unnecessary dependencies from my effects and avoid re-running them more often than necessary.**
+
+##### 12.Moving Functions Inside Effects
+
+##### 13.But I Can’t Put This Function Inside an Effect
+
+
+
 
 
 
@@ -883,6 +1069,7 @@ Strictly saying, they’re not (in order to [allow Hook composition](https://ove
 [2]: https://segmentfault.com/a/1190000018639033	"精读《useEffect 完全指南》"
 [3]: https://overreacted.io/zh-hans/how-are-function-components-different-from-classes/	" How Are Function Components Different from Classes?"
 [4]: https://overreacted.io/a-complete-guide-to-useeffect/	"A Complete Guide to useEffect"
+[5]: https://overreacted.io/react-as-a-ui-runtime/#batching	"React as a UI Runtime"
 
 
 
