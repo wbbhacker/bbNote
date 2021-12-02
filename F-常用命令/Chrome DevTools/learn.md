@@ -1,7 +1,3 @@
-
-
-
-
 ### 1.DevTools learn
 
 > 1.https://github.com/ChromeDevTools/awesome-chrome-devtools
