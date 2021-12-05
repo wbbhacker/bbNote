@@ -110,6 +110,12 @@ https://segmentfault.com/q/1010000000140446
 
 ​	`git remote `
 
+21.缩写
+
+`git config --global alias.st status`
+
+`git config --global alias.cm commit`
+
 
 
 

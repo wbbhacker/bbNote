@@ -1057,7 +1057,108 @@ You may be wondering: how can this possibly work? How can the reducer “know”
 
 ##### 13.But I Can’t Put This Function Inside an Effect
 
+This is just a consequence of embracing the data flow and the synchronization mindset. **The same solution works for function props passed from parents:**
 
+```jsx
+function Parent() {
+  const [query, setQuery] = useState('react');
+
+  // ✅ Preserves identity until query changes  const fetchData = useCallback(() => {    const url = 'https://hn.algolia.com/api/v1/search?query=' + query;    // ... Fetch data and return it ...  }, [query]);  // ✅ Callback deps are OK
+  return <Child fetchData={fetchData} />
+}
+
+function Child({ fetchData }) {
+  let [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetchData().then(setData);
+  }, [fetchData]); // ✅ Effect deps are OK
+
+  // ...
+}
+```
+
+##### 14.Are Functions Part of the Data Flow?
+
+**With classes, function props by themselves aren’t truly a part of the data flow.**
+
+**With `useCallback`, functions can fully participate in the data flow.**
+
+ We can say that if the function inputs changed, the function itself has changed, but if not, it stayed the same. Thanks to the granularity provided by `useCallback`, changes to props like `props.fetchData` can propagate down automatically.
+
+Similarly, [`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo) lets us do the same for complex objects:
+
+```jsx
+function ColorPicker() {
+  // Doesn't break Child's shallow equality prop check
+  // unless the color actually changes.
+  const [color, setColor] = useState('pink');
+  const style = useMemo(() => ({ color }), [color]);
+  return <Child style={style} />;
+}
+```
+
+n **I want to emphasize that putting `useCallback` everywhere is pretty clunky.** It’s a nice escape hatch and it’s useful when a function is both passed down *and* called from inside an effect in some children. Or if you’re trying to prevent breaking memoization of a child component. But Hooks lend themselves better to [avoiding passing callbacks down](https://reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down) altogether.
+
+##### 15.Speaking of Race Conditions
+
+```jsx
+class Article extends Component {
+  state = {
+    article: null
+  };
+  componentDidMount() {
+    this.fetchData(this.props.id);
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.fetchData(this.props.id);
+    }
+  }
+  async fetchData(id) {
+    const article = await API.fetchArticle(id);
+    this.setState({ article });
+  }
+  // ...
+}
+```
+
+This is definitely better! But it’s still buggy. The reason it’s buggy is that the request may come out of order. So if I’m fetching `{id: 10}`, switch to `{id: 20}`, but the `{id: 20}` request comes first, the request that started earlier but finished later would incorrectly overwrite my state.
+
+This is called a race condition, and it’s typical in code that mixes `async` / `await` (which assumes something waits for the result) with top-down data flow (props or state can change while we’re in the middle of an async function).
+
+
+
+If the async approach you use supports cancellation, that’s great! You can cancel the async request right in your cleanup function.
+
+Alternatively, the easiest stopgap approach is to track it with a boolean:
+
+```jsx
+function Article({ id }) {
+  const [article, setArticle] = useState(null);
+
+  useEffect(() => {
+    let didCancel = false;
+
+    async function fetchData() {
+      const article = await API.fetchArticle(id);
+      if (!didCancel) {
+        setArticle(article);
+      }
+    }
+
+    fetchData();
+
+    return () => {
+      didCancel = true;
+    };
+  }, [id]);
+
+  // ...
+}
+```
+
+16.Raising the Bar
 
 
 
@@ -1067,13 +1168,13 @@ You may be wondering: how can this possibly work? How can the reducer “know”
 
 [1]: https://segmentfault.com/a/1190000018549675	"精度《Function VS Class 组件》"
 [2]: https://segmentfault.com/a/1190000018639033	"精读《useEffect 完全指南》"
-[3]: https://overreacted.io/zh-hans/how-are-function-components-different-from-classes/	" How Are Function Components Different from Classes?"
+[3]: https://overreacted.io/how-are-function-components-different-from-classes/	" How Are Function Components Different from Classes?"
 [4]: https://overreacted.io/a-complete-guide-to-useeffect/	"A Complete Guide to useEffect"
 [5]: https://overreacted.io/react-as-a-ui-runtime/#batching	"React as a UI Runtime"
 
 
 
-
+总结： class 组件与 函数式组件的不同？
 
 
 
