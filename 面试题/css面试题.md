@@ -1,3 +1,12 @@
+#### 1.`<table>`表格中tr hover 高亮比 td hover 高亮效果好  
+
+` <table>` 表格中数据量多的时候，`td` hover 高亮时，会有很明显的延迟。改为` tr` hover 延迟会好很多,同时要取消`td` hover。
+
+> 分析原因：
+>
+> 1. `.ant-table-tbody > tr.ant-table-row:hover` 比 `.ant-table-tbody > tr.ant-table-row:hover > td` 嵌套层级少，查找速度快
+> 2. `background:#E5E5E5; ` 写法浏览器最终会转化为 `background-color:rgb(240,240,240) `，所以直接写成`background-color:rgb(240,240,240)`会省去浏览器的计算，速度会得到很快提升。
+
 #### 2.flex 属性布局
 
 #### 3.css中行内元素和行内块元素空白间隙的问题
@@ -5,7 +14,7 @@
 在html代码中，如果把行内元素或者行内块元素写成下面这样的话，会出现空格的问题：
 
 ```
-<div class="wrapper">
+1<div class="wrapper">
   <span>我是行内元素</span>
   <span>我是行内元素</span>
   <span>我是行内元素</span>
@@ -78,8 +87,6 @@ display: -webkit-box;
 -webkit-line-clamp: 2;
 
 ```
-
-
 
 #### 5.web开发中动画效果的实现方法
 
@@ -291,67 +298,7 @@ px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕�
 
 1920*1024 前者是屏幕宽度总共有1920个像素,后者则是高度为1024个像素
 
-#### 13.介绍下BFC及其应用
-
-BFC 就是块级格式上下文，是页面盒模型布局中的一种 CSS 渲染模式，相当于 一个独立的容器，里面的元素和外部的元素相互不影响。
-
-创建BFC 的方式有：
-
-1. html根元素
-2. float浮动
-3. 绝对定位
-4. overflow 部位 visiable
-
-BFC 的主要作用是：
-
-1. 清楚浮动
-2. 防止同一BFC容器中的相邻元素间的外边距重叠问题
-
-#### 14.css3吸顶效果
-
-position:sticky
-
-```css
-<div class="header">
-
-</div>
-<nav>
-    用于显示粘性定位的头
-</nav>
-<div class="content">
-
-</div>
-<footer>
-    底部
-</footer>
-
-
-.header {
-	width:100%;
-	height:160px;
-	background:#87CEEB;
-}
-nav {
-	width:100%;
-	height:100px;
-	position:sticky;
-	top:0px;
-	background:#F98202;
-}
-.content {
-	width:100%;
-	background:blue;
-	height:1000px;
-}
-footer {
-	background:#87CEEB;
-}
-
-```
-
-
-
-15.浮动元素的影响
+#### 15.浮动元素的影响
 
 https://www.jianshu.com/p/4ea182f0ad12
 

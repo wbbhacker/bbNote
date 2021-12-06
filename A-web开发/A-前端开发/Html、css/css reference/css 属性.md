@@ -1,3 +1,5 @@
+[CSS reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+
 #### 1.pointer-events
 
 auto、none、svg的一些属性
@@ -9,6 +11,8 @@ auto、none、svg的一些属性
 content-box(default) | border-box |  inherit
 
 #### 3.Overflow:
+
+`overflow-y:scroll`
 
 #### 4.box-shadow
 
@@ -73,11 +77,102 @@ overflow-x:scroll;
 
 #### 12.user-select
 
+禁止用户选中文本。
+
+The **`user-select`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls whether the user can select text. This doesn't have any effect on content loaded as part of a browser's user interface (its [chrome](https://developer.mozilla.org/en-US/docs/Glossary/Chrome)), except in textboxes.
+
 #### 13.will-change
 
 will-change 属于允许你提前通知浏览器你可能会对某个元素做什么类型的操作，以便于浏览器在需要的时候采取适当的优化方案。
 
 > 不要使用will-change声明对太多属性或元素的更改
+
+#### 14.positions: sticky
+
+```html
+<div class="header">
+
+</div>
+<nav>
+    用于显示粘性定位的头
+</nav>
+<div class="content">
+
+</div>
+<footer>
+    底部
+</footer>
+
+<style>
+.header {
+	width:100%;
+	height:160px;
+	background:#87CEEB;
+}
+nav {
+	width:100%;
+	height:100px;
+	position:sticky;
+	top:0px;
+	background:#F98202;
+}
+.content {
+	width:100%;
+	background:blue;
+	height:1000px;
+}
+footer {
+	background:#87CEEB;
+}
+</style>
+```
+
+#### 15.Object-fit
+
+The object-fit CSS property sets how the content of a replaced element, such as an <img> or <video>, should be resized to fit its container.
+
+> video 视频撑满整个父div 可用 `object-fit:fill`
+
+#### 16.calc()
+
+```css
+width: calc(10px + 100px);
+width: calc(100% - 30px);
+width: calc(2em * 5);
+width: calc(var(--variable-width) + 20px);
+```
+
+#### 17.var()
+
+Using a custom property set on` :root`
+
+```css
+:root {
+  --main-bg-color: pink;
+}
+body {
+  background-color: var(--main-bg-color);
+}
+```
+
+Custom properties with fallbacks for use when the property has not been set
+
+```css
+/* Fallback */
+/* In the component’s style: */
+.component .header {
+  color: var(--header-color, blue); /* header-color isn’t set, and so remains blue, the fallback value */
+}
+
+.component .text {
+  color: var(--text-color, black);
+}
+
+/* In the larger application’s style: */
+.component {
+  --text-color: #080;
+}
+```
 
 
 
