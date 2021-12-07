@@ -89,6 +89,8 @@ will-change 属于允许你提前通知浏览器你可能会对某个元素做�
 
 #### 14.positions: sticky
 
+> Relative、absolute、static、fixed、sticky
+
 ```html
 <div class="header">
 
@@ -174,5 +176,11 @@ Custom properties with fallbacks for use when the property has not been set
 }
 ```
 
+#### 18.margin-top、padding-top
 
+ `margin-top:50%` 的百分比是相对于父元素的`width`，不管父元素的`position` 设置为何值。
+
+> padding-top 也是 ，见2.3-Layout-contenting block 关于包含块的定义
+
+#### 
 
