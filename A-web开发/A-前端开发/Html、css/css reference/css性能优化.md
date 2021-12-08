@@ -13,3 +13,14 @@
 按照上述1 2 3 4 5的顺序进行书写。
 
 **目的**：减少浏览器reflow（回流），提升浏览器渲染dom的性能
+
+#### 2.css3 选择器优化
+
+#### 3.css3 属性优化
+
+#### 4.构建高性能的css动画
+
+
+
+[1]: https://web.dev/animations-guide/	"How to create high-performance CSS animations"
+
