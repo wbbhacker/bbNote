@@ -32,7 +32,7 @@ animation:run 1s,jump 1s;
 
 1. transform 为什么比left、top性能好？
 
-   transform 属性不会触发浏览器的repaint,而left、top则会一直触发repaint
+   transform 属性不会触发浏览器的repaint,而left、top则会一直触发repaint，layout shift。
 
 2. css3开启硬件加速，使GPU发挥性能
 

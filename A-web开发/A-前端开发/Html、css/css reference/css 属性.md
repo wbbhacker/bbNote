@@ -182,5 +182,79 @@ Custom properties with fallbacks for use when the property has not been set
 
 > padding-top 也是 ，见2.3-Layout-contenting block 关于包含块的定义
 
-#### 
+#### 19.letter-spacing
+
+The **`letter-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal spacing behavior between text characters. 
+
+#### 20.text-align、text-justify、vertical-align
+
+##### [1.text-algin](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align)
+
+The **`text-align`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal alignment of the content inside a block element or table-cell box. This means it works like [`vertical-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align) but in the horizontal direction.
+
+##### [2.text-justify](https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing)
+
+The **`text-justify`** CSS property sets what type of justification should be applied to text when [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align)`: justify;` is set on an element.
+
+[3.vertical-align](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)
+
+The **`vertical-align`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets vertical alignment of an inline, inline-block or table-cell box.
+
+#### 21.align-content、align-items、align-self
+
+When aligning items on **the block axis** you will use the properties that begin `align-`:
+
+##### [1.align-content](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content)
+
+The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`align-content`** property sets the distribution of space between and around content items along a [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)'s cross-axis or a [grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)'s block axis.
+
+tips:This property has no effect on single line flex containers (i.e. ones with `flex-wrap: nowrap`).
+
+##### [2.align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
+
+The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`align-items`** property sets the [`align-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self) value on all direct children **as a group**. In Flexbox, it controls the alignment of items on the [Cross Axis](https://developer.mozilla.org/en-US/docs/Glossary/Cross_Axis). In Grid Layout, it controls the alignment of items on the Block Axis within their [grid area](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas).
+
+##### [3.align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
+
+The **`align-self`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property overrides a grid or flex item's [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) value. In Grid, it aligns the item inside the [grid area](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas). In Flexbox, it aligns the item on the [cross axis](https://developer.mozilla.org/en-US/docs/Glossary/Cross_Axis).
+
+#### 22.justify-content、justify-items、justify-self
+
+When aligning items on **the inline axis** you will use the properties which begin with `justify-`:
+
+##### [1.justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-content`** property defines how the browser distributes space between and around content items along the [main-axis](https://developer.mozilla.org/en-US/docs/Glossary/Main_Axis) of a flex container, and the inline axis of a grid container.
+
+tips:The alignment is done after the lengths and auto margins are applied, meaning that, if in a [Flexbox layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout) there is at least one flexible element, with [`flex-grow`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) different from `0`, it will have no effect as there won't be any available space.
+
+
+
+> `justify-content`与`align-content` 分别定义内容项在 main axis 与 cross axis 如何分配空间。且 `aligin-conten`在单行flex container 无效。 `justify-content` 也有类似约束。见上
+
+##### [2.justify-items](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items)
+
+The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-items`** property defines the default [`justify-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self) for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
+
+The effect of this property is dependent of the layout mode we are in:
+
+- In block-level layouts, it aligns the items inside their containing block on the inline axis.
+
+- For absolutely-positioned elements, it aligns the items inside their containing block on the inline axis, accounting for the offset values of top, left, bottom, and right.
+
+- In table cell layouts, this property is *ignored* ([more](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Block_Abspos_Tables) about alignment in block, absolute positioned and table layout)
+
+- In flexbox layouts, this property is *ignored* ([more](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_in_Flexbox) about alignment in Flexbox)
+
+- In grid layouts, it aligns the items inside their grid areas on the inline axis ([more](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout) about alignment in grid layouts)
+
+  > 试验的出目前只在 grid 布局中生效
+
+[3.justify-self](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self)
+
+The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-self`** property sets the way a box is justified inside its alignment container along the appropriate axis.
+
+
+
+
 

@@ -194,3 +194,231 @@ para.textContent = 'My computed font-size is ' +
 #### 7.背景图像百分之百显示
 
 `background-size:100% 100%; `
+
+#### 8.像素显示问题
+
+iphone6的屏幕宽度为375px，设计师做的`视觉稿`一般是750px，也就是2x，这个时候设计师在`视觉稿`上画了1px的边框，于是你就写了“`border-width:1px`”，**so...1px边框问题产生了**。
+
+对设计师来说它的1px是相对于750px的（物理像素），对你来说你的1px是相对于375px的（css像素）“**实际上你应该是border-width:0.5px**”。
+
+window.**devicePixelRatio**  = 物理像素/css像素
+
+解决方案：
+
+##### 1.媒体查询
+
+```javascript
+.border { border: 1px solid #999 }
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .border { border: 0.5px solid #999 }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 3) {
+    .border { border: 0.333333px solid #999 }
+}
+```
+
+优点：方便      缺点：要支持媒体查询
+
+##### 2.Transform 加伪类标签
+
+```less
+// less
+.border-1px{
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border:1px solid red;
+    color: red;
+    transform-origin: left top
+    transform: scale(1);
+    pointer-events: none; /* 防止点击触发 */
+    box-sizing: border-box;
+    @media screen and (min-device-pixel-ratio:2),(-webkit-min-device-pixel-ratio:2){
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+    }
+    @media screen and (min-device-pixel-ratio:3),(-webkit-min-device-pixel-ratio:3){
+      width: 300%;
+      height: 300%;
+      transform: scale(0.33);
+    }
+  }
+}
+```
+
+- 优点：直接通过CSS实现，无论是圆角还是直角都可以实现。
+- 缺点：代码量比较多，占有了伪元素。
+
+##### 3.使用box-shadow
+
+```html
+<span class="border-1px">1像素边框问题</span>
+
+.border-1px{
+  box-shadow: 0px 0px 1px 0px red inset;
+}
+```
+
+- 优点：直接通过CSS实现，无论是圆角还是直角都可以实现。
+- 缺点：由于是使用阴影的方式，边框线的颜色会比真实颜色淡一点。
+- 
+
+##### 4.Border-image、background-image
+
+在devicePixelRatio 为2下，准备一张上部的1px颜色为透明，下部的1px使用视觉规定的border的颜色的2px 高的图片
+
+devicePixelRatio为3 则需要1px为颜色 2px为透明  太麻烦了 丢弃
+
+##### 5.多背景渐变实现
+
+与background-image方案类似，只是将图片替换为css3渐变。设置1px的渐变背景，50%有颜色，50%透明。 
+
+1. 根据设备像素设置viewport，代码只需要写正常像素就可以了。
+
+   ```html
+   <html>
+     <head>
+         <title>1px question</title>
+         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+         <meta name="viewport" id="WebViewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">        
+         <style>
+             html {
+               font-size: 1px;
+             }            
+             * {
+               padding: 0;
+               margin: 0;
+             }
+             .top_b {
+               border-bottom: 1px solid #E5E5E5;
+             }
+             .a,.b {
+               box-sizing: border-box;
+               margin-top: 1rem;
+               padding: 1rem;                
+               font-size: 1.4rem;
+             }
+   
+             .a {
+                 width: 100%;
+             }
+   
+             .b {
+                 background: #f5f5f5;
+                 width: 100%;
+             }
+         </style>
+         <script>
+             var viewport = document.querySelector("meta[name=viewport]");
+             //下面是根据设备像素设置viewport
+             if (window.devicePixelRatio == 1) {
+                 viewport.setAttribute('content', 'width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
+             }
+             if (window.devicePixelRatio == 2) {
+                 viewport.setAttribute('content', 'width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no');
+             }
+             if (window.devicePixelRatio == 3) {
+                 viewport.setAttribute('content', 'width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no');
+             }
+             var docEl = document.documentElement;
+             var fontsize = 32* (docEl.clientWidth / 750) + 'px';
+             docEl.style.fontSize = fontsize;
+         </script>
+     </head>
+     <body>
+         <div class="top_b a">下面的底边宽度是虚拟1像素的</div>
+         <div class="b">上面的边框宽度是虚拟1像素的</div>
+     </body>
+   </html>
+   
+   ```
+
+#### 9.空元素不支持 `::before，::after`
+
+- IE 不支持的元素有：img，input，select，textarea。
+- FireFox 不支持的元素有：input，select，textarea。
+- Chrome 不支持的元素有：input[type=text]，textarea。
+
+#### 10.垂直居中
+
+##### 1.line-height
+
+##### 2.transform
+
+##### 3.flex
+
+```css
+.use-flexbox{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:200px;
+    height:150px;
+    border:1px solid #000;
+}
+.use-flexbox div{
+    width:100px;
+    height:50px;
+    background:#099;
+}
+```
+
+##### 4.绝对定位 `position:absolute`
+
+##### 5.calc() 动态计算
+
+#### 11.p 的颜色
+
+ 如果`class="classA classB"` 与`class="classB classA"` 相等吗？
+
+> 相等，与类的书写顺序无关。
+>
+> 只跟classA与classB的定义位置顺序有关。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .classA{
+            color:blue
+        }
+        .classB{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <p class="classA classB">ssssss</p>
+</body>
+</html>
+```
+
+#### 12.1rem、1em、1vh、1px 各自代表的含义
+
+##### 1.`1rem`
+
+rem是全部的长度都相对于根元素<html>元素。通常做法是给html元素设置一个字体大小，然后其他元素的长度单位就为rem。
+
+##### 2.`1em`
+
+- 子元素字体大小的em是相对于父元素字体大小
+- 元素的width/height/padding/margin用em的话是相对于该元素的font-size
+
+##### 3.`vw/vh`
+
+全称是 Viewport Width 和 Viewport Height，视窗的宽度和高度，相当于 屏幕宽度和高度的 1%，不过，处理宽度的时候%单位更合适，处理高度的 话 vh 单位更好。
+
+##### 4.`px`
+
+px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。
+
