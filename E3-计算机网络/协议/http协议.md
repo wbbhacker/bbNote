@@ -1,4 +1,4 @@
-## 一、http属性
+### 1、http1属性
 
 #### 1.**Content-Type**
 
@@ -34,3 +34,7 @@ res.end(`
 #### 3.Options
 
 方法请求
+
+### 2.http2
+
+### 3.http3
