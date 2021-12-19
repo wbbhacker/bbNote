@@ -1,3 +1,6 @@
+[1]: https://www.w3.org/Protocols/rfc2616/rfc2616.html	"http1.1 rfc"
+[2]: https://http2.github.io/	"http2"
+
 ### 1、http1属性
 
 #### 1.**Content-Type**
@@ -37,4 +40,5 @@ res.end(`
 
 ### 2.http2
 
-### 3.http3
+### 3.http3 
+
