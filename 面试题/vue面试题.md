@@ -8,6 +8,8 @@ https://www.cnblogs.com/cxddgz/p/13153570.html
 
 通过vue的插件系统，用vue.mixin混入到全局，在每个组件的生命周期的某个阶段注入组件实例。
 
+onhashchange  
+
 #### 3.请你说一下vue的设计架构
 
  vue2采用的是典型的混入式架构，类似于express和jquery，各部分分模块开发，再通过一个mixin去混入到最终暴露到全局的类上。
