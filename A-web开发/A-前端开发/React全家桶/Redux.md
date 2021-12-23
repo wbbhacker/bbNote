@@ -12,3 +12,6 @@
 * State是只读的
 * Reducer必须是一个纯函数
 
+https://www.clariontech.com/blog/mvc-vs-flux-vs-redux-the-real-differences
+
+http://fluxxor.com/guides/installation.html
