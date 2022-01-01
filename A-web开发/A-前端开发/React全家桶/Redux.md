@@ -1,4 +1,4 @@
-### Redux
+### 1.Redux
 
 #### 1.Top-Level Exports
 
@@ -315,7 +315,85 @@ It is an advanced API. You might need this if your app implements code splitting
 
 1. `nextReducer` (*Function*) The next reducer for the store to use.
 
-### 深入浅出Redux原理
+
+
+### 2.react-redux
+
+#### 1.[Provider](https://react-redux.js.org/api/provider)
+
+`store` ([Redux Store](https://redux.js.org/api/store)) The single Redux `store` in your application.
+
+`children` (ReactElement) The root of your component hierarchy.
+
+`context` You may provide a context instance. If you do so, you will need to provide the same context instance to all of your connected components as well. Failure to provide the correct context results in runtime error:
+
+```react
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+
+import { App } from './App'
+import createStore from './createReduxStore'
+
+const store = createStore()
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+```
+
+#### 2.[Hooks](https://react-redux.js.org/api/hooks)
+
+##### 1.useSelector()
+
+##### 2.useDispatch()
+
+##### 3.useStore()
+
+##### 4.useActions()
+
+##### 5.useShallowEqualSelector()
+
+#### 3.[connect()](https://react-redux.js.org/api/connect)
+
+```javascript
+function connect(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?)
+```
+
+#### 4.[connectAdvanced()](https://react-redux.js.org/api/connect-advanced)
+
+#### 5.[batch()](https://react-redux.js.org/api/batch)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 3.深入浅出Redux原理
 
 ##### **1.Redux 数据流向**
 
