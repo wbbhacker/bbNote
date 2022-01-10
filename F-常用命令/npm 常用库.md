@@ -52,7 +52,7 @@ Terminals 输入对象
 
  	`Babel parser` 和 `generator`
 
-
+#### 9.nodemon 重启服务/脚本
 
 ### 3.前端工程化
 
