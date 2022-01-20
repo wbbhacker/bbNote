@@ -116,7 +116,31 @@ https://segmentfault.com/q/1010000000140446
 
 `git config --global alias.cm commit`
 
+22.git 回滚commit  到远程分支
 
+1. 查看
+
+`git log`
+
+2. reset --hard 到 'git reset hard test first' 版本
+
+`git reset --hard 45f5c01d0dd4cb83f25bc1ea7b82b0348600a041`
+
+3. push 到远程
+
+正常推送会被拒绝[git push -u origin master]
+
+`git push -u origin master`
+
+需要强制推送[git push -u -f origin master]
+
+`git push -u -f origin master`
+
+> 其他人的库，直接git pull 可能回退不了，要执行 `git reset --hard origin/testing`
+>
+> 因为你是force push，对比之下，之前已经pull下来的会当作是本地的提交，刚刚这个命令，就相当于“抛弃本地所有提交”，这样就一致了
+
+https://www.cnblogs.com/eternityz/p/13201595.html
 
 
 
