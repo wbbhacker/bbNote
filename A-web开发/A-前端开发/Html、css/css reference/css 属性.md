@@ -254,6 +254,20 @@ The effect of this property is dependent of the layout mode we are in:
 
 The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-self`** property sets the way a box is justified inside its alignment container along the appropriate axis.
 
+[23.background:linear-gradient()](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient())
+
+> 可以用来做图表的百分比背景条
+
+```javascript
+ return (
+   //这么设置 背景条是一段一段的
+   `linear-gradient(to right, rgba(${r},0,0,0.2), rgba(${r},0,0,0.2) ${perc}%, ` +
+   `rgba(0,0,0,0.01) ${perc}%, rgba(0,0,0,0.001) 100%)`
+ );
+//eg:background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+//                  url("../../media/examples/lizard.png");
+```
+
 
 
 
