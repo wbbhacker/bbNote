@@ -422,3 +422,13 @@ rem是全部的长度都相对于根元素<html>元素。通常做法是给html�
 
 px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。
 
+### 13.Table cell 不换行
+
+`td`、`th`、`tr`设置：
+
+```css
+word-break: keep-all; // 这种情况在中文下，也不会换行
+word-wrap:break-word; // 英文不会换行 
+white-space: nowrap;  // 如果中间有空格，在空格处默认会换行，如果需要不换行，使用下面样式
+```
+
