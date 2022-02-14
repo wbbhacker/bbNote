@@ -46,3 +46,6 @@ let nestedProp = obj.first?.second;
 ```
 
 ### debugger
+
+#### [??](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
+
