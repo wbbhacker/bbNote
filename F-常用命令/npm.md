@@ -55,7 +55,12 @@ http://www.conardli.top/blog/article/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%
 
 ##### 7.npm cache
 
-##### 8.`npm install 包名@版本号 -S `
+8.
+
+[]: 
+[]: 
+
+npm install 包名@版本号 -S `
 
 
 
