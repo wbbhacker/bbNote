@@ -170,3 +170,9 @@ https://docs.github.com/cn/get-started/using-git/splitting-a-subfolder-out-into-
 
 `git mv <source> <destination>`
 
+### 5.回退版本
+
+`git reset --soft <commit>`  reset only HEAD
+
+`git reset --hard <commit>`   reset HEAD, index and working tree
+

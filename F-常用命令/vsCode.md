@@ -33,3 +33,9 @@ Command + K Command + 0 折叠全部代码块
 Command + K Command + J 展开全部代码块
 ```
 
+### 4.find 过滤文件
+
+#### 1.superset
+
+`*.test.ts,*.test.tsx,*.test.js,*_spec.jsx,*_spec.tsx,`
+
