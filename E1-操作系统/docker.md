@@ -88,6 +88,10 @@
 
 打开/关闭/重启docker服务：sudo service docker start/stop/restart  
 
+start docker
+
+` sudo systemctl start docker`
+
 ### 4.与容器交互模式
 
 ` docker exec -it containerID /bin/sh`

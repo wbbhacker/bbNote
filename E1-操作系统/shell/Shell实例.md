@@ -11,7 +11,7 @@ mkdir /usr/local/node
 2. 下载node 文件
 
 ```shell
-wget https://nodejs.org/dist/v12.15.0/node-v12.15.0-linux-x64.tar.gz
+wget https://nodejs.org/dist/v12.15.0/node-v12.15.0-linux-x64.tar.xz
 ```
 
 3. 解压node 
