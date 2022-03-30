@@ -138,8 +138,6 @@ ps aux | grep "nginx" #查看进程 并 筛选 nginx 进程
 
 ```
 
-
-
 #### 16.`telnet`
 
 ```shell
