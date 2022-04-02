@@ -432,3 +432,15 @@ word-wrap:break-word; // 英文不会换行
 white-space: nowrap;  // 如果中间有空格，在空格处默认会换行，如果需要不换行，使用下面样式
 ```
 
+### 14.flex 属性 设置高度失效
+
+给元素设置 vh
+
+```css
+div{
+	flex:0 0 200px;
+	height:calc(100vh - 84px);
+}
+//设置 height：100% 不生效，可用100vh来做。
+```
+
