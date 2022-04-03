@@ -1,6 +1,6 @@
-## mac
+### mac
 
-### 常用命令
+#### 1.常用命令
 
 1. `Command+Shift+.`
 
@@ -22,9 +22,7 @@
 
    关闭所有访达窗口，然后打开一个窗口，按住`option`键并调整好你希望的窗口大小，然后关闭当前窗口，下次打开就默认是你设置的窗口大小了
 
-### 常用软件
-
-
+#### 2.常用软件
 
 1. ##### 日常软件
 
@@ -65,14 +63,14 @@
    25. xmind 思维导图工具
    26. cleanMyMac mac系统清理软件
 
-### 关闭进程
+#### 3.关闭进程
 
 ```
 sudo mdutil -a -i on/off  //打开/关闭Spotlight进程
 sudo launchctl unload -w /System/Library/LaunchAgents/com.apple.Spotlight.plist //关闭Spotlight进程
 ```
 
+#### 4.重装系统
 
-
-
+https://support.apple.com/zh-cn/guide/mac-help/mchlp1599/10.15/mac/10.15
 
