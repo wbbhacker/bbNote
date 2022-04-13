@@ -12,4 +12,5 @@ https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Installable_PW
 
 3.Push API 、 Notification API
 
-4.storage、 indexedDB
+4.storage、 indexedDB 
+
