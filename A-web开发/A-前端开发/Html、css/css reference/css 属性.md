@@ -268,7 +268,13 @@ The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-self`** p
 //                  url("../../media/examples/lizard.png");
 ```
 
+#### 24. border-collapse
 
+`position:sticky ` 做粘黏效果时，`border-collapse` 要设置边框不共用，不然滚动时边框会发生滚动
 
-
+```css
+table{
+	border-collapse:separate !important
+}
+```
 

@@ -16,6 +16,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你想�
 
 ```
 
+https://blog.csdn.net/q258523454/article/details/84555847
+
 #### 2.win 下重置mysql 8.0 root密码
 
 1. 关闭mysql 服务
