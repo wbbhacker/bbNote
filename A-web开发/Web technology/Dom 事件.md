@@ -306,9 +306,9 @@ document.dispatchEvent(ev);
 
         如果同一个节点对于同一个事件指定了多个监听函数，这些函数会根据添加的顺序依次调用。只要其中有一个监听函数调用了stopImmediatePropagation方法，其他的监听函数就不会再执行了。
 
+### [2.ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
 
-
-
+The **`ResizeObserver`** interface reports changes to the dimensions of an [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element)'s content or border box, or the bounding box of an [`SVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement).
 
 
 
