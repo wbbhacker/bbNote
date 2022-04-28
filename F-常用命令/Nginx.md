@@ -21,7 +21,7 @@ nginx -t
 nginx -s reload
 ```
 
-##### 4.停止服务
+#### 4.停止服务
 
 ```nginx
 nginx -s stop #立即停止服务，无论进程是否在工作，都直接停止进程
