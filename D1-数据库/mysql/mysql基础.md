@@ -8,7 +8,23 @@
 
 >  mysql 默认端口为：3306
 
-#### 2.数据库操作
+#### 2.mysql 服务启动
+
+##### 1.mac 上启动
+
+```shell
+mysql.server start/stop/restart
+```
+
+##### 2.linux 启动
+
+```shell
+systemctl restart mysqld
+```
+
+
+
+#### 3.数据库操作
 
 ##### 1.查看当前使用的数据库
 
