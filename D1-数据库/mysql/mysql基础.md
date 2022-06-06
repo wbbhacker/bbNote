@@ -14,6 +14,7 @@
 
 ```shell
 mysql.server start/stop/restart
+brew services stop mysql // brew 停止mysql
 ```
 
 ##### 2.linux 启动
