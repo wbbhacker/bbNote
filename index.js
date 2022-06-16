@@ -4,10 +4,9 @@ import imageminPngquant from 'imagemin-pngquant';
 import imageminGifsicle from 'imagemin-gifsicle';
 // const imageminGifsicle = require('imagemin-gifsicle');
 
-console.log('start...')
+console.log('开始压缩...')
 
-const files = await imagemin(['image/*.{jpg,png,gif}'], {
-	destination: 'build/',
+const option  = {
 	plugins: [
     imageminJpegtran({
       quality:80
@@ -19,6 +18,10 @@ const files = await imagemin(['image/*.{jpg,png,gif}'], {
 			quality: [0.6, 0.8]
 		})
 	]
-});
+}
 
-console.log('end!!')
+await imagemin(['image/*.{jpg,png,gif}'], { ...option, ...{ destination: 'build/' }});
+await imagemin(['image/ali/*.{jpg,png,gif}'], { ...option, ...{ destination: 'build/ali/'}});
+await imagemin(['image/s/*.{jpg,png,gif}'], { ...option,...{ destination: 'build/s/'}});
+
+console.log('压缩结束')
