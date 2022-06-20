@@ -18,6 +18,16 @@ markdonw 文本处理
 
 DOMPurify is a DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG.
 
+#### 6.chalk
+
+console.log 颜色库
+
+#### 7.globby
+
+User-friendly glob matching   
+
+> 路径匹配
+
 
 
 ### 2.npm 后端开发库
@@ -57,6 +67,10 @@ Terminals 输入对象
  	`Babel parser` 和 `generator`
 
 #### 9.nodemon 重启服务/脚本
+
+#### 10.[Shelljs](https://www.npmjs.com/package/shelljs)
+
+ShellJS is a portable **(Windows/Linux/OS X)** implementation of Unix shell commands on top of the Node.js API.
 
 ### 3.前端工程化
 
