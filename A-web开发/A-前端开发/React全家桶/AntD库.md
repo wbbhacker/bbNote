@@ -8,3 +8,6 @@
     <Table rowKey='id' dataSource={data} columns={TableColums}></Table>
 ```
 
+### 2.`<Input>` onChange 事件执行 setState 会导致输入很卡顿。
+
+使用`onBlur`事件
