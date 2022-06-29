@@ -11,3 +11,10 @@
 ### 2.`<Input>` onChange 事件执行 setState 会导致输入很卡顿。
 
 使用`onBlur`事件
+
+#### 3.Dropdown、select下拉相对于父元素滚动,设置`getPopupContainer`属性
+
+```react
+<Dropdown overlay={menu} placement="bottomLeft" trigger={['click']} getPopupContainer={triggerNode => triggerNode.parentNode}>
+```
+
