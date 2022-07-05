@@ -1162,10 +1162,6 @@ function Article({ id }) {
 
 
 
-
-
-
-
 [1]: https://segmentfault.com/a/1190000018549675	"精度《Function VS Class 组件》"
 [2]: https://segmentfault.com/a/1190000018639033	"精读《useEffect 完全指南》"
 [3]: https://overreacted.io/how-are-function-components-different-from-classes/	" How Are Function Components Different from Classes?"
@@ -1175,8 +1171,6 @@ function Article({ id }) {
 
 
 总结： class 组件与 函数式组件的不同？
-
-
 
 
 
