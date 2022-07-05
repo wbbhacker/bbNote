@@ -1,24 +1,34 @@
-## npm
+### npm
 
-### 1.npm 知识
+#### npm 知识
 
-##### 全局安装路径
+##### 1.全局安装路径
 
 ​	Mac上npm 包的全局安装路：径`usr/local/lib/node_modules`
 
-##### --save与--save-dev 的区别
+##### 2.--save与--save-dev 的区别
 
 ​	--save 添加到 dependencies 中,记录的都是项目运行时需要的文件
 
 ​	--save-dev 添加到
 
-##### 库的版本控制
+##### 3.库的版本控制
 
 ​	`>=` `^` `*`
 
 http://www.conardli.top/blog/article/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%EF%BC%88%E4%B8%80%EF%BC%89npm%E5%8C%85%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%EF%BC%9F.html
 
-### 2.常用命令
+##### 4.`npm install` 报错
+
+![image-20220704161819930](../../image/image-20220704161819930.png)
+
+Peer Dependencies
+
+`peerDependency` 可以避免类似的核心依赖库被重复下载的问题。
+
+
+
+#### 2.常用命令
 
 ##### 1.npm install
 
@@ -55,18 +65,15 @@ http://www.conardli.top/blog/article/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%
 
 ##### 7.npm cache
 
-8.
-
-[]: 
-[]: 
+##### 8.版本号
 
 npm install 包名@版本号 -S `
 
 
 
-## npx
+### npx
 
-1. npx 想要解决的主要问题，就是调用项目内部安装的模块
+#### 1.npx 想要解决的主要问题，就是调用项目内部安装的模块
 
 npm 调用内部模块方法
 
@@ -81,11 +88,11 @@ npx 调用内部模块方法
 npx mocha --version
 ```
 
-2. 避免全局安装
+#### 2.避免全局安装
 
-   `create-react-app`这个模块是全局安装，npx 可以运行它，而且不进行全局安装。
+`create-react-app`这个模块是全局安装，npx 可以运行它，而且不进行全局安装。
 
-   `npx create-react-app my-react-app`
+`npx create-react-app my-react-app`
 
 
 

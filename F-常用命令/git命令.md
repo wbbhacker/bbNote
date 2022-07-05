@@ -176,3 +176,14 @@ https://docs.github.com/cn/get-started/using-git/splitting-a-subfolder-out-into-
 
 `git reset --hard <commit>`   reset HEAD, index and working tree
 
+### 6.取消新增的文件
+
+`git clean`是从工作目录中移除没有track的文件.
+
+通常的参数是`git clean -df`:
+
+-d表示同时移除目录,-f表示force,因为在git的配置文件中, clean.requireForce=true,如果不加-f,clean将会拒绝执行.
+
+### 7.放弃修改
+
+`git checkout .`
