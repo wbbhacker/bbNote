@@ -72,6 +72,32 @@ Terminals 输入对象
 
 ShellJS is a portable **(Windows/Linux/OS X)** implementation of Unix shell commands on top of the Node.js API.
 
+#### 11.[ini](https://www.npmjs.com/package/ini)
+
+An ini format parser and serializer for node.
+
+#### 12.编码解析转化
+
+#### [iconv-lite](https://www.npmjs.com/package/iconv-lite)
+
+iconv-lite: Pure JS character encoding conversion
+
+#### 13.[morgan](https://www.npmjs.com/package/morgan)
+
+HTTP request logger middleware for node.js
+
+#### 14.[async](https://www.npmjs.com/package/async)
+
+Async is a utility module which provides straight-forward, powerful functions for working with [asynchronous JavaScript](http://caolan.github.io/async/v3/global.html). Although originally designed for use with [Node.js](https://nodejs.org/) and installable via `npm i async`, it can also be used directly in the browser. A ESM/MJS version is included in the main `async` package that should automatically be used with compatible bundlers such as Webpack and Rollup.
+
+#### 15.[Yargs](https://www.npmjs.com/package/yargs)
+
+Yargs helps you build interactive command line tools, by parsing arguments and generating an elegant user interface.
+
+#### 16.[commander](https://www.npmjs.com/package/commander)
+
+The complete solution for [node.js](http://nodejs.org/) command-line interfaces.
+
 ### 3.前端工程化
 
 #### 1.tapable
@@ -103,6 +129,8 @@ webpack-dev-middleware
 #### [1.puppeteer 爬虫](https://github.com/puppeteer/puppeteer)
 
 Puppeteer is a Node library which provides a high-level API to control Chrome or Chromium over the [DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/). Puppeteer runs [headless](https://developers.google.com/web/updates/2017/04/headless-chrome) by default, but can be configured to run full (non-headless) Chrome or Chromium.
+
+#### 
 
 
 
