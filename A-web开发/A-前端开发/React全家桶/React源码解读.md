@@ -1,4 +1,4 @@
-## 1. 配置 React 源码本地调试环境
+##  1. 配置 React 源码本地调试环境
 
 1. 使用 create-react-app 脚手架创建项目
 
@@ -2771,4 +2771,3 @@ function commitHookEffectListMount(tag: number, finishedWork: Fiber) {
 }
 ```
 
-![联系方式](https://s.zceme.cn/fed/cover-h.jpg)

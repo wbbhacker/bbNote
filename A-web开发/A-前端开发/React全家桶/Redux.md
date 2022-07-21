@@ -369,30 +369,6 @@ function connect(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### 3.深入浅出Redux原理
 
 ##### **1.Redux 数据流向**
