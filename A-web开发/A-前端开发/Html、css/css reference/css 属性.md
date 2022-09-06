@@ -230,7 +230,7 @@ tips:The alignment is done after the lengths and auto margins are applied, meani
 
 
 
-> `justify-content`与`align-content` 分别定义内容项在 main axis 与 cross axis 如何分配空间。且 `aligin-conten`在单行flex container 无效。 `justify-content` 也有类似约束。见上
+> `justify-content`与`align-content` 分别定义内容项在 main axis 与 cross axis 如何分配空间。且 `aligin-content`在单行flex container 无效。 `justify-content` 也有类似约束。见上
 
 ##### [2.justify-items](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items)
 
@@ -250,11 +250,11 @@ The effect of this property is dependent of the layout mode we are in:
 
   > 试验的出目前只在 grid 布局中生效
 
-[3.justify-self](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self)
+##### [3.justify-self](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self)
 
 The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-self`** property sets the way a box is justified inside its alignment container along the appropriate axis.
 
-[23.background:linear-gradient()](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient())
+#### [23.background:linear-gradient()](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient())
 
 > 可以用来做图表的百分比背景条
 
