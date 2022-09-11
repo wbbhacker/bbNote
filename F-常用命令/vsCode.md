@@ -39,3 +39,8 @@ Command + K Command + J 展开全部代码块
 
 `*.test.ts,*.test.tsx,*.test.js,*_spec.jsx,*_spec.tsx,`
 
+### 5.vue 文件单引号 格式化为双引号问题
+
+通过在项目更目录下 `.prettierrc.js` 设置配置文件
+
+https://stackoverflow.com/questions/53672888/vscode-not-changing-double-quotes-to-single-quotes-in-template-when-using-vetu
