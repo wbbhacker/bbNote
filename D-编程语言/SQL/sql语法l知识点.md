@@ -203,11 +203,26 @@ SELECT field1, field2,...fieldN FROM table_name1, table_name2...
 ORDER BY field1 [ASC [DESC][默认 ASC]], [field2...] [ASC [DESC][默认 ASC]]
 ```
 
+> asc 升序  desc 倒序
 
+```sql
+select employee_id,if(employee_id % 2 = 1,if(left(name,1) != 'M',salary,0), 0) as bonus from Employees order by employee_id;
+```
 
+#### 2.正则表达式 REGEXP 
 
+```sql
+mysql> SELECT name FROM person_tbl WHERE name REGEXP 'ok$';
+```
 
+#### 3.更新 UPDATE
 
+```sql
+UPDATE table_name SET field1=new-value1, field2=new-value2
+[WHERE Clause]
+```
+
+#### 4.删除
 
 
 
