@@ -194,7 +194,14 @@ ORDER BY access_log.count DESC;
 
 
 
+### 2.修改&排序
 
+#### [1.排序](https://www.runoob.com/mysql/mysql-order-by.html)
+
+```mysql
+SELECT field1, field2,...fieldN FROM table_name1, table_name2...
+ORDER BY field1 [ASC [DESC][默认 ASC]], [field2...] [ASC [DESC][默认 ASC]]
+```
 
 
 
