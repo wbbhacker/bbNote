@@ -222,11 +222,62 @@ UPDATE table_name SET field1=new-value1, field2=new-value2
 [WHERE Clause]
 ```
 
-#### 4.删除
+#### 4.删除 DELETE
+
+```sql
+DELETE FROM table_name [WHERE Clause]
+```
+
+```sql
+DELETE p1 FROM Person p1,
+    Person p2
+WHERE
+    p1.Email = p2.Email AND p1.Id > p2.Id;
+```
+
+
+
+#### 5.group by
+
+GROUP BY 语句根据一个或多个列对结果集进行分组。在分组的列上我们可以使用 COUNT, SUM, AVG,等函数。
+
+```sql
+SELECT column_name, function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name;
+```
 
 
 
 
+
+### 3.插入数据
+
+```sql
+INSERT INTO table_name ( field1, field2,...fieldN )
+                       VALUES
+                       ( value1, value2,...valueN );
+```
+
+> **INSERT IGNORE INTO 与   INSERT INTO的区别？**
+>
+> **INSERT IGNORE INTO** 会忽略数据库中已经存在的数据，如果数据库没有数据，就插入新的数据，如果有数据的话就跳过这条数据。这样就可以保留数据库中已经存在数据，达到在间隙中插入数据的目的。
+>
+> **INSERT IGNORE INTO** 当插入数据时，在设置了记录的唯一性后，如果插入重复数据，将不返回错误，只以警告形式返回。 而 **INSERT INTO** 如果存在 primary 或 unique 相同的记录，则先删除掉。再插入新记录。
+
+### [4.处理重复的数据](https://www.runoob.com/mysql/mysql-handling-duplicates.html)
+
+#### 1.防止表中出现重复数据
+
+#### 2.统计重复数据
+
+```sql
+mysql> SELECT COUNT(*) as repetitions, last_name, first_name
+    -> FROM person_tbl
+    -> GROUP BY last_name, first_name
+    -> HAVING repetitions > 1;
+```
 
 
 
