@@ -22,6 +22,8 @@ For example, a tail position call should only grow an implementation's activatio
 
 https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-preparefortailcall
 
+https://stackoverflow.com/questions/37224520/are-functions-in-javascript-tail-call-optimized
+
 4.[Using parseInt() with map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map#using_parseint_with_map)
 
 

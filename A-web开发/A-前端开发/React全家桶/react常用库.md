@@ -10,11 +10,14 @@ Set up a modern web app by running one command.https://create-react-app.dev/docs
 >
 > Override create-react-app webpack configs without ejecting
 
-<<<<<<< HEAD
 ### [3.SWR](https://swr.vercel.app/zh-CN)
 
 用于数据请求的 React Hooks 库。
 
-=======
-reselect 
->>>>>>> d1c2e550547bd5de7b542c4ba9ef2aebd4b12a31
+### [4.reselect](https://www.npmjs.com/package/reselect) 
+
+A library for creating memoized "selector" functions. Commonly used with Redux, but usable with any plain JS immutable data as well.
+
+### [5.react-table](https://www.npmjs.com/package/react-table)
+
+Headless UI for building powerful tables & datagrids for TS/JS - React-Table, Vue-Table, Solid-Table, Svelte-Table
