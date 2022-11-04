@@ -226,13 +226,13 @@ function Foo(props) {
 
 ```react
 // 用useRef 保存 timerId
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
-  let timerId = null;
+  let timerId = useRef();
   useEffect(() => {
-    timerId = setInterval(() => {
+    timerId.current = setInterval(() => {
       setCount((count) => count + 1);
     }, 500);
   }, []);

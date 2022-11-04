@@ -24,6 +24,8 @@ css属性的初始值都是默认定义的值。如`overflow` 初始值为：’
 
 css所有属性都可以通过'initial' ，显示指定属性的值为初始值。
 
+> 控制台 弄出来的方式：快捷键option+command+i，或者在页面上右击，点击"查看"
+
 ##### 2.继承值 inherited value
 
 css属性可分为’可继承属性‘ 和 ’不可继承属性‘。
@@ -54,7 +56,7 @@ css所有属性都可以通过’inherit‘ ，显示指定属性的值可继承
 
 应用于元素的每个属性声明都是该元素对应属性的**声明值(declared values)**。如下：
 
-该例子中p元素对应的width属性的声明值有三个分别为：
+#### 该例子中p元素对应的width属性的声明值有三个分别为：
 
 - .name 中声明的 width 的属性值 100px
 
@@ -68,6 +70,10 @@ p{
 .name {
   width:100px;
 }
+
+<div class="box">
+  <p class="name">程序员阿彬</p>
+</div>
 .box p{
   width:200px;
 }
@@ -76,9 +82,9 @@ p{
 }
 ```
 
-```html
+```css
 <div class="box">
-  <p class="name">柚子先生王彬彬</p>
+  <p class="name">程序员阿彬</p>
 </div>
 ```
 
