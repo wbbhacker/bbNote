@@ -56,3 +56,11 @@
   1.如果权重相同，则最后定义的样式会起作用，但是应该避免这种情况出现
 
   2.如果样式上加有!important标记,那么始终采用这个标记的样式。
+
+
+
+
+
+1.https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+
+2.https://www.w3.org/TR/selectors/#specificity

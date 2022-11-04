@@ -106,6 +106,6 @@
 
    `div.parent div{}` 选择`<div class="son"> 和 <div class="grandson">`
 
-   
+   [1]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#combinators
 
    
