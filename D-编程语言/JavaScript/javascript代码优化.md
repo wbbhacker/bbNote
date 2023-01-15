@@ -10,7 +10,7 @@ eg: node 源码中 `events`的 on 事件
 
 3.尾调用 tail call
 
-https://javascript.plainenglish.io/javascript-optimizations-tail-call-optimization-tco-471b4f8e4f37
+https://stackoverflow.com/questions/42788139/es6-tail-recursion-optimisation-stack-overflow
 
 https://baike.baidu.com/item/%E5%B0%BE%E8%B0%83%E7%94%A8/22718028?fr=aladdin
 
