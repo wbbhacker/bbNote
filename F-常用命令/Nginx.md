@@ -54,9 +54,11 @@ nginx -s quit #停服，需要进程完成当前工作后再停止
    >
    > 
 
-6. 无法访问nginx
+7. 无法访问nginx
 
    在配置nginx.conf 头部添加`user root;`
+
+   
 
 7. Nginx.conf 文件配置ssl  及 80 http端口跳转 https
 
