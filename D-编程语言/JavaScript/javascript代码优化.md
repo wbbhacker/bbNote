@@ -10,6 +10,8 @@ eg: node 源码中 `events`的 on 事件
 
 3.尾调用 tail call
 
+https://stackoverflow.com/questions/42788139/es6-tail-recursion-optimisation-stack-overflow
+
 https://baike.baidu.com/item/%E5%B0%BE%E8%B0%83%E7%94%A8/22718028?fr=aladdin
 
 [JavaScript](https://baike.baidu.com/item/JavaScript?fromModule=lemma_inlink)则原本不支持尾调用优化，到其第6代语言核心标准“[ECMAScript 6](https://baike.baidu.com/item/ECMAScript 6?fromModule=lemma_inlink)”开始规定程序引擎应在严格模式下使用尾调用优化。而且ECMAScript 6限定了尾位置不含[闭包](https://baike.baidu.com/item/闭包?fromModule=lemma_inlink)的尾调用才能进行优化。 [2] 
