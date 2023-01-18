@@ -243,6 +243,8 @@ const thunkMiddleware =
 ```
 
 >React-thunk 功能类似于 vuex 里面定义的actions ， reducer 功能类似于 vuex 中的 mutations
+>
+>thunk 本质上就是给 action 传`dispatch` 参数
 
 
 
