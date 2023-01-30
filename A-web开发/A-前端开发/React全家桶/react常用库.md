@@ -25,3 +25,7 @@ Headless UI for building powerful tables & datagrids for TS/JS - React-Table, Vu
 ### [6.ahook](https://www.npmjs.com/package/ahooks)
 
 A high-quality & reliable React Hooks library.
+
+### [7.motion](https://github.com/react-component/motion)
+
+⛷ CSS Animation for React
