@@ -143,7 +143,7 @@
 
     如果你的 vscode 编辑器安装了 prettier 插件并且在保存 react 源码文件时右下角出现如下错误，按照如下步骤解决
 
-    <img src="./images/1.png" width="60%" align="left"/>
+    <img src="../../../../../images/1.png" width="60%" align="left"/>
 
     1. 全局安装 prettier
 
