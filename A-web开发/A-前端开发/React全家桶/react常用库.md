@@ -29,3 +29,11 @@ A high-quality & reliable React Hooks library.
 ### [7.motion](https://github.com/react-component/motion)
 
 ⛷ CSS Animation for React
+
+### [8.react-saga](https://github.com/redux-saga/redux-saga)
+
+An alternative side effect model for Redux apps
+
+### [9.DVA](https://github.com/dvajs/dva)
+
+🌱 React and redux based, lightweight and elm-style framework. (Inspired by elm and choo)
