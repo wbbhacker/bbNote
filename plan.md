@@ -16,18 +16,21 @@
 
    各种知识树合计，根据点赞等进行排名
 
-1. 
+1. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+1. 计算机专业英语网站 、英语群、专门搞英语的
 
-7.
+1. 技术图谱网站
 
-5.计算机专业英语网站
+1. 技能分享网站
 
-、英语群、专门搞英语的
+1. 程序员桌面 集成各种网站、可以定制化 。 
 
-6. 技术图谱网站
-7. 技能分享网站
+   > 可以像superset 那样 编辑布局。
+
+1. web 端 日历定制 软件
+
+
 
 
 
