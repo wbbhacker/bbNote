@@ -278,3 +278,5 @@ table{
 }
 ```
 
+#### [25.place-items](https://developer.mozilla.org/en-US/docs/Web/CSS/place-items)
+
