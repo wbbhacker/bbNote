@@ -21,3 +21,9 @@
 > [人工智能](https://www.sap.cn/products/artificial-intelligence/business-technology-platform.html)是父集，包含了机器学习及其所有子集。人工智能下面的第一个子集是机器学习，深度学习是机器学习的一个分支，神经网络则是深度学习的基础结构。
 
 ![AI关系图.drawio](../image/AI关系图.drawio.png)
+
+#### 4.Airops 
+
+自然语言 转 SQL 语句
+
+>  对数据进行标注、才能进行数据分析、智能分析
