@@ -22,8 +22,5 @@
 
 ![AI关系图.drawio](../image/AI关系图.drawio.png)
 
-#### 4.Airops 
 
-自然语言 转 SQL 语句
 
->  对数据进行标注、才能进行数据分析、智能分析

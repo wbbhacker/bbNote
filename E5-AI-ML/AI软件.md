@@ -31,6 +31,14 @@
 > 5.[gitHub Copilot ](https://github.com/features/copilot)  让 AI 先写点代码打个样
 >
 > 6.[notion.ai](https://www.notion.so/product/ai)  没有创作灵感？让 AI 给些建议
+>
+> 7.[pandas-ai](https://github.com/gventuri/pandas-ai/tree/main) 
+>
+> > Pandas AI is a Python library that integrates generative artificial intelligence capabilities into Pandas, making dataframes conversational
+>
+> 8.[sourcegraph](https://about.sourcegraph.com/) 去读代码
+>
+> 9.[graph maker](https://www.canva.com/graphs/)
 
 
 
