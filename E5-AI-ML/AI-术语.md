@@ -38,3 +38,6 @@ Generative Pre-trained Transformer  生成式预训练 Transformer
 
 **用来训练的语料文本越丰富，模型中可以放的参数越多，那模型能够学到的关系也就越多。类似的情况在文本里出现得越多，那么将来模型猜得也就越准。**
 
+#### 5.AIGC
+
+AI Generated Content (AIGC，人工智能自动生成内容)
