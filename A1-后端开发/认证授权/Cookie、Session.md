@@ -1,10 +1,10 @@
-### Cookie、Session
+### 
 
 > 认证:authentication 认证访问者是谁
 >
 > 授权：authorization 访问权限
 
-#### 1.Cookie
+### 1.Cookie
 
 Cookie机制采用的是在客户端保持状态的方案
 
@@ -14,7 +14,7 @@ Cookie机制采用的是在客户端保持状态的方案
 - cookie 安全性不好,CSRF 攻击获取cookie
 - 不同域名会产生跨域问题
 
-#### 2.Session
+### 2.Session
 
 Session机制采用的时在服务器端保持状态的方案
 
@@ -32,3 +32,32 @@ cookie 可被禁用的话，可用**URL重写**技术把sessionID 作为URL参�
 
 
 
+#### 1.Session的实现方法有以下几种常见的方式：
+
+1. 基于内存的Session：
+   基于内存的Session是将Session数据存储在后端服务器的内存中。这种方式读取和写入速度快，适用于小型应用或对性能要求较高的场景。然而，当服务器重启或扩展时，内存中的Session数据会丢失。
+2. 基于数据库的Session：
+   基于数据库的Session是将Session数据存储在关系型数据库中。这种方式可以保证Session数据的持久性，即使服务器重启或扩展，Session数据也能够保留。但是，读取和写入数据库会引入一定的延迟，并且对数据库的访问压力较大。
+3. 基于缓存的Session：
+   基于缓存的Session是将Session数据存储在缓存中，如Redis、Memcached等。缓存具有高速读写和较低的延迟，适用于高并发的场景。但是，缓存是有限的，可能会导致Session数据的过期或被清理。
+4. 基于文件的Session：
+   基于文件的Session是将Session数据存储在文件系统中。这种方式简单易用，可以保证Session数据的持久性。但是，读取和写入文件系统可能会引入较高的延迟，并且对文件系统的访问压力较大。
+5. 分布式Session：
+   分布式Session是将Session数据分布式地存储在多个节点上，以实现高可用性和可伸缩性。可以使用分布式存储系统，如HBase、Cassandra等，或者使用专门的分布式Session管理工具，如Spring Session、Apache Shiro等。
+
+需要根据具体的应用场景和需求选择合适的Session实现方法。不同的实现方法具有不同的特点和适用场景，开发人员需要根据实际情况进行选择。
+
+#### 2.Session的实现原理可以有多种方式，以下是常见的几种实现原理：
+
+1. 基于Cookie的Session：
+   这是最常见的Session实现原理。当客户端第一次请求后端时，后端会生成一个唯一的Session标识，并将其存储在Cookie中，发送给客户端。客户端在后续的请求中会将该Cookie带上，后端通过解析Cookie获取Session标识，从而找到对应的Session数据。
+2. 基于URL重写的Session：
+   在某些情况下，客户端可能禁用了Cookie，这时可以使用URL重写的方式实现Session。后端会在每个生成的URL中添加Session标识，以便在后续请求中识别和获取Session数据。
+3. 基于隐藏表单字段的Session：
+   在包含表单的页面中，后端可以在表单中添加一个隐藏字段，用于存储Session标识。客户端在提交表单时，会将该隐藏字段一同提交给后端，后端通过解析该字段获取Session标识。
+4. 基于HTTP头的Session：
+   客户端可以在每个请求的HTTP头中添加一个特定的字段，用于携带Session标识。后端通过解析HTTP头中的字段获取Session标识，从而找到对应的Session数据。
+5. 基于Token的Session：
+   Token是一种将用户身份信息存储在令牌中的方式。后端会生成一个唯一的Token，并将其返回给客户端。客户端在后续的请求中会将该Token带上，后端通过解析Token获取Session标识，从而找到对应的Session数据。
+
+需要根据具体的应用场景和需求选择合适的Session实现原理。不同的实现原理具有不同的特点和适用场景，开发人员需要根据实际情况进行选择
