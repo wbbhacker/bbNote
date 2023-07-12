@@ -44,3 +44,6 @@ kill -9 `lsof -ti:8080`  直接通过端口号杀进程
 
 [1]: https://www.liquidweb.com/kb/what-is-systemctl-an-in-depth-overview/
 
+#### 6.dig
+
+`dig` 是一个常用的用于查询 DNS（Domain Name System）信息的命令行工具。它可以用来查询域名的各种记录类型，如 A 记录、CNAME 记录、MX 记录等。
