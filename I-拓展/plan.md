@@ -34,13 +34,15 @@
 
 1. color 库，颜色格式相互转化，color 自动生成等，随机生成， 网站和库，三角各种形状选库、color验证
 
-    > https://www.npmjs.com/package/validate-color
+     > https://www.npmjs.com/package/validate-color
 
 1. 游戏收藏网站、自己个人爱好、游戏说明、成就说明、游戏游玩顺序等等
 
-   
+1. 怪物猎人 各种怪物集合、下面附带评论 ， 可扩展到任何游戏中的boss，做一个收集boss 的网站
 
-   
+     
+
+     
 
 
 
