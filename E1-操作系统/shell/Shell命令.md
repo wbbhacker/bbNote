@@ -181,6 +181,13 @@ unzip mysql.zip
 
 #### 23.`ll` 查看文件夹列表  `stat filename` 查看文件具体信息
 
+```shell
+$ type ll
+ll is an alias for ls -lh
+```
+
+
+
 #### 24.dig 命令查看DNS
 
 #### 25.Systemd
@@ -192,3 +199,15 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 **nohup** 英文全称 no hang up（不挂起），用于在系统后台不挂断地运行命令，退出终端不会影响程序的运行。
 
 https://www.runoob.com/linux/linux-comm-nohup.html
+
+#### [27.type](https://bash.cyberciti.biz/guide/Type_command)  
+
+查看命令来源
+
+If the -t option is used, it will print a single word which is one of the following
+
+- alias (command is shell alias)
+- keyword (command is shell reserved word)
+- function (command is shell function)
+- builtin (command is shell builtin)
+- file (command is disk file)

@@ -24,6 +24,8 @@
 
      STATUS: 容器状态。
 
+   
+
    ​     created（已创建）
 
    ​     restarting（重启中）
@@ -35,7 +37,7 @@
    ​     paused（暂停）
 
    ​     exited（停止）
-
+   
    ​     dead（死亡）
 
 ### 2.Docker 命令
