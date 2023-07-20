@@ -280,3 +280,8 @@ table{
 
 #### [25.place-items](https://developer.mozilla.org/en-US/docs/Web/CSS/place-items)
 
+#### 25. overscroll-behavior
+
+防止页面抖动左右滑的时候
+
+`overscroll-behavior: none;`
