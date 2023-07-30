@@ -64,7 +64,9 @@ grep -E "pattern" file #正则表达式匹配
 echo "some text"
 ```
 
-#### 8.`touch ` 用于创建没有任何内容的文件
+#### 8.`touch `
+
+ 用于创建没有任何内容的文件
 
 ```shell
 touch somefile
@@ -162,7 +164,9 @@ telnet 101.200.195.41 8080 # 查看远程端口是否开放
 
 #### 18.`man` 查看命令信息
 
-#### 19.`netstat -tnlp`    `netstat -anp tcp | grep 80`
+#### 19.`netstat -tnlp`   
+
+ `netstat -anp tcp | grep 80`
 
 ​	查看端口号
 
@@ -177,16 +181,18 @@ zip -r mysql.zip mysql #将mysql文件夹压缩成mysql.zip
 unzip mysql.zip
 ```
 
-#### 22.修改bash 配置 ` vim ~/.bash_profile`   `vim ~/.zshrc`
+#### 22.更新shell 配置
 
-#### 23.`ll` 查看文件夹列表  `stat filename` 查看文件具体信息
+` vim ~/.bash_profile`   `vim ~/.zshrc`
+
+#### 23.`ll` 
+
+查看文件夹列表  `stat filename` 查看文件具体信息
 
 ```shell
 $ type ll
 ll is an alias for ls -lh
 ```
-
-
 
 #### 24.dig 命令查看DNS
 
@@ -211,3 +217,72 @@ If the -t option is used, it will print a single word which is one of the follow
 - function (command is shell function)
 - builtin (command is shell builtin)
 - file (command is disk file)
+
+#### 28.查看当前用户
+
+`whoami`
+
+`id`
+
+`echo $USER`
+
+#### 29.which
+
+```shell
+which npm 
+// OUTPUT SAMPLE
+/usr/local/bin/npm
+```
+
+#### 30.la
+
+#### 31.查杀端口号进程
+
+`lsof -i:8080` 查看占用端口的进程号
+
+```
+kill -9 `lsof -ti:8080`  直接通过端口号杀进程
+```
+
+#### 32.service 查看服务状态
+
+查看单个服务运行状态
+
+`service 服务名 status`
+
+查看所有服务的运行状态
+
+`service --status-all`
+
+#### 35.Systemctl
+
+check service status
+
+`systemctl status servicename.service`
+
+Start service
+
+`systemctl start servicename`
+
+
+
+
+
+![image-20220329140531849](../../image/image-20220329140531849.png)
+
+[1]: https://www.liquidweb.com/kb/what-is-systemctl-an-in-depth-overview/
+
+#### 36.dig
+
+`dig` 是一个常用的用于查询 DNS（Domain Name System）信息的命令行工具。它可以用来查询域名的各种记录类型，如 A 记录、CNAME 记录、MX 记录等。
+
+#### 37.`env`、 `set` 、`declare` 、`export`
+
+#### 38.`set`
+
+Change the value of shell attributes and positional parameters, or
+display the names and values of shell variables.
+
+#### 39.`declare`
+
+The ***declare*** is a builtin command of the **bash** shell. It is used to declare shell variables and functions, set their attributes and display their values.
