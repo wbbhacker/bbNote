@@ -21,4 +21,5 @@
    `python3 -m venv [venvName]`
 
    example:`python3 -m venv venv`  `source venv/bin/activate`
-
+   
+   > 在 `/` 目录下没有权限，就在自己的 `~/` 用户目录下执行
