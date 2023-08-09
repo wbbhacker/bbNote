@@ -1,9 +1,3 @@
-### 
-
-> 认证:authentication 认证访问者是谁
->
-> 授权：authorization 访问权限
-
 ### 1.Cookie
 
 Cookie机制采用的是在客户端保持状态的方案
