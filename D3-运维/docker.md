@@ -37,7 +37,7 @@
    ​     paused（暂停）
 
    ​     exited（停止）
-   
+
    ​     dead（死亡）
 
 ### 2.Docker 命令
@@ -100,3 +100,11 @@ start docker
 
 > [`podman`](https://github.com/containers/podman) 是一个无守护程序与 docker 命令兼容的下一代 Linux 容器工具。
 
+### 5.docker 中的 Dockerfile文件与docker-compose.yml 文件的区别
+
+Dockerfile 和 docker-compose.yml 是 Docker 中两种非常重要的文件，它们都用于创建和配置 Docker 容器，但是它们的用途和功能有所不同。
+
+1. Dockerfile：Dockerfile 是一个文本文件，它包含了一系列的指令，用于定义如何创建一个 Docker 镜像。这些指令包括但不限于设置工作目录、复制文件、安装依赖、暴露端口等。当你运行 `docker build` 命令时，Docker 会按照 Dockerfile 中的指令，一步步构建出一个 Docker 镜像。
+2. docker-compose.yml：docker-compose.yml 是 Docker Compose 的配置文件，它是一个 YAML 格式的文件，用于定义和配置多个 Docker 容器的应用服务。在这个文件中，你可以定义服务的名称、使用的镜像、端口映射、挂载的卷、环境变量、依赖关系等。当你运行 `docker-compose up` 命令时，Docker Compose 会按照 docker-compose.yml 文件中的配置，启动一组互相关联的 Docker 容器。
+
+总的来说，Dockerfile 主要用于定义单个 Docker 镜像，而 docker-compose.yml 主要用于定义和配置由多个 Docker 容器组成的应用服务。
