@@ -422,7 +422,7 @@ rem是全部的长度都相对于根元素<html>元素。通常做法是给html�
 
 px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。
 
-### 13.Table cell 不换行
+#### 13.Table cell 不换行
 
 `td`、`th`、`tr`设置：
 
@@ -432,7 +432,7 @@ word-wrap:break-word; // 英文不会换行
 white-space: nowrap;  // 如果中间有空格，在空格处默认会换行，如果需要不换行，使用下面样式
 ```
 
-### 14.flex 属性 设置高度失效
+#### 14.flex 属性 设置高度失效
 
 给元素设置 vh
 
@@ -444,3 +444,18 @@ div{
 //设置 height：100% 不生效，可用100vh来做。
 ```
 
+#### 15.css 布局中，怎么让子元素 flex:1 最大扩大的时候不能超过父元素的快读
+
+在 CSS Flexbox 布局中，`flex: 1` 会使子元素尽可能地扩大以填充其父元素的剩余空间。然而，子元素的大小不会超过其父元素的大小，除非父元素的大小没有明确设置（例如，它的大小由其内容决定）。
+
+如果你发现子元素的大小超过了父元素的大小，可能是因为父元素的 `overflow` 属性设置为了 `visible`（这是默认值），并且子元素的大小由其内容决定。在这种情况下，你可以通过设置父元素的 `overflow` 属性为 `auto` 或 `hidden` 来防止子元素超出父元素的边界。
+
+以下是一个示例：
+
+```html
+<div style="width: 200px; height: 200px; overflow: auto; display: flex;">
+  <div style="flex: 1; background-color: lightblue;">Hello, world!</div>
+</div>
+```
+
+在这个例子中，父元素的大小被设置为 200px x 200px，`overflow` 属性被设置为 `auto`，并且使用了 Flexbox 布局。子元素的 `flex` 属性被设置为 1，这意味着它会尽可能地扩大以填充父元素的剩余空间，但是它的大小不会超过父元素的大小。
