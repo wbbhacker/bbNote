@@ -1,5 +1,3 @@
-### mysql常见问题
-
 #### 1.Client does not support authentication protocol requested by server; consider upgrading MySQL client 报错
 
 主要原因是mysql服务器要求的认证插件版本与客户端不一致造成的。
@@ -63,6 +61,27 @@ mysql8.0 不能授权给自己，授权自己会出错。要新创建一个用�
 4. 退出MySQL 命令，回到Linux命令模式， 重启MySQL
 
    `systemctl restart mysqld`
+
+#### 5.数据库导入数据
+
+mysql source命令主要用来倒入超大的sql文件，在日常工作中，我们往往会遇到导入大的数据文件的情况，在MySQL中，用mysql source命令可以导入轻松解决这个问题，MySQL source的基本语法如下：
+
+```mysql
+mysql>use dbtest;
+mysql>set names utf8;
+mysql>source D:/xxx/xxx/back.sql;
+```
+
+```mysql
+source /Users/admin/git/test_db/employees.sql
+```
+
+```mysql
+mysql>use db_test
+mysql>source D:/test.sql > output.log
+```
+
+
 
 
 
