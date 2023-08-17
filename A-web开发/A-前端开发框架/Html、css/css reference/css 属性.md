@@ -285,3 +285,16 @@ table{
 防止页面抖动左右滑的时候
 
 `overscroll-behavior: none;`
+
+
+
+#### 26.word-break
+
+`word-break:break-all `比较暴力，剩余空间排着排着，排到盒子的边，排不下了，立马把整个单词从这个地方断掉。
+
+'word-wrap:break-all' 则会先另起一行，如果还是排不下才会从单词中间截断。
+
+`white-space` 处理元素中的空白
+
+`test-wrap` 文本的换行宫泽
+
