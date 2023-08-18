@@ -4,6 +4,8 @@
 
 `mysql -h 地址 -P 端口 -u 用户名 -p 密码`
 
+> mysql 默认端口为：3306
+
 #### 2.显示哪些线程正在运行
 
 `SHOW PROCESSLIST`  
@@ -12,11 +14,28 @@
 
 `SHOW VARIABLES` 
 
+#### 4.mysql 服务启动
+
+##### 1.mac 上启动
+
+```shell
+mysql.server start/stop/restart
+brew services stop mysql // brew 停止mysql
+```
+
+##### 2.linux 启动
+
+```shell
+systemctl restart mysqld
+```
+
 ### 2.数据库操作
 
 #### 1.查看当前数据库
 
 `SELECT DATABASE();`
+
+
 
 #### 2.显示当前时间、用户名、数据库版本
 
@@ -50,12 +69,16 @@ DROP DATABASE[ IF EXISTS] 数据库名
         同时删除该数据库相关的目录及其目录内容
 ```
 
-### 2.表的操作\数据操作
+### 3.表的操作\数据操作
+
+#### 见sql 语言
 
 [1]: https://www.tutorialspoint.com/sql/index.htm	"tutorialspoint SQL"
 [2]: https://www.w3schools.com/sql/default.asp	"w3schools SQL"
 [3]: https://www.runoob.com/w3cnote/sql-join-image-explain.html	" SQL 的各种 JOIN 用法"
 [4]: https://www.cnblogs.com/slivelove/p/10956433.html	"sql中on和where的区别"
+
+
 
 
 

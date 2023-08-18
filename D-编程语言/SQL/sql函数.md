@@ -31,3 +31,23 @@ SELECT LEFT('runoob',2) -- ru
 SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
 ```
 
+### 4.[.CONCAT(s1,s2...sn)](https://www.runoob.com/mysql/mysql-functions.html)
+
+字符串 s1,s2 等多个字符串合并为一个字符串
+
+```mysql
+#找出所有首都和其国家名字,而首都要有国家名字中出現。
+select capital,name from world where capital like concat('%',name,'%'); 
+#找出所有首都和其国家名字,而首都是国家名字的延伸。
+select name,capital from world where capital like concat(name,' ','_%');
+#Show the name and the extension where the capital is a proper (non-empty) extension of name of the country.
+select name ,replace(capital,name,'') from world where capital like concat(name,'_%');
+```
+
+### 5.MID(s,n,len)
+
+从字符串 s 的 n 位置截取长度为 len 的子字符串，同 SUBSTRING(s,n,len)
+
+### 6.REPLACE(s,s1,s2)
+
+将字符串 s2 替代字符串 s 中的字符串 s1
