@@ -48,3 +48,5 @@ SELECT name FROM world WHERE name LIKE '%a%a%a%'; // 找出所有國家,其名�
 为空
 
 `IS NOT NULL` 为空
+
+#### 5.<>不等于

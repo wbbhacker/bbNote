@@ -51,3 +51,5 @@ select name ,replace(capital,name,'') from world where capital like concat(name,
 ### 6.REPLACE(s,s1,s2)
 
 将字符串 s2 替代字符串 s 中的字符串 s1
+
+7.LENGTH 
