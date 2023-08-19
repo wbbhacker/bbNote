@@ -11,7 +11,7 @@ select 5 not in (1,2,3,4,5);
 
 #### 2.BETWEEN 在两值之间
 
-`NOT BETWEEN` 不在两值中间
+`NOT BETWEEN` 不在两值中间   `>=min&&<=max`
 
 ```mysql
 SELECT name, area FROM world 
@@ -50,3 +50,10 @@ SELECT name FROM world WHERE name LIKE '%a%a%a%'; // 找出所有國家,其名�
 `IS NOT NULL` 为空
 
 #### 5.<>不等于
+
+#### 6.单引号转义
+
+```mysql
+select * from nobel where  winner = 'EUGENE O''NEILL'
+```
+

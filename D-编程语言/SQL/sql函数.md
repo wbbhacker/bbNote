@@ -44,6 +44,16 @@ select name,capital from world where capital like concat(name,' ','_%');
 select name ,replace(capital,name,'') from world where capital like concat(name,'_%');
 ```
 
+```mysql
+select 
+ name, 
+ concat(round(population/(select population from world where name = 'Germany'),0),'%') 
+from world 
+where continent = 'Europe';
+```
+
+
+
 ### 5.MID(s,n,len)
 
 从字符串 s 的 n 位置截取长度为 len 的子字符串，同 SUBSTRING(s,n,len)

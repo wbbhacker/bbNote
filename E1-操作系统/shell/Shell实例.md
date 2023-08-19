@@ -1,5 +1,3 @@
-### Shell实例
-
 #### 1.安装node
 
 1. 建立node文件夹 
@@ -86,5 +84,7 @@ la /usr/local/bin/npm // la: aliased to ls -lAh SEE which la THEN man ls
 lrwxr-xr-x  1 t04435  admin    46B 18 Sep 10:37 /usr/local/bin/npm -> /usr/local/lib/node_modules/npm/bin/npm-cli.js
 ```
 
+#### 7.`curl` 与 `ping` 命令的区别？
 
+**ping命令属于icmp协议，而curl网页属于http或者https协议**，能正常上网但是ping不同，就很有可能是中间的某个路由器或防火墙上做了策略，禁止了icmp协议的数据包通过，但是允许http协议的数据包通过，这样一来就不能通过icmp协议的ping命令访问了。
 

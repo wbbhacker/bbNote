@@ -1,4 +1,4 @@
-### f1.查询
+### 1.查询
 
 #### 1.`or`
 
@@ -80,11 +80,23 @@ FROM table_name;
 
 #### 6.`order by`
 
+`ASC` 升序  `DESC` 降序
+
 ```sql
 SELECT column_name,column_name
 FROM table_name
 ORDER BY column_name,column_name ASC|DESC;
 ```
+
+```mysql
+SELECT winner, subject
+  FROM nobel
+ WHERE yr=1984
+ ORDER BY subject in ('Chemistry','Physics'), subject, winner
+ # 'Chemistry','Physics' 在最后，因为 ``
+```
+
+The expression **subject IN ('chemistry','physics')** can be used as a value - it will be **0** or **1**.    
 
 #### 7.JOIN
 
