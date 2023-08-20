@@ -57,3 +57,36 @@ SELECT name FROM world WHERE name LIKE '%a%a%a%'; // 找出所有國家,其名�
 select * from nobel where  winner = 'EUGENE O''NEILL'
 ```
 
+#### [7.All 、ANY](https://www.w3schools.com/mySQl/mysql_any_all.asp) 
+
+##### 1.all
+
+```mysql
+SELECT ALL column_name(s)
+FROM table_name
+WHERE condition;
+# 加 ALl 与 不加ALL 的区别？
+```
+
+```mysql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+```
+
+##### 2.any
+
+```mysql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+```
+
+[1]: https://www.w3resource.com/sql/special-operators/sql_all.php
+

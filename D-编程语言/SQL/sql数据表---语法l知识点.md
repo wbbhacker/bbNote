@@ -204,6 +204,41 @@ ON Websites.id=access_log.site_id
 ORDER BY access_log.count DESC;
 ```
 
+#### 8.定义表变量
+
+[Select_within_SELECT_Tutorial](https://sqlzoo.net/wiki/SELECT_within_SELECT_Tutorial)
+
+```mysql
+SELECT continent, name FROM world x
+  WHERE name <= ALL
+    (SELECT name FROM world y
+        WHERE y.continent=x.continent)
+```
+
+```mysql
+SELECT continent, name, area FROM world x
+  WHERE area >= ALL
+    (SELECT area FROM world y
+        WHERE y.continent=x.continent
+          AND area>0)
+```
+
+```mysql
+SELECT name, continent, population FROM world x
+  WHERE 25000000 >= ALL(SELECT population
+	                FROM world y
+		        WHERE x.continent = y.continent
+                        AND y.population>0);
+```
+
+```mysql
+SELECT name, continent FROM world x
+  WHERE population >= ALL(SELECT population*3
+                         FROM world y
+                         WHERE x.continent = y.continent
+                         and y.name != x.name)
+```
+
 
 
 ### 2.修改&排序
