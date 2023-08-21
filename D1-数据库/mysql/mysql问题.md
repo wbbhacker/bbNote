@@ -11,7 +11,6 @@ select user,plugin from mysql. user;
 
 ```mysql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你想设置的MySQL登录密码';
-
 ```
 
 https://blog.csdn.net/q258523454/article/details/84555847

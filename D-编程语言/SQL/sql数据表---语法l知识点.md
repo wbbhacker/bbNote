@@ -1,4 +1,4 @@
-### f1.查询
+### 1.查询
 
 #### 1.`or`
 
@@ -80,11 +80,23 @@ FROM table_name;
 
 #### 6.`order by`
 
+`ASC` 升序  `DESC` 降序
+
 ```sql
 SELECT column_name,column_name
 FROM table_name
 ORDER BY column_name,column_name ASC|DESC;
 ```
+
+```mysql
+SELECT winner, subject
+  FROM nobel
+ WHERE yr=1984
+ ORDER BY subject in ('Chemistry','Physics'), subject, winner
+ # 'Chemistry','Physics' 在最后，因为 ``
+```
+
+The expression **subject IN ('chemistry','physics')** can be used as a value - it will be **0** or **1**.    
 
 #### 7.JOIN
 
@@ -190,6 +202,41 @@ FROM Websites
 FULL OUTER JOIN access_log
 ON Websites.id=access_log.site_id
 ORDER BY access_log.count DESC;
+```
+
+#### 8.定义表变量
+
+[Select_within_SELECT_Tutorial](https://sqlzoo.net/wiki/SELECT_within_SELECT_Tutorial)
+
+```mysql
+SELECT continent, name FROM world x
+  WHERE name <= ALL
+    (SELECT name FROM world y
+        WHERE y.continent=x.continent)
+```
+
+```mysql
+SELECT continent, name, area FROM world x
+  WHERE area >= ALL
+    (SELECT area FROM world y
+        WHERE y.continent=x.continent
+          AND area>0)
+```
+
+```mysql
+SELECT name, continent, population FROM world x
+  WHERE 25000000 >= ALL(SELECT population
+	                FROM world y
+		        WHERE x.continent = y.continent
+                        AND y.population>0);
+```
+
+```mysql
+SELECT name, continent FROM world x
+  WHERE population >= ALL(SELECT population*3
+                         FROM world y
+                         WHERE x.continent = y.continent
+                         and y.name != x.name)
 ```
 
 
