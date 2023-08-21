@@ -44,3 +44,6 @@ Command + K Command + J 展开全部代码块
 通过在项目更目录下 `.prettierrc.js` 设置配置文件
 
 https://stackoverflow.com/questions/53672888/vscode-not-changing-double-quotes-to-single-quotes-in-template-when-using-vetu
+
+### 6.GitLens 显示代码提交者
+
