@@ -6,7 +6,7 @@ Vue的编译功能主要是将template字符串模板编译生成render函数，
 
 具体流程图如下：
 
-![image-20200928013649095](../../../image/image-20200928013649095.png)
+![image-20200928013649095](../../../../../image/image-20200928013649095.png)
 
 #### 二、`createCompilerCreator` 函数
 
@@ -63,7 +63,7 @@ export const createCompiler = createCompilerCreator(function baseCompile (
 
 `createCompiler`函数处理 baseOptions 配置选项 及  调用baseCompile 函数，返回compile函数和通过`createCompileToFunctionFn` 函数把rende 及 staticRenderFns 字符串代码转化成函数的对象。
 
-![image-20200928145650413](../../../image/image-20200928145650413.png)
+![image-20200928145650413](../../../../../image/image-20200928145650413.png)
 
 ##### 五、`createCompileToFunctionFn` 函数
 

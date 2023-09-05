@@ -59,19 +59,112 @@ export default HelloWorldComponent
 
 #### 3.React中父组件调用子组件方法
 
- https://juejin.cn/post/6844904186564329486
+##### 1.通过callback,把子组件方法传给父组件
 
-https://codeburst.io/a-complete-guide-to-props-children-in-react-c315fab74e7c
+通过callback，把子组件的方法设置到父组件的state上。
 
-https://medium.com/@nugen/react-hooks-calling-child-component-function-from-parent-component-4ea249d00740
+```react
+//index.js
+import React, { Component } from "react";
+import Child from './child'
+
+export default class Parent extends Component {
+componentDidMount(){
+    this.child.test('1111')
+}
+
+onRef(ref){this.child = ref}
+  
+render() {
+    return (
+      <div>
+        <Child onRef={this.onRef} />
+      </div>
+    );
+  }
+}
+// child.js
+
+import React, { Component } from "react";
+
+export default class Child extends Component {
+componentDidMount(){
+    this.props.onRef(this)
+}
+  
+test(val){
+    console.log(val) // 打印 1111
+}
+render() {
+    return (
+      <div> </div>
+    );
+  }
+}
 
 ```
-举 superset 的例子
-```
+
+##### 2.通过ref 获取子组件实例
+
+##### 3.状态管理`redux`
 
 #### 4.React 中子组件调用父组件方法
 
+##### 1.通过 `props` 传递方法
+
+##### [2.`createContext`、`useContext`](https://react.dev/reference/react/useContext)
+
+```react
+import { createContext, useContext, useState } from 'react';
+const ThemeContext = createContext(null);
+
+export default function MyApp() {
+  const [theme, setTheme] = useState('light');
+  return (
+    <ThemeContext.Provider value={theme}>
+      <Form />
+      <label>
+        <input
+          type="checkbox"
+          checked={theme === 'dark'}
+          onChange={(e) => {
+            setTheme(e.target.checked ? 'dark' : 'light')
+          }}
+        />
+        Use dark mode
+      </label>
+    </ThemeContext.Provider>
+  )
+}
+
+function Form({ children }) {
+  return (
+    <Panel title="Welcome">
+      <Button>Sign up</Button>
+      <Button>Log in</Button>
+    </Panel>
+  );
+}
+
+function Panel({ title, children }) {
+  const theme = useContext(ThemeContext);
+  const className = 'panel-' + theme;
+  return (
+    <section className={className}>
+      <h1>{title}</h1>
+      {children}
+    </section>
+  )
+}
+```
+
+##### 3.状态管理`redux`
+
+
+
 #### 5.函数组件异步调用 实现setState回调
+
+
 
 #### 6.`props.children`
 

@@ -31,21 +31,21 @@ const Demo = {
 
 1. `const state = Vue.observable({ count: 0 })` 位置打断点，刷新页面，进入`observable` 函数。
 
-![image-20200930144105969](../../../image/image-20200930144105969.png)
+![image-20200930144105969](../../../../../image/image-20200930144105969.png)
 
-![image-20200930144457262](../../../image/image-20200930144457262.png)
+![image-20200930144457262](../../../../../image/image-20200930144457262.png)
 
 可以找到`Vue.observable` 调用的是 `observe `方法。`observe` 方法中实例化`Observer` 类，关于Observer类的讲解在《[vue响应式原理](https://wbbyouzi.com/archives/306)》文章 中有讲解。实例化Observer类，对参数object的属性进行get、set 劫持，源码在`src/core/observer/index.js`文件中。
 
-![image-20200930145535571](../../../image/image-20200930145535571.png)
+![image-20200930145535571](../../../../../image/image-20200930145535571.png)
 
 首先你要知道Watcher 类实例分为：用户Watcher、计算Computed watcher、渲染 render Watcher。上述例子中很明显用到的是渲染render Watcher。那么渲染watcher 是什么时候添加 dep 去的？渲染watcher 被添加之前肯定是要先创建的，所以我们在watcher 创建的地方打上断点，文件路径为`src/core/obsrver/watcher.js`。
 
-![image-20200930154139751](../../../image/image-20200930154139751.png)
+![image-20200930154139751](../../../../../image/image-20200930154139751.png)
 
 从调用栈中可以看出，渲染Watcher是在Vue.$mount 中执行的。一步一步往下执行找到了渲染Watcher 被添加的地方，下图：
 
-![image-20200930161348740](../../../image/image-20200930161348740.png)
+![image-20200930161348740](../../../../../image/image-20200930161348740.png)
 
 可以看出，渲染watcher 被创建之时，执行自身的get 方法，get方法中`pushTarget(this)` 把当前watcher 赋值给了Dep.target ，并回调updateComponent 方法更新组件。进一步调用渲染render 函数，渲染是state.count 获取值时，触发了get 劫持。判断Dep.target 中有值，调用dep.depend()，把Dep.target中的渲染watcher 添加到dep中。当click事件点击时，state.count 赋值时，触发set劫持，执行`dep.notify()` ，告知渲染watcher ，重新渲染UI。
 
