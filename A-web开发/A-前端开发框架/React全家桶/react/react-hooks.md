@@ -34,6 +34,8 @@
 
 1. 参数是函数的情况：
 
+   setCount 值之后，执行某个方法怎么做？   useEffect 监听 值的变化呀，对吧
+
 ![image-20210507163430530](../../../../image/image-20210507163430530.png)
 
 2.  Using Multiple State Variables  方法可以被调用多次
@@ -81,6 +83,17 @@ useReducer是另一种让函数组件保存状态的方式。
 ![image-20210507170744223](../../../../image/image-20210507170744223.png)
 
 `ReactDOM.unmountComponentAtNode()` 卸载组件
+
+```react
+const Cp = ()=>{
+	const [value, setValue] = useState({})
+  useEffect(()=>{
+    	console.log(value)  // 会监听到初始化 {}  一定要注意
+  },[value])
+}
+```
+
+
 
 ###### useEffect 解决的问题
 

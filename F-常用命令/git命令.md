@@ -187,3 +187,5 @@ https://docs.github.com/cn/get-started/using-git/splitting-a-subfolder-out-into-
 ### 7.放弃修改
 
 `git checkout .`
+
+git reset --soft HEAD~1 软恢复
