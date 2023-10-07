@@ -298,3 +298,9 @@ table{
 
 `test-wrap` 文本的换行宫泽
 
+#### 27.`!important` 不生效
+
+`!important` 不影响继承性，继承过来的`!important` 无法提升它的权重。
+
+
+

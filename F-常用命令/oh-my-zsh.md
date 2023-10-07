@@ -39,3 +39,4 @@ build_prompt() {
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [wd](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/wd)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [Screen](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/screen)
