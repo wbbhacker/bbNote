@@ -80,6 +80,10 @@ mysql>use db_test
 mysql>source D:/test.sql > output.log
 ```
 
+#### 6.mysql 日志问题
+
+https://zhuanlan.zhihu.com/p/190886874
+
 
 
 
