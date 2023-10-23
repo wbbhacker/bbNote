@@ -24,3 +24,5 @@
 
 2. antd 组件中的 value 优先级高于defaultValue.
 3. Input组件 中 value 改变会触发change(prevValue+changeValue), 但是从外面修改value值 不会触发change
+
+5.
