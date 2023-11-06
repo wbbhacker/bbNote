@@ -62,4 +62,13 @@ where continent = 'Europe';
 
 将字符串 s2 替代字符串 s 中的字符串 s1
 
-7.LENGTH 
+### 7.LENGTH 
+
+### 8.OVER
+
+9.
+
+
+
+[1]: https://hg95.github.io/DataBase/MySQL/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0.html	"窗口函数"
+

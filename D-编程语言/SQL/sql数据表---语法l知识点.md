@@ -239,7 +239,57 @@ SELECT name, continent FROM world x
                          and y.name != x.name)
 ```
 
+#### 9.`case when`
 
+```mysql
+#第一种CASE语法返回的是第一个value=compare_value为true的分支的结果。
+
+CASE value
+    WHEN compare_value THEN result
+    [WHEN compare_value THEN result ...]
+    [ELSE result]
+END
+```
+
+```mysql
+#第二种CASE语法返回的是第一个condition为true的分支的结果。
+
+SELECT
+    CASE (`字段`|`表达式`) IS NULL
+        WHEN TRUE THEN '结果为真'
+        ELSE '结果为假'
+    END
+FROM `table_name`
+```
+
+#### 10.`group by`
+
+GROUP BY 语句根据一个或多个列对结果集进行分组。在分组的列上我们可以使用 COUNT, SUM, AVG,等函数。
+
+```sql
+SELECT column_name, function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name;
+```
+
+```mysql
+SELECT reward_name AS "reward_name",
+       group_name AS "group_name",
+       COUNT(*) AS "count"
+FROM adhoc_analysis.zyh_temp_player_festival_exchange_20231024
+WHERE activity_name IN ('2023halloween')
+GROUP BY reward_name,
+         group_name
+LIMIT 50000;
+
+ #将数据表按名字进行分组，并统计每个人有多少条记录： 看这个例子理解上面的例子
+ SELECT name, COUNT(*) FROM   employee_tbl GROUP BY name;
+```
+
+
+
+https://juejin.cn/post/6971040309065187342
 
 ### 2.修改&排序
 
@@ -284,16 +334,7 @@ WHERE
 
 
 
-#### 5.group by
 
-GROUP BY 语句根据一个或多个列对结果集进行分组。在分组的列上我们可以使用 COUNT, SUM, AVG,等函数。
-
-```sql
-SELECT column_name, function(column_name)
-FROM table_name
-WHERE column_name operator value
-GROUP BY column_name;
-```
 
 
 
