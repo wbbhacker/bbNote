@@ -287,9 +287,25 @@ LIMIT 50000;
  SELECT name, COUNT(*) FROM   employee_tbl GROUP BY name;
 ```
 
+#### 11.`limit`
+
+limit和offset用法
+
+mysql里分页一般用limit来实现
+
+`select* from article LIMIT 1,3`
+
+`select * from article LIMIT 3 OFFSET 1`
+
+上面两种写法都表示取2,3,4三条条数据
+
+当limit后面跟两个参数的时候，第一个数表示要跳过的数量，后一位表示要取的数量,例如
+
+select* from article LIMIT 1,3 就是跳过1条数据,从第2条数据开始取，取3条数据，也就是取2,3,4三条数据
+
+当 limit后面跟一个参数的时候，该参数表示要取的数据的数量
 
 
-https://juejin.cn/post/6971040309065187342
 
 ### 2.修改&排序
 
@@ -367,6 +383,88 @@ mysql> SELECT COUNT(*) as repetitions, last_name, first_name
     -> HAVING repetitions > 1;
 ```
 
+### 5.子查询
+
+子查询要起名字 `as 'name'`
+
+```sql
+-- 最外层，增加limit
+select
+  `sys_imp_date`,
+  `REVENUE_USD`
+from
+  (
+    -- 第五层， 增加时间过滤条件
+    select
+      *
+    from
+      (
+        -- 第四层，重命名
+        select
+          `sys_imp_date`,
+          `payment_detail_REVENUE_USD` as `REVENUE_USD`
+        from
+          (
+            -- 第三层， 聚合
+            select
+              sum(`payment_detail_REVENUE_USD`) as `payment_detail_REVENUE_USD`,
+              `sys_imp_date`
+            from
+              (
+                -- 第二层，取需要的字段
+                select
+                  `REVENUE_USD` as `payment_detail_REVENUE_USD`,
+                  `EVENT_DATE` as `sys_imp_date`
+                from
+                  (
+                    -- 第一层，全部取
+                    select
+                      *
+                    from
+                      `dbgpt`.`op_fact_payment`
+                  ) as `payment_detail`
+              ) as `src00_payment_detail_394f`
+            group by
+              `sys_imp_date`
+          ) as `payment_detail_0`
+      ) as `src2_`
+    where
+      (
+        `sys_imp_date` >= '2023-08-10'
+        and `sys_imp_date` <= '2023-11-07'
+      )
+  ) as `payment_detail_1`
+limit
+  365
+```
+
+```sql
+select
+  `REVENUE_USD` as `payment_detail_REVENUE_USD`,
+  `EVENT_DATE` as `sys_imp_date`
+from
+  (
+    -- 第一层，全部取
+    select
+      *
+    from
+      `dbgpt`.`op_fact_payment`
+  ) as `payment_detail`
+  
+ # 内部查询（子查询） 为
+  select * from  `dbgpt`.`op_fact_payment`
+  这个查询结果被命名为payment_detail
+  #外部查询为
+  select
+  `REVENUE_USD` as `payment_detail_REVENUE_USD`,
+  `EVENT_DATE` as `sys_imp_date`
+	from `payment_detail`
+	
+	
+	
+	#不能没有  as `payment_detail`  不然会报错
+  
+```
 
 
 
@@ -397,3 +495,5 @@ mysql> SELECT COUNT(*) as repetitions, last_name, first_name
 
 
 
+
+ 
