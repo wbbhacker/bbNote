@@ -189,3 +189,19 @@ https://docs.github.com/cn/get-started/using-git/splitting-a-subfolder-out-into-
 `git checkout .`
 
 git reset --soft HEAD~1 软恢复
+
+### 8.只克隆某个分支
+
+如果你只想克隆Git仓库的主分支，你可以使用`--branch`（或`-b`）选项，后面跟上你想要克隆的分支名。例如，如果主分支的名字是`main`，你可以这样做：
+
+```shell
+git clone --branch main https://github.com/username/repo.git
+```
+
+然而，这样做仍然会获取整个仓库的历史记录。如果你想要减少克隆的大小，你可以使用`--depth 1`选项来创建一个浅克隆，这将只获取最近一次提交的历史：
+
+```shell
+git clone --branch main --depth 1 https://github.com/username/repo.git
+```
+
+这将只克隆`main`分支的最新版本，不包括任何历史记录。
