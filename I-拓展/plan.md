@@ -52,6 +52,12 @@
 
 1. 红黑树 动画演示，可以操作红黑树 节点的网站
 
+1. 数字转浮点数 数字转二进制、64进制  、补码 之间转换、补码操作符运算
+
+       https://www.h-schmidt.net/FloatConverter/IEEE754.html
+
+      https://www.toolhelper.cn/Digit/FractionConvert
+
       ​     
 
       ​     
