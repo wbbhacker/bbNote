@@ -176,6 +176,10 @@ https://docs.github.com/cn/get-started/using-git/splitting-a-subfolder-out-into-
 
 `git reset --hard <commit>`   reset HEAD, index and working tree
 
+
+
+`git push -f` 回滚远程版本
+
 ### 6.取消新增的文件
 
 `git clean`是从工作目录中移除没有track的文件.
