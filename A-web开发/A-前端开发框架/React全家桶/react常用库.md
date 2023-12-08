@@ -42,3 +42,10 @@ An alternative side effect model for Redux apps
 
 ### [9.react 面试题](https://github.com/sudheerj/reactjs-interview-questions)
 
+### [10.re-resizable]()
+
+缩放适应组件
+
+### [11.react-dnd](https://www.npmjs.com/package/react-dnd)
+
+拖拽组件
