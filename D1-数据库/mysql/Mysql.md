@@ -1,5 +1,7 @@
 ### 1.服务
 
+> [Mysqlsh](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysqlsh.html)
+
 #### 1.连接与断开服务器 
 
 `mysql -h 地址 -P 端口 -u 用户名 -p 密码`

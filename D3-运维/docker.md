@@ -72,7 +72,7 @@
 
 #### 7.docker stats 查看运行中容器的状态
 
-#### 8.docker command —help 深入了解指定的docker 命令
+#### a.docker command —help 深入了解指定的docker 命令
 
 #### 9.docker start 启动一个已停止的容器
 
