@@ -26,7 +26,39 @@ Peer Dependencies
 
 `peerDependency` 可以避免类似的核心依赖库被重复下载的问题。
 
+##### 5.更新库
 
+要更新`package.json`中的所有库，你可以使用几种不同的方法。以下是一些常见的方法：
+
+1. **手动更新**：
+   手动将`package.json`中的版本号更改为你想要的版本，然后运行`npm install`。这种方法比较繁琐，但可以精确控制每个包的版本。
+
+2. **使用`npm update`**：
+   运行`npm update`将会更新所有的包到符合`package.json`文件中指定的语义版本控制（semver）兼容的最新版本。这不会更新到最新的主版本（major version），除非你在`package.json`中已经指定了。
+
+3. **使用`npm-check-updates`**：
+   `npm-check-updates`是一个第三方工具，可以帮助你升级`package.json`中的依赖项到最新版本。首先，你需要全局安装这个工具：
+
+   ```sh
+   npm install -g npm-check-updates
+   ```
+
+   然后，运行以下命令来升级所有的包：
+
+   ```sh
+   ncu -u
+   npm install
+   ```
+
+   这将会升级`package.json`中所有的包到最新版本，并且需要你运行`npm install`来安装这些新版本的包。
+
+4. **使用`npm outdated`**：
+   运行`npm outdated`可以查看哪些包有更新的版本。然后，你可以选择性地更新特定的包，或者手动更改`package.json`中的版本号，然后运行`npm install`。
+
+5. **使用`yarn`的`upgrade-interactive`**：
+   如果你使用的是`yarn`而不是`npm`，你可以使用`yarn upgrade-interactive`命令，它提供了一个交互式界面来选择你想要升级的包。
+
+请注意，升级依赖项可能会引入破坏性更改，特别是如果你升级到一个新的主版本。在升级之后，确保运行你的测试套件并手动测试应用程序以验证更新不会破坏现有功能。此外，建议在升级之前创建一个新的分支或使用版本控制系统，以便在出现问题时可以轻松回滚更改。
 
 #### 2.常用命令
 

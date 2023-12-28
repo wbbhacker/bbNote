@@ -263,6 +263,38 @@ function App() {
 export default App;
 ```
 
+##### 9.[useLayoutEffect](https://react.dev/reference/react/useLayoutEffect)
+
+```react
+import { useLayoutEffect } from 'react';
+
+function MyComponent() {
+  useLayoutEffect(() => {
+    // 执行DOM更新的代码
+  });
+
+  // 渲染UI的代码
+}
+```
+
+`useLayoutEffect` 接收一个函数作为参数，这个函数会在组件渲染到屏幕之后、浏览器绘制之前执行。如果这个函数返回一个函数，返回的函数将作为清理函数，在组件卸载或者依赖项改变导致重新执行 `useLayoutEffect` 之前调用。
+
+使用场景
+
+1. **读取布局并同步触发重渲染**：如果你需要读取 DOM 布局（例如元素的位置或尺寸）并根据这些信息立即进行更新，使用 `useLayoutEffect` 可以确保在浏览器进行任何绘制之前完成更新，避免出现闪烁。
+2. **防止视觉抖动**：如果你在 `useEffect` 中更改 DOM，可能会在用户看到渲染结果之后发生变化，这可能会导致不必要的视觉抖动。`useLayoutEffect` 可以避免这种情况，因为它在 DOM 更新后、绘制前执行。
+3. **与 DOM 相关的准备工作**：如果你需要在组件挂载到 DOM 后立即同步执行某些操作，比如设置焦点或测量元素尺寸，`useLayoutEffect` 是正确的选择。
+
+尽管 `useLayoutEffect` 在某些情况下非常有用，但它的使用应该比 `useEffect` 更加谨慎，因为它会阻塞浏览器的绘制，可能会影响性能。如果你的操作不涉及 DOM 的读取或者更新，或者不需要同步执行，那么通常应该使用 `useEffect`。
+
+在服务端渲染（SSR）的环境中，`useLayoutEffect` 会产生警告，因为它在服务端没有 DOM，所以无法同步执行。在这种情况下，通常应该使用 `useEffect`
+
+
+
+
+
+
+
 #### 4.自定义hooks 
 
 > 记忆点：自定义hooks是一个函数名以'use'字符串开头的js函数。
