@@ -70,6 +70,8 @@
    	
    	docker exec -it <container ID>  /bin/bash  进入在后台运行的容器
 
+> -p <宿主机端口>:<容器端口>
+
 #### 7.docker stats 查看运行中容器的状态
 
 #### a.docker command —help 深入了解指定的docker 命令

@@ -74,6 +74,14 @@ useReducer是另一种让函数组件保存状态的方式。
 
 ![image-20210507170119409](../../../../image/image-20210507170119409.png)
 
+> useEffect(() => {
+>
+> }, []); 每次组件重新渲染的时候会执行这个函数吗
+>
+> 不会，`useEffect` 钩子中传递的函数在依赖数组（第二个参数）变化时才会执行。如果依赖数组是空数组 `[]`，那么这个 `useEffect` 中的函数只会在组件挂载（mount）后执行一次，并且在组件卸载（unmount）前执行清理函数（如果提供了的话）。
+>
+> 这是因为空数组 `[]` 表示这个 `useEffect` 不依赖于组件内的任何状态或属性，所以它没有理由在组件更新时重新执行。
+
 ![image-20210507170335955](../../../../image/image-20210507170335955.png)
 
 ![image-20210507170455320](../../../../image/image-20210507170455320.png)
@@ -262,6 +270,82 @@ function App() {
 
 export default App;
 ```
+
+> ```javascript
+> const debouncedFn = useRef()
+> 
+> debouncedFn.current = _.debounce(function (v) {
+>     console.log(v) // null
+> }, 300)
+> 
+> const inputChange = (v) => {
+>     debouncedFn.current(v)
+> }  
+> // 把debounce函数用在useRef 上怎么拿不到v的值
+> 
+> //代码中的问题是，在每次组件渲染时都重新赋值 debouncedFn.current，这不是正确的使用 useRef 和 debounce 的方式。应该在组件的生命周期中只创建一次 debounce 函数，并且在组件卸载时取消它。
+> 
+> 
+> ```
+>
+> ```javascript
+> import React, { useState, useRef, useEffect } from 'react';
+> import _ from 'lodash';
+> 
+> function YourComponent() {
+>   const [metric, setMetric] = useState({ labelOther: '' });
+>   const debouncedFn = useRef(
+>     _.debounce((value) => {
+>       setMetric((prevMetric) => ({
+>         ...prevMetric,
+>         labelOther: value,
+>       }));
+>     }, 300)
+>   ).current;
+> 
+>   useEffect(() => {
+>     // 组件卸载时取消 debounce 函数
+>     return () => {
+>       debouncedFn.cancel();
+>     };
+>   }, [debouncedFn]);
+> 
+>   const inputChange = (event) => {
+>     // 直接传递 value 而不是 event 对象，见下面讲解
+>     debouncedFn(event.target.value);
+>   };
+> 
+>   return (
+>     <input
+>       type="text"
+>       value={metric.labelOther}
+>       onChange={inputChange}
+>       placeholder="Type to search..."
+>     />
+>   );
+> }
+> 
+> export default YourComponent;
+> ```
+>
+> 为什么要直接传值，而不是传event 对象 ？
+>
+> 在 React 中，事件对象 `event` 是一个合成事件（SyntheticEvent），它是 React 对原生浏览器事件的封装。React 出于性能考虑，会对这些合成事件进行池化（pooling），这意味着事件对象会被重用。当事件回调函数被调用后，事件对象中的所有属性都会被清除，并且事件对象会被回收以供后续的事件重用。如果你在一个异步函数中（例如 `debounce` 函数）试图访问事件对象，那么你可能会访问到一个已经被清空的对象。
+>
+> 当事件回调函数被调用后，事件对象中的所有属性都会被清除，并且事件对象会被回收以供后续的事件重用。如果你在一个异步函数中（例如 `debounce` 函数）试图访问事件对象，那么你可能会访问到一个已经被清空的对象。
+>
+> 为了解决这个问题，你可以在事件处理函数中立即读取事件对象的值，并将这个值传递给 `debounce` 函数：
+>
+> 这样，你就避免了在异步操作中使用已经被清空的事件对象的问题。这是 React 官方文档推荐的处理方式。如果你确实需要在异步操作中使用整个事件对象，你可以调用 `event.persist()` 方法来从池中移除事件对象，并允许用户代码保留对事件的引用：
+>
+> ```react
+> const handleChange = (event) => {
+>   event.persist();
+>   debouncedFn(event);
+> };
+> ```
+>
+> 但是，这种做法通常不推荐，因为它会破坏 React 的事件池化机制，可能会导致额外的性能开销。通常情况下，最好的做法是只传递所需的数据（如 `event.target.value`）给异步操作或 `debounce` 函数。
 
 ##### 9.[useLayoutEffect](https://react.dev/reference/react/useLayoutEffect)
 
