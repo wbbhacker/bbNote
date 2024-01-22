@@ -26,6 +26,10 @@
 
    查看所有分支包括远程分支
 
+   如果需要查看每一个分支的最后一次提交，可以运行 `git branch -v` 命令：
+
+   `--merged` 与 `--no-merged` 这两个有用的选项可以过滤这个列表中已经合并或尚未合并到当前分支的分支。 如果要查看哪些分支已经合并到当前分支，可以运行 `git branch --merged`：
+
 7. `git branch branchName`
 
    创建分支
@@ -353,3 +357,8 @@ git commit -m "Apply patch fix"
 `find .git/objects -type f`
 
 ![image-20231221202809577](../image/image-20231221202809577.png)
+
+#### 5.概念
+
+[当你试图合并两个分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6)
+
