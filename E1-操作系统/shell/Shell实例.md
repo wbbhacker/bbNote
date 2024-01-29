@@ -112,3 +112,7 @@ npm run build
 "
 ```
 
+#### 9.查看内存信息
+
+`cat /proc/meminfo` - 显示内存信息。
+
