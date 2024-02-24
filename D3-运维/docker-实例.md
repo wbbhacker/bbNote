@@ -26,6 +26,8 @@ services:
 
 运行 `docker-compose -f docker-compose.yml up`,在浏览器中打开`http://localhost:8080` 用户名`root` ,密码 `123456` 登录。
 
+> -p <宿主机端口>:<容器端口>
+
 ### 2.单独启mysql image
 
 启动 `docker run -p 3307:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql`

@@ -13,3 +13,7 @@ The cross axis in [flexbox](https://developer.mozilla.org/en-US/docs/Glossary/Fl
 ![image-20211209185920370](../../../../image/image-20211209185920370.png)
 
 Alignment of items on the cross axis is achieved with the `align-items` property on the flex container or `align-self` property on individual items. In the case of **a multi-line flex container**, with additional space on the cross axis, you can use `align-content` to control the spacing of the rows.
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-prefixing-flexbox
+
+> `flex`布局，父元素要固定。因为子元素是相对于父元素的宽度来计算空间分配的。

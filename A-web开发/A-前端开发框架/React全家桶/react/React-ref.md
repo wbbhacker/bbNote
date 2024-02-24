@@ -97,7 +97,8 @@ const ref = React.createRef();
 
 
 
-2.Forwarding refs in higher-order components
+> 2.Forwarding refs in higher-order components
+>
 
 ```react
 function logProps(Component) {

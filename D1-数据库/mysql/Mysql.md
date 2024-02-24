@@ -1,5 +1,7 @@
 ### 1.服务
 
+> [Mysqlsh](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysqlsh.html)
+
 #### 1.连接与断开服务器 
 
 `mysql -h 地址 -P 端口 -u 用户名 -p 密码`
@@ -77,8 +79,6 @@ DROP DATABASE[ IF EXISTS] 数据库名
 [2]: https://www.w3schools.com/sql/default.asp	"w3schools SQL"
 [3]: https://www.runoob.com/w3cnote/sql-join-image-explain.html	" SQL 的各种 JOIN 用法"
 [4]: https://www.cnblogs.com/slivelove/p/10956433.html	"sql中on和where的区别"
-
-
 
 
 

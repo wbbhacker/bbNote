@@ -88,3 +88,31 @@ lrwxr-xr-x  1 t04435  admin    46B 18 Sep 10:37 /usr/local/bin/npm -> /usr/local
 
 **ping命令属于icmp协议，而curl网页属于http或者https协议**，能正常上网但是ping不同，就很有可能是中间的某个路由器或防火墙上做了策略，禁止了icmp协议的数据包通过，但是允许http协议的数据包通过，这样一来就不能通过icmp协议的ping命令访问了。
 
+#### 8.切换用户执行脚本
+
+```shell
+#!/bin/bash
+cd '/home/tianhe/pythonworkspace/olap-superset/superset-frontend'
+su tianhe
+git pull
+npm run build
+# git、npm 命令不会执行
+```
+
+这段shell脚本中，`su tianhe`命令会切换到用户`tianhe`，并启动一个新的shell。`git pull`和`npm run build`命令实际上是在原来的shell中执行，而不是在新的shell中执行。因此，你可能看不到这两个命令的执行结果。
+
+如果你想在切换用户后执行命令，你需要将这些命令传递给`su`命令。你可以使用`-c`选项来执行一条命令，或者使用`-s`选项来指定一个要执行的shell脚本。例如：
+
+```shell
+#!/bin/bash
+cd '/home/tianhe/pythonworkspace/olap-superset/superset-frontend'
+su tianhe -c "
+git pull
+npm run build
+"
+```
+
+#### 9.查看内存信息
+
+`cat /proc/meminfo` - 显示内存信息。
+
