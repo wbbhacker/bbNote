@@ -1,6 +1,6 @@
 ## 一、[Commonly Used Lifecycle Methods](https://reactjs.org/docs/react-component.html#commonly-used-lifecycle-methods)
 
-### 1.`reander()`
+### 1.`render()`
 
 在类组件中唯一必需的方法。`render()`应该是纯函数，不应该在render函数里面修改组件的`state`,在每次被调用时应返回相同的结果，且不应该直接与浏览器交互。
 
