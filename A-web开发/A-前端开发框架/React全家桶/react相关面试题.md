@@ -38,3 +38,6 @@ EventBus.$on('event-name', eventData => {
 ```
 
 总之，EventBus是一种用于在组件间进行解耦的通信机制，它可以帮助开发者构建更灵活和可维护的应用程序。
+
+[1]: https://gugiegie.gitee.io/frontend/frontend/framework/react.html#_1-setstate%E6%98%AF%E5%90%8C%E6%AD%A5%E8%BF%98%E6%98%AF%E5%BC%82%E6%AD%A5
+
