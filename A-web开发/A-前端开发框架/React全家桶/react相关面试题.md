@@ -41,3 +41,4 @@ EventBus.$on('event-name', eventData => {
 
 [1]: https://gugiegie.gitee.io/frontend/frontend/framework/react.html#_1-setstate%E6%98%AF%E5%90%8C%E6%AD%A5%E8%BF%98%E6%98%AF%E5%BC%82%E6%AD%A5
 
+### [3.Fiber](https://juejin.cn/post/7258881840823844920#heading-0)
