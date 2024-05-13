@@ -40,3 +40,10 @@ build_prompt() {
 - [wd](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/wd)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [Screen](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/screen)
+
+#### 5.颜色设置
+
+![image-20240513174838870](../image/image-20240513174838870.png)
+
+[1]: https://zhuanlan.zhihu.com/p/290737828	"iTerm2 + oh-my-zsh 教程（7000字长文）"
+
