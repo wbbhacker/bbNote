@@ -6,9 +6,17 @@
 
 #### [3.网易有数](https://youdata.163.com/)
 
+https://sf.163.com/?productId=bigdata&opener=https%3A%2F%2Fsf.163.com%2Fproduct%2Fbp&clue_button_position=Navigation&clue_button_content=
+
 #### [4.数数平台](https://www.thinkingdata.cn/)
 
+#### [5.数据开发治理平台](https://sf.163.com/product/bp?channel=baidu_bp-shujuzhilibuchong083129)
+
 #### 5.Tableua
+
+九章
+
+[DataFocus](https://www.datafocus.ai/?from=ad_bing_aibi&msclkid=752b425695181ea5e29a2415932ee377)
 
 ### BI（商业智能）可视化分析平台有很多，以下是其中一些主要的：
 
