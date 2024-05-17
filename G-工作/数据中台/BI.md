@@ -18,6 +18,8 @@ https://sf.163.com/?productId=bigdata&opener=https%3A%2F%2Fsf.163.com%2Fproduct%
 
 [DataFocus](https://www.datafocus.ai/?from=ad_bing_aibi&msclkid=752b425695181ea5e29a2415932ee377)
 
+[Grafana](https://grafana.com/)
+
 ### BI（商业智能）可视化分析平台有很多，以下是其中一些主要的：
 
 1. Tableau：由 Tableau Software 公司开发的 BI 可视化工具，能够从多种数据源中获取数据，并提供交互式图表和仪表盘，广泛用于企业数据分析和决策支持。
@@ -30,4 +32,10 @@ https://sf.163.com/?productId=bigdata&opener=https%3A%2F%2Fsf.163.com%2Fproduct%
 以上仅是一些主要的 BI 可视化分析平台，市场上还有很多其他的工具，选择最适合自己的工具需要考虑自身的业务需求、数据量和分析目的等因素。
 
 #### 
+
+
+
+
+
+
 
