@@ -286,3 +286,9 @@ display the names and values of shell variables.
 #### 39.`declare`
 
 The ***declare*** is a builtin command of the **bash** shell. It is used to declare shell variables and functions, set their attributes and display their values.
+
+#### 40.awk
+
+#### 41.sed
+
+#### 42.perl
