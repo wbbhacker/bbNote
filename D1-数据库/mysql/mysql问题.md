@@ -84,7 +84,23 @@ mysql>source D:/test.sql > output.log
 
 https://zhuanlan.zhihu.com/p/190886874
 
+#### 7.mysql 可视化管理工具
 
+[mysqlWorkbench](http://www.mysqlworkbench.cn/)
+
+[DBeaver](https://dbeaver.io/)
+
+[Navicat](https://www.navicat.com.cn/)
+
+[1]: https://blog.csdn.net/y1282037271/article/details/128547052
+
+#### 8.ER 图
+
+Entity Relationship Diagram 实体关系图
+
+#### 9.DDL  数据
+
+DDL(Data Definition Language) 数据定义语言
 
 
 
