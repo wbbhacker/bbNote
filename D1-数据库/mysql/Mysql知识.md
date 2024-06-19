@@ -69,6 +69,7 @@ CREATE TABLE orders (
 [2]: https://blog.csdn.net/nanaMasuda/article/details/52543177	"mysql中key 、primary key 、unique key 与index区别"
 [3]: https://blog.csdn.net/ayqy42602/article/details/109092571	"Mysql中key 、primary key 、unique key 与index区别"
 [4]: https://developer.aliyun.com/article/933575	"MySQL - key、primary key、unique key、index 区别(二)"
+[5]: https://blog.csdn.net/HD243608836/article/details/99626599	"如何在MySQL中存储数组（list）？"
 
 
 
