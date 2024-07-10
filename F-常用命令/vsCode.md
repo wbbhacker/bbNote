@@ -19,7 +19,12 @@
    3. sublime text keymap and setting importer 设置sub text 快捷键
    4. prettier 代码格式化
    5. GitLens 显示代码提交者
+
 4. Markdown Preview Enhanced
+
+5. theme-timer 
+
+   An extension which switches Color themes based on a schedule
 
 3.保存是文件格式化：
 

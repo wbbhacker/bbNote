@@ -54,3 +54,39 @@ Java注解有以下几种类型：
 ### 5.static
 
 Java 中的 static 字段是指静态字段，也称为类字段。它是属于类的字段，而不是属于对象的字段。在类加载时，静态字段会被初始化并分配空间，在类被卸载时销毁。然后可以通过类名直接访问，而无需实例化类对象。
+
+### 6.synchronized
+
+给 log() 函数加互斥锁（Java 中可以通过 synchronized 的关键字），同一时刻只允许一个线程调用执行 log() 函数。
+
+```java
+public class Logger {
+  private FileWriter writer;
+
+  public Logger() {
+    File file = new File("/Users/wangzheng/log.txt");
+    writer = new FileWriter(file, true); //true表示追加写入
+  }
+  
+  public void log(String message) {
+    synchronized(this) {
+      writer.write(mesasge);
+    }
+  }
+}
+```
+
+### [7.final](https://blog.csdn.net/qq_24309787/article/details/100942044)
+
+final作为Java中的关键字可以用于三个地方。用于修饰类、类属性和类方法。
+
+特征：凡是引用final关键字的地方皆不可修改！
+
+(1)修饰类：表示该类不能被继承；
+
+(2)修饰方法：表示方法不能被[重写](https://so.csdn.net/so/search?q=重写&spm=1001.2101.3001.7020)；
+
+(3)修饰变量：表示变量只能一次赋值以后值不能被修改（常量）。
+
+[1]: https://juejin.cn/post/7208745710766276664?from=search-suggest	"DTO、VO、BO、PO、DO的用法区别，居然这么多人搞不清楚....."
+

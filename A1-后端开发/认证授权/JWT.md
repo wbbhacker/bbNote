@@ -75,3 +75,11 @@ jwt由头部、载荷、签名三部分组成
 - 有效期短
 - 只希望被适用一次
 
+#### [4.JWS](https://github.com/auth0/node-jws)
+
+JSON Web Signatures
+
+[1]: https://github.com/nestjs/jwt?tab=readme-ov-file	" @nestjs/jwt"
+[2]: https://github.com/auth0/node-jsonwebtoken	" Jsonwebtoken"
+[3]: https://github.com/auth0/node-jws	"node-jws"
+
