@@ -20,7 +20,7 @@ function processData () {
 }
 ```
 
-##### 2.`requestIdleCallback
+##### 2.requestIdleCallback
 
 任务执行优先级最低
 

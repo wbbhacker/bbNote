@@ -123,6 +123,7 @@ white-space: nowrap
 /*多行省略*/
 overflow: hidden;
 text-overflow: ellipsis;
+
 display: -webkit-box;
 -webkit-box-orient: vertical;
 -webkit-line-clamp: 2;
@@ -219,7 +220,7 @@ window.**devicePixelRatio**  = 物理像素/css像素
 
 优点：方便      缺点：要支持媒体查询
 
-##### 2.Transform 加伪类标签
+##### 2.Transform 加伪元素类标签
 
 ```less
 // less
@@ -339,7 +340,7 @@ devicePixelRatio为3 则需要1px为颜色 2px为透明  太麻烦了 丢弃
    
    ```
 
-#### 9.空元素不支持 `::before，::after`
+#### 9.空元素不支持 伪元素`::before，::after`
 
 - IE 不支持的元素有：img，input，select，textarea。
 - FireFox 不支持的元素有：input，select，textarea。

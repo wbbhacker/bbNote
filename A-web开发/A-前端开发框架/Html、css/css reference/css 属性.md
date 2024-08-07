@@ -6,7 +6,7 @@ auto、none、svg的一些属性
 
 除了指示该元素不是鼠标事件的目标之外，值`none`表示鼠标事件“穿透”该元素并且指定该元素“下面”的任何东西。
 
-#### 2.box-sizing
+#### 2.box-sizing 
 
 content-box(default) | border-box |  inherit
 
@@ -138,7 +138,7 @@ The object-fit CSS property sets how the content of a replaced element, such as 
 #### 16.calc()
 
 ```css
-width: calc(10px + 100px);
+width: calc(10px + 100px);·																	
 width: calc(100% - 30px);
 width: calc(2em * 5);
 width: calc(var(--variable-width) + 20px);
@@ -182,7 +182,7 @@ Custom properties with fallbacks for use when the property has not been set
 
 > padding-top 也是 ，见2.3-Layout-contenting block 关于包含块的定义
 
-#### 19.letter-spacing
+#### 19.letter-spacing 字母间隔
 
 The **`letter-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal spacing behavior between text characters. 
 
@@ -302,5 +302,18 @@ table{
 
 `!important` 不影响继承性，继承过来的`!important` 无法提升它的权重。
 
+#### [28.white-space](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space#collapsing_of_white_space)
 
+`white-space: pre;` 
 
+保留了空白序列。行仅在源文件中的换行符和`<br>`元素处换行。
+
+实例：https://developer.mozilla.org/en-US/play
+
+>  最好设置 white-space:normal ，统一空白的处理，不然格式化代码的时候很容易出错。
+
+#### 29.caret-color
+
+设置光标颜色
+
+`caret-color: red` 

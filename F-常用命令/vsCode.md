@@ -19,6 +19,7 @@
    3. sublime text keymap and setting importer 设置sub text 快捷键
    4. prettier 代码格式化
    5. GitLens 显示代码提交者
+   6. Gitlens inspect 查看代码历史：单文件历史 、单行历史等
 
 4. Markdown Preview Enhanced
 

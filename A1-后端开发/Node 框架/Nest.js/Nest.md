@@ -26,3 +26,13 @@ Nest 应用按我们称为请求生命周期的顺序处理请求并生成响应
 ```tsx
     return this.usersService.update(userId, { refreshToken: null });
 ```
+
+
+
+
+
+[1]: https://github.com/auth0/node-jsonwebtoken	"jsonwebtoken"
+[2]: https://gist.github.com/ziluvatar/a3feb505c4c0ec37059054537b38fc48	"Token-generator.js"
+[3]: https://blog.afacode.top/2020/01/25/nestjs-typeorm-mysql-rbac/	"nestjs用户角色权限"
+[4]: https://blog.csdn.net/lxy869718069/article/details/113975443	"nestjs[typeorm学习之多对多表关系探究与使用]"
+
