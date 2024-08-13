@@ -39,7 +39,7 @@
  scp /path/filename username@servername:/path ;
 ```
 
-
+[Linux中的scp命令用于将文件和目录复制到远程系统或从远程系统复制文件和目录。](https://cn.linux-console.net/?p=10502)
 
 #### 6.`grep` 查找文件中的关键字
 
@@ -292,3 +292,7 @@ The ***declare*** is a builtin command of the **bash** shell. It is used to decl
 #### 41.sed
 
 #### 42.perl
+
+#### 43.cp 
+
+复制命令
