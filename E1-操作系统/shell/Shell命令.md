@@ -278,6 +278,12 @@ Start service
 
 #### 37.`env`、 `set` 、`declare` 、`export`
 
+
+
+[1]: https://www.cnblogs.com/wfwenchao/p/6139039.html	"Linux中 set、env、declare、export显示shell变量的区别"
+
+
+
 #### 38.`set`
 
 Change the value of shell attributes and positional parameters, or
