@@ -36,6 +36,17 @@ start schema有中心表，适合大数据
 
 在MySQL中，外键是一种数据库约束，用于建立两个表之间的关系。外键约束确保了引用完整性，即只允许在关联表中存在的值出现在外键列中。这意味着，如果表A中的列作为外键指向表B的主键，那么表A中的每个外键值都必须在表B的主键列中有对应的值。
 
+```mysql
+CONSTRAINT constraint_name
+FOREIGN KEY foreign_key_name (columns)
+REFERENCES parent_table(columns)
+ON DELETE action
+ON UPDATE action
+//更多请阅读：https://www.yiibai.com/mysql/foreign-key.html
+```
+
+
+
 ```sql
 CREATE TABLE customers (
     customer_id INT AUTO_INCREMENT,
@@ -53,6 +64,14 @@ CREATE TABLE orders (
 ```
 
 在这个例子中，`orders`表的`customer_id`列是一个外键，它引用了`customers`表的`customer_id`列。
+
+[1]: https://www.yiibai.com/mysql/foreign-key.html	"MySQL外键约束"
+[2]: https://blog.csdn.net/nanaMasuda/article/details/52543177	"mysql中key 、primary key 、unique key 与index区别"
+[3]: https://blog.csdn.net/ayqy42602/article/details/109092571	"Mysql中key 、primary key 、unique key 与index区别"
+[4]: https://developer.aliyun.com/article/933575	"MySQL - key、primary key、unique key、index 区别(二)"
+[5]: https://blog.csdn.net/HD243608836/article/details/99626599	"如何在MySQL中存储数组（list）？"
+
+
 
 ### 5.索引
 

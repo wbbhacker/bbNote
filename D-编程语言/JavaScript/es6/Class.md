@@ -1,0 +1,1 @@
+### [1.Private and protected properties and methods](https://javascript.info/private-protected-properties-methods)

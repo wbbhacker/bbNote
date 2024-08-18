@@ -1,4 +1,4 @@
-### npm
+### 1.npm
 
 #### npm 知识
 
@@ -103,7 +103,7 @@ npm install 包名@版本号 -S `
 
 
 
-### npx
+### 2.npx
 
 #### 1.npx 想要解决的主要问题，就是调用项目内部安装的模块
 
@@ -126,13 +126,15 @@ npx mocha --version
 
 `npx create-react-app my-react-app`
 
-### [pnpm](https://pnpm.io/)
+### 3.[pnpm](https://pnpm.io/)
 
+### 4.nrm
 
+npm 源管理器
 
+### [5.verdaccio](https://verdaccio.org/)
 
-
-
+npm 私服搭建
 
 
 

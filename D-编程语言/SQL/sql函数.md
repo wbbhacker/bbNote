@@ -65,10 +65,17 @@ where continent = 'Europe';
 ### 7.LENGTH 
 
 ### 8.OVER
-
-9.
-
-
-
 [1]: https://hg95.github.io/DataBase/MySQL/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0.html	"窗口函数"
+
+### [9.CAST](https://www.w3ccoo.com/mysql/func_mysql_cast.asp)
+
+CAST() 函数将一个值（任何类型）转换为指定的数据类型。
+
+### 10.IFNULL、NULLIF、ISNULL
+
+[1]: https://blog.csdn.net/pan_junbiao/article/details/85928004	" MySQL中IF()、IFNULL()、NULLIF()、ISNULL()函数的使用"
+
+### [11.AVG、SUM](https://www.w3ccoo.com/mysql/mysql_count_avg_sum.html)
+
+### 12.SPLIT
 

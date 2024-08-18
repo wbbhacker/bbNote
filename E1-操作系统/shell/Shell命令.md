@@ -39,7 +39,7 @@
  scp /path/filename username@servername:/path ;
 ```
 
-
+[Linux中的scp命令用于将文件和目录复制到远程系统或从远程系统复制文件和目录。](https://cn.linux-console.net/?p=10502)
 
 #### 6.`grep` 查找文件中的关键字
 
@@ -278,6 +278,12 @@ Start service
 
 #### 37.`env`、 `set` 、`declare` 、`export`
 
+
+
+[1]: https://www.cnblogs.com/wfwenchao/p/6139039.html	"Linux中 set、env、declare、export显示shell变量的区别"
+
+
+
 #### 38.`set`
 
 Change the value of shell attributes and positional parameters, or
@@ -286,3 +292,13 @@ display the names and values of shell variables.
 #### 39.`declare`
 
 The ***declare*** is a builtin command of the **bash** shell. It is used to declare shell variables and functions, set their attributes and display their values.
+
+#### 40.awk
+
+#### 41.sed
+
+#### 42.perl
+
+#### 43.cp 
+
+复制命令

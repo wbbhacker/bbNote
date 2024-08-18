@@ -104,4 +104,10 @@ nginx -s quit #停服，需要进程完成当前工作后再停止
 
    > https://www.cnblogs.com/alexfly/p/10615986.html 参考链接
 
-​		 
+​		
+
+### Nignx 配置
+
+### 
+
+###  

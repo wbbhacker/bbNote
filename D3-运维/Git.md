@@ -362,3 +362,18 @@ git commit -m "Apply patch fix"
 
 [当你试图合并两个分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6)
 
+### 4.git SubModule
+
+**Git Submodule** 是 [Git](https://so.csdn.net/so/search?q=Git&spm=1001.2101.3001.7020) 中用于管理子项目的强大功能。它允许我们将一个 Git 仓库作为另一个 Git 仓库的子模块进行管理，从而使项目结构更加清晰，代码维护更加方便。
+
+[1]: https://blog.csdn.net/yuxiatongzhi/article/details/138115350	"Git Submodule 全流程使用指南"
+
+### 5.git SubTree
+
+经由 Git Subtree 来维护的子项目代码，对于父项目来说是透明的，所有的开发人员**看到的就是一个普通的目录，原来怎么做现在依旧那么做**，只需要维护这个 Subtree 的人在合适的时候去做同步代码的操作
+
+**关于子仓库或者说是仓库共用，git官方推荐的工具是git subtree。**
+
+[1]: https://www.cnblogs.com/goloving/p/16678440.html	"浅析Git Subtree的原理与实际应用"
+[2]: https://www.cnblogs.com/anliven/p/13681894.html	" subTree 与 subModule"
+

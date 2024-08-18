@@ -1,6 +1,6 @@
 ### css选择器
 
-#### 一、基础选择符
+#### 1、基础选择符
 
 1. `*`  
 
@@ -56,7 +56,7 @@
 
      选择其 src 属性以 ".pdf" 结尾的所有 a 元素
 
-#### 二、**分组选择符**
+#### 2、**分组选择符**
 
 1. `,`
 
@@ -68,7 +68,7 @@
    /*选择所有匹配的元素节点*/
    ```
 
-#### 三、组合选择符
+#### 3、组合选择符
 
 1. `+`
 
@@ -105,7 +105,12 @@
    `<div class="parent"><div class="son"><div class="grandson"></div></div></div>`
 
    `div.parent div{}` 选择`<div class="son"> 和 <div class="grandson">`
-
+   
+   
+   
    [1]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#combinators
 
-   
+#### 4.Pseudo 伪
+
+1.  [Pseudo classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes) `:`伪类
+2. [Pseudo elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements) `::` 伪元素
