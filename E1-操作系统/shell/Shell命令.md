@@ -302,3 +302,5 @@ The ***declare*** is a builtin command of the **bash** shell. It is used to decl
 #### 43.cp 
 
 复制命令
+
+#### [44.chmod](https://www.runoob.com/linux/linux-comm-chmod.html)
