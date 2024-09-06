@@ -377,3 +377,5 @@ git commit -m "Apply patch fix"
 [1]: https://www.cnblogs.com/goloving/p/16678440.html	"浅析Git Subtree的原理与实际应用"
 [2]: https://www.cnblogs.com/anliven/p/13681894.html	" subTree 与 subModule"
 
+### 6.git status 中文乱码
+

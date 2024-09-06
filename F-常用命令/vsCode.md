@@ -27,6 +27,36 @@
 
    An extension which switches Color themes based on a schedule
 
+6. Todo Tree
+
+   Show TODO, FIXME, etc. comment tags in a tree view
+
+7. SVG
+
+   SVG Coding, Minify, Pretty, Preview All-In-One
+
+8. vsCode-icons
+
+   VSCode官方出品的图标库
+
+9. Color Highlight
+
+   看名字就知道了，用于给我们代码中的颜色进行高亮展示的插件。
+
+10. **Trailing Spaces**
+
+   把[尾随空格](https://zhida.zhihu.com/search?q=尾随空格&zhida_source=entity&is_preview=1)显示出来。
+
+11. CodeIf
+
+    变量命名推荐  https://bailongma.yuque.com/fbyium/ucue94/vlrgb9
+
+12. **koroFileHeader**
+
+    自动添加**[头部注释](https://zhida.zhihu.com/search?q=头部注释&zhida_source=entity&is_preview=1)**和**函数注释**的插件
+
+13. 
+
 3.保存是文件格式化：
 
 `Format On Save`  勾选即可 
