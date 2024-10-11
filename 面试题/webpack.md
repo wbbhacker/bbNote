@@ -33,7 +33,7 @@ ES6 module 特点：
 - import 的模块名只能是字符串常量
 - import binding 是 immutable的
 
-ES6模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析，这就是tree-shaking的基础。
+**ES6模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析，这就是tree-shaking的基础。**
 
 所谓静态分析就是不执行代码，从字面量上对代码进行分析，ES6之前的模块化，比如我们可以动态require一个模块，只有执行后才知道引用的什么模块，这个就不能通过静态分析去做优化。
 
@@ -42,7 +42,7 @@ ES6模块依赖关系是确定的，和运行时的状态无关，可以进行�
 
 
 https://blog.csdn.net/leelxp/article/details/108099238
-=======
+
 #### 2.webpack中loader 和plugin的区别
 
 webpack中loader和plugin这两个概念如何区分。
@@ -184,11 +184,11 @@ DllPlugin可以将特定的类库提前打包然后引入。这种方式可以�
 当使用的时候再去下载对应文件，返回一个Promise当Promise成功以后去执行回调
 ```
 
-##### 6.Scope Hoisting
+##### [6.Scope Hoisting](https://zhuanlan.zhihu.com/p/162066537#:~:text=%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%20Scop#:~:text=%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%20Scop)
 
-Scope Hoisting会分析出模块之间的依赖关系，尽可能的
+Scope Hoisting 的实现原理其实很简单：分析出模块之间的依赖关系，尽可能将打散的模块合并到一个函数中，前提是不能造成[代码冗余](https://zhida.zhihu.com/search?content_id=124148217&content_type=Article&match_order=1&q=代码冗余&zhida_source=entity)。 因此**只有那些被引用了一次的[模块](https://zhida.zhihu.com/search?content_id=124148217&content_type=Article&match_order=9&q=模块&zhida_source=entity)才能被合并**。
 
-把打包出来的模块合并到一个函数中去。
+由于 Scope Hoisting 需要分析出模块之间的依赖关系，因此源码**必须采用 ES6 模块化语句**，不然它将无法生效。 原因和[4-10 使用 TreeShaking](https://link.zhihu.com/?target=http%3A//webpack.wuhaolin.cn/4%E4%BC%98%E5%8C%96/4-10%E4%BD%BF%E7%94%A8TreeShaking.html) 中介绍的类似。
 
 ```tsx
 比如我们希望打包两个模块

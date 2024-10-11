@@ -38,8 +38,6 @@ console.log(4)
 
 ```
 
-
-
 #### 2. 
 
 ```javascript
@@ -1296,6 +1294,137 @@ for(var i=0; i<6; i++){
       console.log(i);
     }, 1000);
   }
+```
+
+#### 52.模版匹配
+
+```javascript
+let str = `<div>{{aa.bb}}</div>`
+let data = {aa:{bb:22}}
+
+//输出 <div>22</div>
+```
+
+
+
+
+
+TODO
+
+```javascript
+// 实现一个 useLocalStorage 的 hook，
+// 参数有两个：
+// key：LocalStorage 的 key
+// defaultValue：当 LocalStorage 中对应 key 没有值当时候，返回 defaultValue
+// 返回值是一个数组，类似 useState 
+//   0: value，代表 LocalStorage 中 key 对应的 value，没有时返回参数的 defaultValue
+//   1: setValue,是一个函数 function fn(value){}，用来更新 LocalStorage 中的对应 key 的值，同时可以触发使用这个 key 的组件的重新渲染
+
+// 使用举例： const [value, setValue] = useLocalStorage("key", "defaultValue"); 
+// 更新值: setValue("newValue");
+
+function useLocalStorage(key,defaultValue){
+    const  [value,setValue] = useState(()=>{
+        const v = localStorage.getItem(key)
+        if(v !== undefined){
+                return v
+        }else{
+            return defaultValue
+        }
+    })
+
+    useEffect(()=>{
+        localStorage.setItem(key,value)
+    },value)
+
+    return [value,setValue]
+}
+
+
+// 实现网络请求失败后的自动重试，如果请求成功，则正常返回，否则按需求重试
+// fetchPromiseGenerator: 一个生成网络请求的 Promise 的函数
+// count: 重试最大次数，达到最大次数后，返回错误
+// interval: 重试时间间隔，每次重试的时间间隔
+function  retry(fetchPromiseGenerator, count, interval) {
+    // code here...
+  
+    return fetchPromiseGenerator.then((res )=>{
+        return res
+    }).catch(()=>{
+        if(count !== 0){
+            setTimeout(()=>{
+               return Promise.then(()=>{
+                    return  retry(fetchPromiseGenerator, --count, interval)
+               })
+            },interval)
+        }
+    })
+}
+
+// 使用举例:
+const myRequest = () => { 
+    return fetch('url')
+}
+retry(myRequest, 3, 1000).then((res) => {
+    // handle result
+})
+
+
+/**
+题目: 两数之和
+输入: 数组和目标数 
+输出: 两数相加等于目标值的可能性的集合, 每个数只能用一次
+例子1:
+输入: [1, 1, 2, 3, 5, 4], 6
+输出: [[1, 5], [2, 4]]
+例子2:
+输入: [1, 1, 2, 4, 3, 5, 5], 6
+输出: [[1, 5], [1, 5], [2, 4]]
+例子3:
+输入: [1, 5, 5], 6
+输出: [[1, 5]]
+*/
+
+function caleSum(arr,num){
+    const dict = {}
+    const  res = []
+    arr.forEach((item)=>{
+        if(dict[item] === undefined ){
+            dict[item] = 1
+        }else{
+            dict[item] += 1
+        }
+    })
+
+    arr.forEach((item)=>{
+        
+        if(dict[num-item] !== undefined && dict[num-item] > 0 && dict[item] > 0  )  {
+
+            if(num-item === item){
+                if(dict[item] >= 2){
+                    dict[item] -= 2
+                    res.push([item,num-item])
+                }
+            
+            }else{
+                   dict[num-item] -= 1
+                    dict[item] -= 1
+                    res.push([item,num-item])
+            }
+                
+           
+        }
+    })
+    return res
+}
+
+
+caleSum([1, 1, 2, 3, 5, 4],6)
+
+
+
+
+
 ```
 
 
