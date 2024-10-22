@@ -464,3 +464,27 @@ div{
 #### 16.介绍下重绘和回流（Repaint & Reflow），以及如何进行优化?
 
 **回流必将引起重绘，重绘不一定会引起回流。**
+
+#### 17.mc chorme 浏览器隐藏滚动条样式，可以设置为一直显示
+
+```
+ .sub-msg{
+    max-height :208px
+    overflow:auto
+}
+.sub-msg::-webkit-scrollbar{
+
+    height: 14px;
+    width:6px
+}
+.sub-msg::-webkit-scrollbar-thumb{
+    background-color: #999;
+    border-radius: 10px;
+}
+.sub-msg::-webkit-scrollbar-track{
+    border-radius: 10px;
+}
+
+```
+
+> 如果其元素或父元素设置了 scrollbar-color css 属性，则上面代码会不生效
