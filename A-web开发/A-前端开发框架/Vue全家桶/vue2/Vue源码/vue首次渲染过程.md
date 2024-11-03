@@ -89,21 +89,14 @@
 
    - `Vue.prototype.$mount` 方法
 
-3. 与平台无关的核心文件：`src/core/index.js`,主要实现
-   - 实现Vue 的静态方法：Vue.xxx  
-   - Vue.prototype 添加`$isServer` 、`$ssrContext`
-
-4. Vue 定义文件：`src/core/instance/index.js`, 主要实现
-
-   - Vue 类
-   - Vue.prototype 上添加各种方法
-     - `initMixin(Vue)`  挂载  `Vue.prototype._init` 
-     - `stateMixin` 挂载 `$data/$props/$set/$delete/$watch`
+3. XC34 `initMixin(Vue)`  挂载  `Vue.prototype._init` 
+   - - `stateMixin` 挂载 `$data/$props/$set/$delete/$watch`
      - `eventsMixin` 挂载 `$on/$once/$off/$emit`
      - `lifecycleMixin` 挂载 `_update/$forceUpdate/ $destroy`
      - `renderMixin` 挂载 `$nextTick /_render`
-
+     
    - `Vue.prototype._init`   方法主要为Vue 的实例 添加各种属性和方法，并执行 `$mount` 
+   
 
 #### 四、总结
 
