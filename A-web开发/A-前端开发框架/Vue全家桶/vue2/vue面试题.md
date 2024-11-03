@@ -303,3 +303,9 @@ MVVM 是 Model-View-ViewModel 的缩写。MVVM 是一种设计思想。 Model �
 
 https://juejin.cn/post/7208005892313579576
 
+
+
+#### 17.vue组件间传值
+
+https://vue-js.com/topic/5fc8d6c896b2cb0032c38819
+

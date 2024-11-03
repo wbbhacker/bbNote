@@ -487,4 +487,52 @@ div{
 
 ```
 
+> 在 CSS 中自定义滚动条时，要增大滚动块（thumb）的可拖拽区域，可以通过以下几种方法：
+>
+> 1. 增加宽度和高度
+>    - 对于垂直滚动条，可以增加`::-webkit - scrollbar - thumb`的宽度。例如：
+>
+> ```css
+>    ::-webkit - scrollbar - thumb {
+>        background - color: #888;
+>        border - radius: 6px;
+>        width: 12px; /* 增加滚动块的宽度 */
+>    }
+> ```
+>
+> - 对于水平滚动条，可以增加其高度。例如：
+>
+> ```css
+>    ::-webkit - scrollbar - thumb:horizontal {
+>        height: 12px; /* 增加水平滚动块的高度 */
+>    }
+> ```
+>
+> 1. 调整`-webkit - scrollbar`的大小
+>    - 可以通过调整`-webkit - scrollbar`的整体大小来间接影响滚动块的大小。例如：
+>
+> ```css
+>    ::-webkit - scrollbar {
+>        width: 16px; /* 增加垂直滚动条的宽度 */
+>    }
+>    ::-webkit - scrollbar - thumb {
+>        background - color: #888;
+>        border - radius: 6px;
+>    }
+> ```
+>
+> - 对于水平滚动条：
+>
+> ```css
+>    ::-webkit - scrollbar:horizontal {
+>        height: 16px; /* 增加水平滚动条的高度 */
+>    }
+>    ::-webkit - scrollbar - thumb:horizontal {
+>        height: 12px;
+>    }
+> ```
+
 > 如果其元素或父元素设置了 scrollbar-color css 属性，则上面代码会不生效
+
+[1]: https://www.freecodecamp.org/chinese/news/css-scrollbar-tutorial/	"用css 实现自定义滚动条样式 "
+
