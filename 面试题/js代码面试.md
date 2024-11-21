@@ -301,6 +301,10 @@ request(4000).then(res=> console.log(res));
 request(500).then(res=> console.log(res));
 ```
 
+> https://blog.csdn.net/weixin_43459866/article/details/113029220
+>
+> https://segmentfault.com/q/1010000041420799
+
 #### 16.实现有序数组的排序 [1, 3, 5] [2, 4, 6] -> [1, 2, 3, 4, 5, 6]， 不能用concat sort方法
 
 #### 17.new 操作的内部执行过程

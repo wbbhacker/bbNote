@@ -43,6 +43,8 @@
    8. Typora markdown 软件
    9. SourceTree  gitlab 可视化软件
    10. Charles 抓包工具
+   
+       > [10 款好用的 mac 抓包工具推荐（2024 最新）)](https://promptchoose.com/ai-tools/mac-curl-tools/)
    11. MarginNote  pdf阅读软件
    12. VScode、Sublime Text、Vim  开发工具
        1. Fold
