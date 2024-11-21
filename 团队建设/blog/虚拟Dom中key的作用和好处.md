@@ -103,7 +103,7 @@ vue源码中`src/core/vdom/patch.js`中，有5处地方用到了key，3个函数
 
 上述4逻辑中的key，用来判断两个虚拟Dom 是否为克隆关系。
 
-上述1的sameVnode 函数调用很多，有7处在`src/core/vdom/patch.js`,6处在`updateChildren`函数的DIff 算法中调用。1处在`patch`函数调用，判断新旧虚拟Dom 是否相同，相同则调用patchVnode 函数继续往下比较如下：
+上述1的sameVnode 函数调用很多，有7处在`src/core/vdom/patch.js`,6处在`updateChildren`函数的DIff 算法中调用。1处在`patch`函数调用，判断新旧虚拟Dom 是否相同，相同则调用w
 
 ```javascript
 // patch 函数

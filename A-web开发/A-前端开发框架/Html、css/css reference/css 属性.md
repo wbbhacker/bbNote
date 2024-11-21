@@ -51,7 +51,7 @@ ps:love hate 方法记忆
 
 可实现ps中的 正片叠底之类的效果
 
-#### 8.word-break
+#### 8.word-break  
 
 ```css
 word-break:break-all; 
@@ -75,7 +75,7 @@ overflow-x:scroll;
 
   使用浮点数指定对象分配其父元素剩余空间的比例（即：如果想平均分配子元素的话，每个子元素width设置为0即可）
 
-#### 12.user-select
+#### 12.user-select 
 
 禁止用户选中文本。
 
