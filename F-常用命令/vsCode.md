@@ -1,12 +1,14 @@
-## vsCode
+## 
 
-#### 1.设置格式化 4个空格
+### 1.设置格式化 4个空格
 
 ```javascript
 "vetur.format.options.tabSize": 4 
 ```
 
-#### 2.vsCode 插件
+### 2.vsCode 插件
+
+[vsCode 插件市场](https://marketplace.visualstudio.com/vscode) 
 
 1. Bookmarks
 
@@ -55,11 +57,11 @@
 
     自动添加**[头部注释](https://zhida.zhihu.com/search?q=头部注释&zhida_source=entity&is_preview=1)**和**函数注释**的插件
 
-13. 
+13. GItLens 
 
-3.保存是文件格式化：
+14.MarsCode Ai Coding
 
-`Format On Save`  勾选即可 
+15.postman
 
 ### 3.vsCode 快捷键
 
@@ -84,7 +86,9 @@ Command + K Command + J 展开全部代码块
 
 https://stackoverflow.com/questions/53672888/vscode-not-changing-double-quotes-to-single-quotes-in-template-when-using-vetu
 
+### 6.保存是文件格式化：
 
+`Format On Save`  勾选即可 
 
 ### 7.vsCode 自用配置
 

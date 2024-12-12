@@ -76,3 +76,6 @@ sudo launchctl unload -w /System/Library/LaunchAgents/com.apple.Spotlight.plist 
 
 https://support.apple.com/zh-cn/guide/mac-help/mchlp1599/10.15/mac/10.15
 
+5.单双屏切换时，铎桌面顺序会乱
+
+![image-20241209200735986](../image/image-20241209200735986.png)
