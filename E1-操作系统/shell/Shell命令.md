@@ -5,8 +5,13 @@
 #### **1.别名设置**
 
 1. alias 设置一个别名 `alias  alias_name='origin_command'`
+
 2. unaries 删除已设置别名 `unalias [-a][alias_name]`    
    1.  `unalias -a` 删除所有别名， `unalias alias_name` 仅删除alias_name的别名clear
+
+3. ```
+   alias [alias]='[path-to-script]/[filename].sh'
+   ```
 
 #### 2.环境变量
 
