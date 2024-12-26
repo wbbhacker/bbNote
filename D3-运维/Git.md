@@ -120,6 +120,8 @@ https://segmentfault.com/q/1010000000140446
 
 `git config --global alias.cm commit`
 
+`git config --global alias.ck checkout`
+
 22.git 回滚commit  到远程分支
 
 1. 查看
@@ -379,9 +381,23 @@ git commit -m "Apply patch fix"
 
 ### 6.git status 中文乱码
 
+`git config --global core.quotepath false`
+
 
 
 [1]: https://geek-docs.com/git/git-questions/225_git_switch_node_modules_folder_when_i_change_git_branch.html	"Git 在切换git分支时如何处理node_modules文件夹"
+
+### 7.git commit 编写指南
+
+- feat：新功能（feature）
+- fix：修补 bug
+- docs：文档（documentation）
+- style：格式（不影响代码运行的变动）
+- refactor：重构（即不是新增功能，也不是修改 bug 的代码变动）
+- test：增加测试
+- chore：构建过程或辅助工具的变动
+
+[1]: https://help.gitee.com/enterprise/code-manage/Git%20%E7%9F%A5%E8%AF%86%E5%A4%A7%E5%85%A8/Git%20Commit%20message%20%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97	"Git Commit message 编写指南"
 
 
 
