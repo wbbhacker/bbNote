@@ -122,6 +122,8 @@ https://segmentfault.com/q/1010000000140446
 
 `git config --global alias.ck checkout`
 
+`git config --global alias.br branch`
+
 22.git 回滚commit  到远程分支
 
 1. 查看
@@ -147,6 +149,10 @@ https://segmentfault.com/q/1010000000140446
 > 因为你是force push，对比之下，之前已经pull下来的会当作是本地的提交，刚刚这个命令，就相当于“抛弃本地所有提交”，这样就一致了
 
 https://www.cnblogs.com/eternityz/p/13201595.html
+
+23.确保你的本地仓库的远程分支状态是最新和最清晰的
+
+`git fetch --prune` 是 Git 中用来更新远程分支引用的命令，并同时移除本地已失效（即在远程仓库中已删除）的分支引用
 
 ### 2.git实例
 

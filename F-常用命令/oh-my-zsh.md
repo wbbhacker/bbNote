@@ -12,6 +12,8 @@
 
 `%1~` 只显示当前文件夹
 
+`%2~` 显示当前文件夹+父级
+
 ```shell
 prompt_dir() {
   prompt_segment blue $CURRENT_FG '%1~'

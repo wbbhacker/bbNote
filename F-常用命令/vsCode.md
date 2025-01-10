@@ -41,17 +41,6 @@
 
    VSCode官方出品的图标库
 
-9. Color Highlight
-
-   看名字就知道了，用于给我们代码中的颜色进行高亮展示的插件。
-
-10. **Trailing Spaces**
-
-   把[尾随空格](https://zhida.zhihu.com/search?q=尾随空格&zhida_source=entity&is_preview=1)显示出来。
-
-11. CodeIf
-
-    变量命名推荐  https://bailongma.yuque.com/fbyium/ucue94/vlrgb9
 
 12. **koroFileHeader**
 
@@ -62,6 +51,10 @@
 14.MarsCode Ai Coding
 
 15.postman
+
+16.Path Intellisense 
+
+Visual Studio Code plugin that autocompletes filenames.
 
 ### 3.vsCode 快捷键
 
@@ -102,3 +95,6 @@ https://stackoverflow.com/questions/53672888/vscode-not-changing-double-quotes-t
 
 ```
 
+### 8.vscode code 命令怎么安装
+
+要在 VSCode 中使用 `code` 命令行工具，可以按照以下步骤进行配置： 1. 打开 VSCode。 2. 按下 `Ctrl + Shift + P`（或 `Cmd + Shift + P` 在 macOS 上）调出命令面板。 3. 输入 `Shell Command: Install 'code' command in PATH`，然后按下回车键。 执行完这些步骤后，你应该能够在终端中使用 `code` 命令来打开文件或文件夹。注意，如果终端已经打开，可能需要重新启动终端以生效对路径的更改。
