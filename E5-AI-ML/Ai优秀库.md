@@ -13,3 +13,4 @@ https://dust3r.europe.naverlabs.com/
 ### [3.Stable Diffusion web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 
 A web interface for Stable Diffusion, implemented using Gradio library.
+

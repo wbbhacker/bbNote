@@ -78,6 +78,10 @@
 
      https://juejin.cn/post/6844903600976576519 git合并commit
     
+    [1]: https://waynerv.com/posts/git-rebase-intro/	"git rebase 用法详解与工作原理"
+    
+    
+    
 17. `git stash`
 
      1. `git stash list`  查看stash存储
@@ -171,6 +175,22 @@ ci: 对CI配置文件和脚本的更改（示例范围：Travis，Circle，Brows
 revert: 恢复到以前的提交
 
 https://github.com/liuchengxu/git-commit-emoji-cn
+
+- build
+- chore
+- ci
+- docs
+- feat
+- fix
+- perf
+- refactor
+- revert
+- style
+- test
+
+[1]: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+
 
 #### 3.将子文件夹拆分成新仓库
 

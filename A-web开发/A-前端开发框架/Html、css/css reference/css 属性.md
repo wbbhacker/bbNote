@@ -282,9 +282,11 @@ table{
 
 #### 25. overscroll-behavior
 
-防止页面抖动左右滑的时候
+防止页面抖动左右滑的时候,同时禁止左右滑动前进后退导航
 
 `overscroll-behavior: none;`
+
+
 
 
 
