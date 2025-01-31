@@ -1,5 +1,3 @@
-## 
-
 ### 1.设置格式化 4个空格
 
 ```javascript
@@ -55,6 +53,10 @@
 16.Path Intellisense 
 
 Visual Studio Code plugin that autocompletes filenames.
+
+17.JavaScript(ES6) code snippets 
+
+DOM对象、js对象代码提示
 
 ### 3.vsCode 快捷键
 
