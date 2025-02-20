@@ -58,6 +58,10 @@ Visual Studio Code plugin that autocompletes filenames.
 
 DOM对象、js对象代码提示
 
+18.Vue-Official
+
+关闭掉Code Acitons
+
 ### 3.vsCode 快捷键
 
 ```mathematica
