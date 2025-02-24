@@ -304,11 +304,196 @@ document.dispatchEvent(ev);
 
       - stopImmediatePropagation()
 
-        如果同一个节点对于同一个事件指定了多个监听函数，这些函数会根据添加的顺序依次调用。只要其中有一个监听函数调用了stopImmediatePropagation方法，其他的监听函数就不会再执行了。
+        如果同一个节点对于同一个事件指定了多个监听函数，这些函数会根据添加的顺序依次调用。只要其中有一个监听函数调用
+        
+        了stopImmediatePropagation方法，其他的监听函数就不会再执行了。
+        
+
+#### 6.html 事件捕获，父元素的click 事件，是监听的事件捕获还是冒泡，如果点击的是子元素
+
+在 HTML 和 JavaScript 中，事件传播分为三个阶段：
+
+1. **捕获阶段（Capture Phase）**：事件从根节点向下传播到目标元素。
+2. **目标阶段（Target Phase）**：事件到达目标元素。
+3. **冒泡阶段（Bubble Phase）**：事件从目标元素向上传播到根节点。
+
+默认情况下，事件监听器是在**冒泡阶段**触发的。如果你希望监听**捕获阶段**的事件，需要在添加事件监听器时显式指定。
+
+------
+
+##### 1.**默认行为：冒泡阶段**
+
+如果你为父元素添加了一个 `click` 事件监听器，并且点击的是子元素，事件会先经过捕获阶段到达子元素（目标阶段），然后从子元素冒泡到父元素。
+
+示例
+
+```
+<div id="parent">
+  Parent
+  <div id="child">Child</div>
+</div>
+
+<script>
+  const parent = document.getElementById('parent');
+  const child = document.getElementById('child');
+
+  parent.addEventListener('click', () => {
+    console.log('Parent clicked (bubbling phase)');
+  });
+
+  child.addEventListener('click', () => {
+    console.log('Child clicked (target phase)');
+  });
+</script>
+```
+
+输出：
+
+```
+Child clicked (target phase)
+Parent clicked (bubbling phase)
+```
+
+------
+
+##### 2. **监听捕获阶段**
+
+如果你希望在捕获阶段监听父元素的 `click` 事件，可以在 `addEventListener` 的第三个参数中设置 `{ capture: true }`。
+
+示例：
+
+```
+<div id="parent">
+  Parent
+  <div id="child">Child</div>
+</div>
+
+<script>
+  const parent = document.getElementById('parent');
+  const child = document.getElementById('child');
+
+  parent.addEventListener('click', () => {
+    console.log('Parent clicked (capture phase)');
+  }, { capture: true });
+
+  child.addEventListener('click', () => {
+    console.log('Child clicked (target phase)');
+  });
+</script>
+```
+
+
+
+运行 HTML
+
+输出：
+
+```
+Parent clicked (capture phase)
+Child clicked (target phase)
+```
+
+------
+
+##### 3. **事件传播的顺序**
+
+当点击子元素时，事件的传播顺序如下：
+
+1. **捕获阶段**：从根节点向下传播到子元素。
+   - 如果父元素有捕获阶段的监听器，会先触发。
+2. **目标阶段**：事件到达子元素。
+   - 子元素的监听器触发。
+3. **冒泡阶段**：从子元素向上传播到根节点。
+   - 如果父元素有冒泡阶段的监听器，会触发。
+
+示例：
+
+```
+<div id="parent">
+  Parent
+  <div id="child">Child</div>
+</div>
+
+<script>
+  const parent = document.getElementById('parent');
+  const child = document.getElementById('child');
+
+  parent.addEventListener('click', () => {
+    console.log('Parent clicked (capture phase)');
+  }, { capture: true });
+
+  child.addEventListener('click', () => {
+    console.log('Child clicked (target phase)');
+  });
+
+  parent.addEventListener('click', () => {
+    console.log('Parent clicked (bubbling phase)');
+  });
+</script>
+```
+
+
+
+输出：
+
+```
+Parent clicked (capture phase)
+Child clicked (target phase)
+Parent clicked (bubbling phase)
+```
+
+------
+
+##### 4. **阻止事件传播**
+
+如果你想阻止事件继续传播（无论是捕获阶段还是冒泡阶段），可以使用 `event.stopPropagation()`。
+
+示例：
+
+```
+<div id="parent">
+  Parent
+  <div id="child">Child</div>
+</div>
+
+<script>
+  const parent = document.getElementById('parent');
+  const child = document.getElementById('child');
+
+  parent.addEventListener('click', () => {
+    console.log('Parent clicked (capture phase)');
+  }, { capture: true });
+
+  child.addEventListener('click', (event) => {
+    console.log('Child clicked (target phase)');
+    event.stopPropagation(); // 阻止事件传播
+  });
+
+  parent.addEventListener('click', () => {
+    console.log('Parent clicked (bubbling phase)');
+  });
+</script>
+```
+
+输出：
+
+```
+Parent clicked (capture phase)
+Child clicked (target phase)
+```
+
+由于 `event.stopPropagation()` 阻止了事件传播，父元素的冒泡阶段监听器不会触发。
+
+------
+
+##### 5. **总结**
+
+- 默认情况下，父元素的 `click` 事件监听器是在**冒泡阶段**触发的。
+- 如果点击的是子元素，事件会先经过捕获阶段到达子元素，然后从子元素冒泡到父元素。
+- 可以通过 `{ capture: true }` 监听捕获阶段的事件。
+- 使用 `event.stopPropagation()` 可以阻止事件的进一步传播。
 
 ### [2.ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
 
 The **`ResizeObserver`** interface reports changes to the dimensions of an [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element)'s content or border box, or the bounding box of an [`SVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement).
-
-
 
