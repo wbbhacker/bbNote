@@ -497,3 +497,24 @@ Child clicked (target phase)
 
 The **`ResizeObserver`** interface reports changes to the dimensions of an [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element)'s content or border box, or the bounding box of an [`SVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement).
 
+监听元素大小发生gaibian
+
+```
+const resizeObserver = new ResizeObserver(entries => {
+    for (let entry of entries) {
+        // 获取元素的新大小
+        const { width, height } = entry.contentRect;
+        console.log(`Element resized to ${width}x${height}`);
+    }
+});
+onMounted(() => {
+    if (chartRef.value?.parentElement) {
+        resizeObserver.observe(chartRef.value?.parentElement);
+    }
+});
+
+onUnmounted(() => {
+    resizeObserver.disconnect();
+});
+```
+
