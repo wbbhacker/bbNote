@@ -62,6 +62,10 @@ DOM对象、js对象代码提示
 
 关闭掉Code Acitons
 
+19.Snippets Ranger
+
+snippets 管理插件
+
 ### 3.vsCode 快捷键
 
 ```mathematica

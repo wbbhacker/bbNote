@@ -31,3 +31,6 @@ terminate
 1. 结构化克隆算法（structured clone algorithm）
 2. 可转移对象（transferable objects）
 3. 共享数组缓冲区（shared array buffers）。
+
+[1]: https://github.com/mdn/dom-examples/tree/main/web-workers	" Web-workers 例子"
+
