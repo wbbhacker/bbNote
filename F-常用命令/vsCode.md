@@ -66,6 +66,10 @@ DOM对象、js对象代码提示
 
 snippets 管理插件
 
+20. Command List
+
+Run and Save commands in WorkSpace or Global
+
 ### 3.vsCode 快捷键
 
 ```mathematica

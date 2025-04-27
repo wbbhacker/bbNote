@@ -11,7 +11,7 @@
 
 ### 3.使用方法
 
-#### 1.`React.createRef()`
+#### ~~1.`React.createRef()`~~ 19.1 版本废弃
 
 ```react
 class childrenCp extends React.Component {
@@ -75,7 +75,7 @@ class MyComponent extends React.Component {
     <FancyInput ref={inputRef} />  
     ```
 
-#### 2.`React.forwardRef()`
+#### ~~2.`React.forwardRef() `~~19.1 版本废弃
 
 1.Forwarding refs to DOM components
 
