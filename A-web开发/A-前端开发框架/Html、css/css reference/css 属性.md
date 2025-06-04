@@ -286,9 +286,11 @@ table{
 
 `overscroll-behavior: none;`
 
+ overscroll-behavior-y: contain; /* 禁止滚动到边界时的弹性效果 */
 
 
 
+`overscroll-behavior` 需要直接作用于 **可滚动容器** 或其父级。
 
 #### 26.word-break
 

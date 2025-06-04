@@ -70,6 +70,8 @@ snippets 管理插件
 
 Run and Save commands in WorkSpace or Global
 
+21. Vue3 Snippets
+
 ### 3.vsCode 快捷键
 
 ```mathematica

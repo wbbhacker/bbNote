@@ -31,8 +31,6 @@ https://sf.163.com/?productId=bigdata&opener=https%3A%2F%2Fsf.163.com%2Fproduct%
 
 以上仅是一些主要的 BI 可视化分析平台，市场上还有很多其他的工具，选择最适合自己的工具需要考虑自身的业务需求、数据量和分析目的等因素。
 
-#### 
-
 
 
 

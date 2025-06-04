@@ -305,7 +305,135 @@ select* from article LIMIT 1,3 就是跳过1条数据,从第2条数据开始取�
 
 当 limit后面跟一个参数的时候，该参数表示要取的数据的数量
 
+#### 12.Having
 
+`HAVING` 是 SQL 中与 `GROUP BY` 子句配合使用的重要子句，用于对分组后的结果进行筛选。
+
+`HAVING` 类似于 `WHERE` 子句，但关键区别在于：
+
+- `WHERE` 在分组前对原始数据进行筛选
+- `HAVING` 在分组后对聚合结果进行筛选
+
+```sql
+-- WHERE 先筛选，然后分组
+SELECT department, AVG(salary)
+FROM employees
+WHERE hire_date > '2020-01-01'
+GROUP BY department;
+
+-- HAVING 先分组，然后筛选聚合结果
+SELECT department, AVG(salary)
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 60000;
+```
+
+> 1. `HAVING` 必须与 `GROUP BY` 一起使用（除非 `GROUP BY` 省略时整个表作为一组）
+> 2. `HAVING` 子句中可以使用聚合函数，而 `WHERE` 不能
+> 3. 性能考虑：先使用 `WHERE` 减少数据量，再用 `HAVING` 筛选分组
+
+#### 13.with
+
+##### SQL 中的 WITH 子句（公用表表达式 CTE）
+
+WITH 子句，也称为公用表表达式（Common Table Expression，CTE），是 SQL 中一个非常有用的功能，它允许你定义一个临时结果集，该结果集可以在后续的查询中引用。
+
+##### 基本语法
+
+```sql
+WITH cte_name AS (
+    SELECT column1, column2, ...
+    FROM table_name
+    WHERE condition
+)
+SELECT * FROM cte_name;
+```
+
+##### CTE 的主要特点
+
+1. **临时结果集**：CTE 只在查询执行期间存在
+2. **可读性**：使复杂查询更易于理解和维护
+3. **可递归**：支持递归查询（递归 CTE）
+4. **可多次引用**：在同一个查询中可以多次引用同一个 CTE
+
+##### 使用场景
+
+###### 1. 简化复杂查询
+
+```sql
+WITH sales_summary AS (
+    SELECT product_id, SUM(quantity) as total_quantity
+    FROM sales
+    GROUP BY product_id
+)
+SELECT p.product_name, s.total_quantity
+FROM products p
+JOIN sales_summary s ON p.product_id = s.product_id;
+```
+
+###### 2. 替代子查询
+
+```sql
+-- 使用子查询
+SELECT * FROM (
+    SELECT employee_id, salary FROM employees
+) AS emp_salary;
+
+-- 使用CTE更清晰
+WITH emp_salary AS (
+    SELECT employee_id, salary FROM employees
+)
+SELECT * FROM emp_salary;
+```
+
+###### 3. 递归查询（处理层次结构数据）
+
+```sql
+WITH RECURSIVE employee_hierarchy AS (
+    -- 基础查询（锚成员）
+    SELECT employee_id, name, manager_id, 1 as level
+    FROM employees
+    WHERE manager_id IS NULL
+    
+    UNION ALL
+    
+    -- 递归部分（递归成员）
+    SELECT e.employee_id, e.name, e.manager_id, eh.level + 1
+    FROM employees e
+    JOIN employee_hierarchy eh ON e.manager_id = eh.employee_id
+)
+SELECT * FROM employee_hierarchy;
+```
+
+##### 多个 CTE
+
+可以在一个查询中定义多个 CTE：
+
+```sql
+WITH 
+department_stats AS (
+    SELECT department_id, AVG(salary) as avg_salary
+    FROM employees
+    GROUP BY department_id
+),
+high_paying_depts AS (
+    SELECT department_id 
+    FROM department_stats 
+    WHERE avg_salary > 100000
+)
+SELECT e.employee_id, e.name
+FROM employees e
+JOIN high_paying_depts h ON e.department_id = h.department_id;
+```
+
+##### 优点总结
+
+1. **提高可读性**：将复杂查询分解为逻辑部分
+2. **避免重复**：可以多次引用同一个 CTE 而不需要重复编写
+3. **支持递归**：处理树形或层次结构数据
+4. **替代视图**：当只需要临时使用时，比创建视图更方便
+
+WITH 子句是现代 SQL 中非常重要的功能，特别是在处理复杂查询时能显著提高代码的可读性和可维护性。
 
 ### 2.修改&排序
 
