@@ -1,5 +1,7 @@
 https://www.cnblogs.com/ranyonsue/p/8918908.html
 
+
+
 Web 缓存大致可以分为：数据库缓存、服务器端缓存（代理服务器缓存、CDN 缓存）、浏览器缓存。
 浏览器缓存也包含很多内容： HTTP 缓存、indexDB、cookie、localstorage 等等。
 
@@ -72,6 +74,8 @@ Cache-Control与Expires可以在服务端配置同时启用或者启用任意一
 
 与Last-Modify/If-Modify-Since不同的是，Etag/If-None-Match返回的是一个校验码（ETag: entity tag）。ETag可以保证每一个资源是唯一的，资源变化都会导致ETag变化*。ETag值的变更则说明资源状态已经被修改。服务器根据浏览器上发送的If-None-Match值来判断是否命中缓存。
 
+### 4.1 启发式缓存
+
 ### 5.ETag扩展说明
 
 1. 文件的i-node编号，此i-node非彼iNode。是Linux/Unix用来识别文件的编号。是的，识别文件用的不是文件名。使用命令’ls –I’可以看到。
@@ -102,5 +106,97 @@ Etag是服务器自动生成或者由开发者生成的对应资源在服务器�
 
 ![image-20210109215004273](../../image/image-20210109215004273.png)
 
-[1]: https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html	"Caching in HTTP"
+> | 前缀          | 含义                       | 示例              |
+> | :------------ | :------------------------- | :---------------- |
+> | **`X-`**      | 传统自定义头部（已不推荐） | `X-Request-ID`    |
+> | **`Sec-`**    | 浏览器安全控制头部         | `Sec-Fetch-Site`  |
+> | **`Accept-`** | 内容协商标准头部           | `Accept-Encoding` |
 
+[1]: https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html	"Caching in HTTP"
+[2]: https://httpwg.org/specs/rfc9111.html#cache-request-directive.no-cache
+[3]: https://www.mnot.net/cache_docs/
+[4]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation
+[5]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching#vary
+[6]: https://www.chromium.org/developers/design-documents/network-stack/
+[7]: https://httpwg.org/specs/rfc9110.html
+[8]: https://www.chromium.org/developers/design-documents/network-stack/
+
+> 那我如果不设置 cache-control 和 expire 的是不是一致就是用的强缓存?
+>
+> ### **如果不设置 `Cache-Control` 和 `Expires`，浏览器是否会使用强缓存？**  
+>
+> **答案：不一定！** 浏览器的默认缓存行为取决于多种因素，包括：  
+> 1. **HTTP/1.1 默认缓存策略**  
+> 2. **浏览器的启发式缓存（Heuristic Caching）**  
+> 3. **资源类型（HTML、JS、CSS、图片等）**  
+>
+> ---
+>
+> ## **1. 如果没有 `Cache-Control` 和 `Expires`，会发生什么？**
+> ### **(1) HTTP/1.1 默认行为（RFC 规范）**
+> - **如果服务器没有返回任何缓存控制头（`Cache-Control`、`Expires`）**，浏览器 **不会使用强缓存**，而是 **每次都会发送请求** 到服务器（但可能使用协商缓存，如 `If-Modified-Since` 或 `If-None-Match`）。  
+> - **例外情况**：如果服务器返回了 `Last-Modified`，浏览器可能会在后续请求中带上 `If-Modified-Since` 进行缓存验证（返回 `304 Not Modified` 或 `200 OK`）。  
+>
+> ### **(2) 浏览器的启发式缓存（Heuristic Caching）**
+> - 如果服务器没有明确设置 `Cache-Control` 或 `Expires`，但资源有 `Last-Modified`，**部分浏览器可能会自动计算一个缓存时间**（如 `(Date - Last-Modified) * 0.1`），并临时启用强缓存。  
+> - **示例**：
+>   - 如果 `Last-Modified` 是 10 天前，浏览器可能会缓存该资源 **1 天**（`10 * 0.1 = 1`）。  
+>   - 在此期间，浏览器 **不会发送请求**，直接使用缓存（类似强缓存）。  
+>   - 超过这个时间后，浏览器才会发送请求，并带上 `If-Modified-Since`。  
+>
+> ---
+>
+> ## **2. 不同资源的默认缓存行为**
+> | 资源类型      | 默认缓存行为（无 `Cache-Control` 和 `Expires`）  |
+> | ------------- | ------------------------------------------------ |
+> | **HTML**      | 通常 **不缓存**（每次请求服务器）                |
+> | **JS/CSS**    | 可能被浏览器启发式缓存（取决于 `Last-Modified`） |
+> | **图片/字体** | 可能被浏览器长期缓存（部分浏览器默认缓存）       |
+>
+> ---
+>
+> ## **3. 如何确保强缓存生效？**
+> 如果想 **明确使用强缓存**，必须显式设置：
+> ```http
+> Cache-Control: max-age=3600  # 强缓存 1 小时
+> ```
+> 或（HTTP/1.0 兼容）：
+> ```http
+> Expires: Wed, 21 Oct 2025 07:28:00 GMT
+> ```
+>
+> 如果想 **完全禁用缓存**，使用：
+> ```http
+> Cache-Control: no-store
+> ```
+>
+> ---
+>
+> ## **4. 实验验证**
+> ### **场景 1：无任何缓存头**
+> ```http
+> HTTP/1.1 200 OK
+> Content-Type: text/html
+> ```
+> - **浏览器行为**：每次访问都会请求服务器（无缓存）。  
+>
+> ### **场景 2：仅有 `Last-Modified`**
+> ```http
+> HTTP/1.1 200 OK
+> Last-Modified: Wed, 21 Oct 2023 07:00:00 GMT
+> Content-Type: text/html
+> ```
+> - **浏览器行为**：
+>   - **首次请求**：正常返回 `200 OK`。
+>   - **后续请求**：可能带上 `If-Modified-Since`，服务器可返回 `304 Not Modified`（协商缓存）。  
+>   - **部分浏览器** 可能启用启发式缓存（短期强缓存）。  
+>
+> ---
+>
+> ## **结论**
+> - **如果不设置 `Cache-Control` 和 `Expires`，浏览器默认不会使用强缓存**（除非触发启发式缓存）。  
+> - **强缓存必须显式声明**（如 `Cache-Control: max-age=3600`）。  
+> - **协商缓存（`ETag`/`Last-Modified`）仍然可能生效**，但需要发送请求验证。  
+>
+> **最佳实践**：  
+> ✅ 明确设置 `Cache-Control` 来控制缓存行为，避免依赖浏览器默认策略。

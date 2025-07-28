@@ -308,6 +308,99 @@ git commit -m "Apply patch fix"
 >
 > 打补丁是一个在开源项目中常见的协作方式，它允许贡献者在不直接访问仓库的情况下提交更改。
 
+##### 3.Git 创建补丁的方法
+
+补丁(patch)是将代码变更以文件形式保存的方式，可以方便地在不同仓库或分支间传递变更。以下是几种创建 Git 补丁的方法：
+
+###### 1. 创建未提交更改的补丁
+
+```bash
+# 查看当前未暂存的变更
+git diff > changes.patch
+
+# 创建已暂存但未提交的变更补丁
+git diff --cached > staged-changes.patch
+
+# 创建所有未提交变更的补丁（包括暂存和未暂存）
+git diff HEAD > all-changes.patch
+```
+
+###### 2. 创建最近提交的补丁
+
+```bash
+# 创建最近一次提交的补丁
+git format-patch -1
+
+# 创建最近N次提交的补丁（例如最近3次）
+git format-patch -3
+```
+
+这会生成以 `.patch` 或 `.mbox` 结尾的文件，文件名包含提交信息。
+
+###### 3. 创建特定提交范围的补丁
+
+```bash
+# 创建两个提交之间的所有变更补丁
+git format-patch <起始提交哈希>..<结束提交哈希>
+
+# 示例：创建从v1.0到当前的所有提交补丁
+git format-patch v1.0..HEAD
+```
+
+###### 4. 创建单个提交的补丁
+
+```bash
+# 为特定提交创建补丁
+git format-patch -1 <提交哈希>
+```
+
+###### 5. 创建分支间的差异补丁
+
+```bash
+# 创建当前分支与另一分支差异的补丁
+git diff <其他分支名> > branch-diff.patch
+```
+
+###### 应用补丁的方法
+
+```bash
+# 检查补丁是否能正常应用（不实际应用）
+git apply --check changes.patch
+
+# 应用补丁
+git apply changes.patch
+
+# 或者使用更智能的方式（会创建提交记录）
+git am *.patch
+```
+
+###### 高级选项
+
+1. **二进制文件支持**：
+   
+   ```bash
+   git diff --binary > changes.patch
+   ```
+   
+2. **包含二进制差异**：
+   ```bash
+   git format-patch --binary <提交哈希>
+   ```
+
+3. **生成补丁时重命名检测**：
+   ```bash
+   git diff -M > changes.patch
+   ```
+
+###### 注意事项
+
+1. `git diff` 生成的补丁需要用 `git apply` 应用
+2. `git format-patch` 生成的补丁更适合用 `git am` 应用
+3. 补丁文件是纯文本文件，可以轻松通过邮件或其他方式分享
+4. 应用补丁前最好先检查是否有冲突
+
+补丁是代码审查、跨仓库协作和问题修复的有效工具，特别适合在不直接访问远程仓库的情况下共享代码变更。
+
 ### 3.git概念
 
 #### 1.轻量标签 与 附注标签
