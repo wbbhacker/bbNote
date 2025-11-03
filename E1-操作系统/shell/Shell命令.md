@@ -160,12 +160,18 @@ telnet 101.200.195.41 8080 # 查看远程端口是否开放
 2. 查看响应头部、响应行、响应数据
 
    `curl -i  https://ddlh-gzh.yunfuw.cn?ddlh=1`
-   
+
    只查看响应行、响应头部，用-I
-   
+
 3. 下载文件
 
    ` curl -O  http://nginx.org/download/nginx-1.20.1.tar.gz`
+
+4. 查看公网ip
+
+   `curl ip.me`
+
+   快速、方便地在命令行中查询你当前的公网 IPv4 地址。
 
 #### 18.`man` 查看命令信息
 
