@@ -2,8 +2,6 @@
 
 #### 4.Async/Await 如何通过同步的方式实现异步
 
-
-
 #### 6.Promise 构造函数是同步执行还是异步执行，那么then 方法呢？
 
 pomise构造函数是同步执行的，then方法是异步执行的
@@ -15,6 +13,7 @@ pomise构造函数是同步执行的，then方法是异步执行的
 `typeof`、`Object.toString()`、`instanceof`
 
 #### 9.async/await 如何通过同步的方式实现异步
+
 async起什么作用---输出的是一个Promise对象。
 
 #### 10.深拷贝的方法
@@ -37,23 +36,23 @@ async起什么作用---输出的是一个Promise对象。
 2. 普通递归函数
 
 ```javascript
-function deepCopy( source ) {
-if (!isObject(source)) return source; //如果不是对象的话直接返回
-    let target = Array.isArray( source ) ? [] : {} //数组兼容
-    for ( var k in source ) {
-    	if (source.hasOwnProperty(k)) {
-    		if ( typeof source[ k ] === 'object' ) {
-            	target[ k ] = deepCopy( source[ k ] )
-        	} else {
-            	target[ k ] = source[ k ]
-        	}
-    	}
+function deepCopy(source) {
+  if (!isObject(source)) return source //如果不是对象的话直接返回
+  let target = Array.isArray(source) ? [] : {} //数组兼容
+  for (var k in source) {
+    if (source.hasOwnProperty(k)) {
+      if (typeof source[k] === "object") {
+        target[k] = deepCopy(source[k])
+      } else {
+        target[k] = source[k]
+      }
     }
-    return target
+  }
+  return target
 }
 
 function isObject(obj) {
-    return typeof obj === 'object' && obj !== null
+  return typeof obj === "object" && obj !== null
 }
 ```
 
@@ -67,47 +66,47 @@ function isObject(obj) {
 
 ```javascript
 function cloneLoop(x) {
-    const root = {};
+  const root = {}
 
-    // 栈
-    const loopList = [
-        {
-            parent: root,
-            key: undefined,
-            data: x,
-        }
-    ];
+  // 栈
+  const loopList = [
+    {
+      parent: root,
+      key: undefined,
+      data: x,
+    },
+  ]
 
-    while(loopList.length) {
-        // 深度优先
-        const node = loopList.pop();
-        const parent = node.parent;
-        const key = node.key;
-        const data = node.data;
+  while (loopList.length) {
+    // 深度优先
+    const node = loopList.pop()
+    const parent = node.parent
+    const key = node.key
+    const data = node.data
 
-        // 初始化赋值目标，key为undefined则拷贝到父元素，否则拷贝到子元素
-        let res = parent;
-        if (typeof key !== 'undefined') {
-            res = parent[key] = {};
-        }
-
-        for(let k in data) {
-            if (data.hasOwnProperty(k)) {
-                if (typeof data[k] === 'object') {
-                    // 下一次循环
-                    loopList.push({
-                        parent: res,
-                        key: k,
-                        data: data[k],
-                    });
-                } else {
-                    res[k] = data[k];
-                }
-            }
-        }
+    // 初始化赋值目标，key为undefined则拷贝到父元素，否则拷贝到子元素
+    let res = parent
+    if (typeof key !== "undefined") {
+      res = parent[key] = {}
     }
 
-    return root;
+    for (let k in data) {
+      if (data.hasOwnProperty(k)) {
+        if (typeof data[k] === "object") {
+          // 下一次循环
+          loopList.push({
+            parent: res,
+            key: k,
+            data: data[k],
+          })
+        } else {
+          res[k] = data[k]
+        }
+      }
+    }
+  }
+
+  return root
 }
 ```
 
@@ -118,40 +117,37 @@ function cloneLoop(x) {
 （2）支持很多层级的数据
 
 ```javascript
- function copyObject(orig) {
-    var copy = Object.create(Object.getPrototypeOf(orig));
-    copyOwnPropertiesFrom(copy, orig);
-    return copy;
-  }
+function copyObject(orig) {
+  var copy = Object.create(Object.getPrototypeOf(orig))
+  copyOwnPropertiesFrom(copy, orig)
+  return copy
+}
 
+function copyOwnPropertiesFrom(target, source) {
+  Object.getOwnPropertyNames(source).forEach(function (propKey) {
+    var desc = Object.getOwnPropertyDescriptor(source, propKey)
+    Object.defineProperty(target, propKey, desc)
+  })
+  return target
+}
 
-  function copyOwnPropertiesFrom(target, source) {
-    Object
-    .getOwnPropertyNames(source)
-    .forEach(function (propKey) {
-      var desc = Object.getOwnPropertyDescriptor(source, propKey);
-      Object.defineProperty(target, propKey, desc);
-    });
-    return target;
-  }
+var obj = {
+  name: "Jack",
+  age: "32",
+  job: "developer",
+}
 
-  var obj = {
-    name: 'Jack',
-    age: '32',
-    job: 'developer'
-  };
-
-  var obj2 = copyObject(obj);
-  console.log(obj2);
-  obj.age = 39;
-  obj.name = 'Tom';
-  console.log(obj);
-  console.log(obj2);
+var obj2 = copyObject(obj)
+console.log(obj2)
+obj.age = 39
+obj.name = "Tom"
+console.log(obj)
+console.log(obj2)
 ```
 
 #### 11.元素的nodeName 与 tagName 哪个兼容性强
 
-nodeName  兼容性强
+nodeName 兼容性强
 
 但如果是你同样需要支持IE 5.5的话，那tagName却是更好的选择。
 
@@ -171,53 +167,48 @@ a.toString(16)  // 'ff'
 #### 14.对象并不具有prototype属性，只有函数才有prototype属性。
 
 ```javascript
-function Person(){
-	this.sex = "man"
+function Person() {
+  this.sex = "man"
 }
-function animation(){
- 
+function animation() {}
+function goods() {
+  this.name = "冰激淋"
+  this.say = function () {
+    console.log("ss")
+  }
 }
-function goods(){
-	this.name = '冰激淋';
-	this.say = function(){
-		console.log('ss')
-	}
-}
-function sun(){
+function sun() {}
 
-}
-
-console.log(Person.prototype);
+console.log(Person.prototype)
 
 Person.prototype = {
-	constructor:Person,
-	// name:"N"
+  constructor: Person,
+  // name:"N"
 }
 goods.prototype = {
-	name:"goods",
-	say:function(){
-		console.log('www')
-	}
+  name: "goods",
+  say: function () {
+    console.log("www")
+  },
 }
 animation.prototype.run = {
-	name:"animation"
+  name: "animation",
 }
 
-var friend = new Person();
-var goodss = new goods();
+var friend = new Person()
+var goodss = new goods()
 
-var runs = new animation();
+var runs = new animation()
 
 console.log(sun.prototype)
 
-console.log(friend.__proto__)	 //
-console.log(goodss.prototype)    //  这就是有无constructor
-
+console.log(friend.__proto__) //
+console.log(goodss.prototype) //  这就是有无constructor
 
 console.log(Function.__proto__.__proto__ == Person.__proto__.__proto__)
 console.log(Function.__proto__)
-console.log(Function.__proto__.__proto__ )
-console.log(Function.__proto__.__proto__.__proto__ )
+console.log(Function.__proto__.__proto__)
+console.log(Function.__proto__.__proto__.__proto__)
 console.log(typeof Person)
 console.log(animation.prototype)
 console.log(friend.prototype)
@@ -229,38 +220,32 @@ console.log({}.__proto__.__proto__)
 console.log(runs.__proto__)
 
 console.log(goodss instanceof goods)
-console.log(goodss.__proto__ === goods.prototype )
+console.log(goodss.__proto__ === goods.prototype)
 console.log(goods.prototype)
 
+console.log(friend.__proto__ === Person.prototype)
+console.log(friend.__proto__)
 
-console.log(friend.__proto__ === Person.prototype )
-console.log(friend.__proto__ )
+console.log(friend instanceof Object)
+console.log(friend instanceof Person)
 
+console.log(friend.constructor == Person)
+console.log(friend.constructor == Object)
 
-console.log(friend instanceof Object )
-console.log(friend instanceof Person )
-
-console.log( friend.constructor == Person )
-console.log( friend.constructor == Object )
-
-function Person(){
-
-}
+function Person() {}
 Person.prototype = {
-	constructor:Person,
-	name:"N"
+  constructor: Person,
+  name: "N",
 }
-var friend = new Person();
-console.log( friend.constructor == Person )
-console.log( Person.prototype )
-console.log( friend.constructor == Object )
+var friend = new Person()
+console.log(friend.constructor == Person)
+console.log(Person.prototype)
+console.log(friend.constructor == Object)
 console.log(friend)
-console.log(document.getElementsByTagName('div'))
+console.log(document.getElementsByTagName("div"))
 ```
 
 #### 15.V8 垃圾回收机制
-
-
 
 #### 16.**为什么操作DOM会很慢**
 
@@ -273,4 +258,3 @@ console.log(document.getElementsByTagName('div'))
 https://juejin.cn/post/6844903991793451016#heading-5
 
 #### 52.`===` 与`==` 的区别？
-

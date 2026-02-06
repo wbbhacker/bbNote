@@ -114,3 +114,45 @@ https://stackoverflow.com/questions/53672888/vscode-not-changing-double-quotes-t
 ### 8.vscode code 命令怎么安装
 
 要在 VSCode 中使用 `code` 命令行工具，可以按照以下步骤进行配置： 1. 打开 VSCode。 2. 按下 `Ctrl + Shift + P`（或 `Cmd + Shift + P` 在 macOS 上）调出命令面板。 3. 输入 `Shell Command: Install 'code' command in PATH`，然后按下回车键。 执行完这些步骤后，你应该能够在终端中使用 `code` 命令来打开文件或文件夹。注意，如果终端已经打开，可能需要重新启动终端以生效对路径的更改。
+
+
+
+### 9.常用符号命令
+
+在 Cursor（基于 VS Code）中，Ctrl+P（Mac 上为 Cmd+P）支持以下符号命令：
+
+##### 常用符号命令
+
+1. **`:`** - 跳转到指定行号
+   - 例如：`index.vue:100` 跳转到第 100 行
+
+2. **`>`** - 调用命令面板
+   - 例如：`>Format Document` 格式化文档
+
+3. **`@`** - 跳转到当前文件中的符号（Symbols）
+   - 例如：`@handleClick` 跳转到函数 `handleClick`
+   - 也可以：`@:` 按类别查看符号
+
+4. **`#`** - 在工作区中搜索符号
+   - 例如：`#useState` 在所有文件中搜索 `useState` 符号
+
+5. **`?`** - 显示帮助信息
+   - 显示所有可用的快捷方式
+
+##### 组合使用示例
+
+- `index.vue:100` - 打开文件并跳转到第 100 行
+- `index.vue@handleClick` - 打开文件并跳转到 `handleClick` 函数
+- `@:` - 在当前文件中按类别查看所有符号（函数、类、变量等）
+- `#useState` - 在整个工作区中搜索 `useState` 符号
+
+##### 其他技巧
+
+- 输入文件名的一部分即可快速匹配
+- 使用 `Tab` 键可以在匹配的文件间切换
+- 输入路径的一部分可以按路径过滤文件
+
+这些符号可以组合使用，提高导航效率。
+
+
+
